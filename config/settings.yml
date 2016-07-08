@@ -1,0 +1,8 @@
+user:
+  avatar:
+    sizes:
+      default: 200
+      small: 100
+      large: 500
+image:
+  max_capacity: 5 #MB

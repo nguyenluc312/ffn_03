@@ -1,5 +1,5 @@
 en:
-  hello: "Hello world"
+  error_capacity_image: "should be less than %{maximum} MB"
   views:
     static_pages:
       contact: "This is contact"
@@ -16,3 +16,36 @@ en:
       profile: "Profile"
       account_setting: "Setting"
       logout: "Logout"
+  devise:
+    confirmations:
+      new:
+        content: "Resend confirmation instructions"
+        submit_button: "Resend confirmation instructions"
+    passwords:
+      edit:
+        content: "Change your password"
+        new_password: "New password"
+        confirm_new_password: "Confirm new password"
+        change_password_button: "Change my password"
+      new:
+        content: "Forgot your password?"
+        send_reset_button: "Send me reset password instructions"
+    registrations:
+      edit:
+        content: "Update your account"
+        save_change_button: "Save changes"
+        logout: "Log out"
+      new:
+        content: "Sign up"
+        sign_up_button: "Sign up"
+    sessions:
+      new:
+        content: "Login"
+        login_button: "Login"
+    unlocks:
+      new:
+        content: "Resend unlock instructions"
+        resend_unlock_button: "Resend unlock instructions"
+  shared:
+    error_messages:
+      form_contains: "This form contains"
