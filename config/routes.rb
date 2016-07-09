@@ -10,4 +10,9 @@ Rails.application.routes.draw do
     post "login" => "devise/sessions#create", as: :user_session
     delete "logout" => "devise/sessions#destroy", as: :destroy_user_session
   end
+
+  namespace :admin do
+    root "countries#new"
+    resources :countries, only: [:new, :create]
+  end
 end
