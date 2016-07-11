@@ -50,3 +50,23 @@ strong {
     }
   }
 }
+
+/* admin create new news*/
+#new_news{
+  .select-news-type{
+    select{
+      width: 50%;
+    }
+  }
+  .brief-descripstion{
+    textarea{
+      resize: none;
+      height: 100px;
+    }
+  }
+  .author{
+    input{
+      width: 30%;
+    }
+  }
+}

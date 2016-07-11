@@ -1,0 +1,35 @@
+<%= form_for [:admin, @news] do |f| %>
+  <%= render "shared/error_messages", object: @news %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group select-news-type">
+    <%= f.label :type %>
+    <%= f.select :news_type_id,
+      options_for_select(@news_types, @news.news_type_id),
+      {include_blank: t(".select_news_type")}, class: "form-control" %>
+  </div>
+
+  <div class="form-group brief-descripstion">
+    <%= f.label :brief_description %>
+    <%= f.text_area :brief_description, class: "form-control" %>
+  </div>
+
+  <div class="form-group content">
+    <%= f.label :content %><br>
+    <%= f.cktext_area :content, class: "form-control" %>
+  </div>
+
+  <div class="form-group author">
+    <%= f.label :author %>
+    <%= f.text_field :author, class: "form-control" %>
+    <%= f.hidden_field :user_id %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit yield(:submit_button), class: "btn btn-primary" %>
+  </div>
+<% end %>
