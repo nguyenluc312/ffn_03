@@ -1,6 +1,6 @@
 class Admin::TeamsController < ApplicationController
-  before_action :load_countries, only: [:new, :create]
-  before_action :load_team, only: :show
+  before_action :load_countries, except: [:index, :destroy, :show]
+  before_action :load_team, only: [:show, :edit, :update]
 
   def new
     @team = Team.new
@@ -17,6 +17,18 @@ class Admin::TeamsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @team.update_attributes team_params
+      flash[:success] = t ".success"
+      redirect_to admin_team_url @team
+    else
+      render :edit
+    end
   end
 
   private
