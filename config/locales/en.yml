@@ -56,3 +56,8 @@ en:
       create:
         failed: "This country already exist"
         success: "Added successfully"
+    leagues:
+      new:
+        create: "Create New League"
+      create:
+        success: "Successfully"
