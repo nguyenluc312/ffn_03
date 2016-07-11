@@ -1,0 +1,8 @@
+<div class="panel panel-heading">
+  <h1 class="center"><%= t ".league_manage" %></h1>
+</div>
+<div class="col-md-8 col-md-offset-2">
+  <%= render "leagues" %>
+  <%= link_to t(".new_league"), new_admin_league_path, class: "btn btn-primary" %>
+</div>
+<div class="clearfix"></div>

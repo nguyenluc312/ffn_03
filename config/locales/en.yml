@@ -61,3 +61,18 @@ en:
         create: "Create New League"
       create:
         success: "Successfully"
+      index:
+        league_manage: "League Manage"
+        new_league: "New League"
+      destroy:
+        has_league_seasons: "League has league seasons, can't delete"
+        success: "Successfully"
+        failed: "Something wrong!!"
+      leagues:
+        league: "League"
+        country: "Country"
+        action: "Action"
+        confirm: "Are you sure?"
+        no_league: "No League"
+      load_league:
+        warning: "League invalid"
