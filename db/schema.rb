@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160711033535) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"
-    t.integer  "code"
+    t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

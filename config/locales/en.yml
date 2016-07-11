@@ -49,3 +49,10 @@ en:
   shared:
     error_messages:
       form_contains: "This form contains"
+  admin:
+    countries:
+      new:
+        add: "Add"
+      create:
+        failed: "This country already exist"
+        success: "Added successfully"

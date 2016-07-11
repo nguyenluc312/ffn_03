@@ -6,3 +6,4 @@ user:
       large: 500
 image:
   max_capacity: 5 #MB
+per_page: 4
