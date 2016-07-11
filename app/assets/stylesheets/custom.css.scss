@@ -32,3 +32,21 @@ body {
     margin: 0 0 30px 0;
   }
 }
+
+strong {
+  color: red;
+}
+
+.table-leagues {
+  thead {
+    .league {
+      width: 30%
+    }
+    .country {
+      width: 30%
+    }
+    .action {
+      width: 10%
+    }
+  }
+}

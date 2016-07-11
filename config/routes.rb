@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root "countries#new"
     resources :countries, only: [:new, :create]
-    resources :leagues, only: [:new, :create]
+    resources :leagues, except: [:edit, :update]
   end
 end

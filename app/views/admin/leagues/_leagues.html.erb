@@ -1,0 +1,27 @@
+<div class="panel-body">
+  <% if @leagues.any? %>
+    <table class="table table-leagues">
+      <thead>
+        <th class="league"><%= t ".league" %></th>
+        <th class="country"><%= t ".country" %></th>
+        <th class="action"><%= t ".action" %></th>
+      </thead>
+      <tbody>
+        <% @leagues.each do |league| %>
+          <tr>
+            <td class="league-name"><%= league.name %></td>
+            <td class="league-country"><%= league.country.name %></td>
+            <td class="league-action">
+              <%= link_to "", admin_league_path(league),
+                method: :delete, data: {confirm: t(".confirm")},
+                class: "glyphicon glyphicon-remove" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p><strong><%= t ".no_league" %></strong></p>
+  <% end %>
+</div>
+
