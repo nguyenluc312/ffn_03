@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-
 gem "rails", "4.2.6"
 gem "sqlite3"
 gem "sass-rails", "~> 5.0"
@@ -32,7 +31,7 @@ gem "sinatra"
 gem "delayed_job_active_record"
 gem "daemons"
 gem "public_activity"
-gem "bootsy"
+gem "ckeditor"
 
 group :development, :test do
   gem "byebug"
