@@ -16,6 +16,47 @@ en:
       profile: "Profile"
       account_setting: "Setting"
       logout: "Logout"
+  admin:
+    news:
+      new:
+        content: "Create new news"
+        select_news_type: "Select news type"
+        submit_button: "Create new news"
+      create:
+        success: "News has been created"
+        fail: "Fail to create news"
+    news_types:
+      new:
+        content: "Create new news type"
+        submit_button: "Create new news type"
+      create:
+        success: "News type has been created"
+    countries:
+      new:
+        add: "Add"
+      create:
+        failed: "This country already exist"
+        success: "Added successfully"
+    leagues:
+      new:
+        create: "Create New League"
+      create:
+        success: "Successfully"
+      index:
+        league_manage: "League Manage"
+        new_league: "New League"
+      destroy:
+        has_league_seasons: "League has league seasons, can't delete"
+        success: "Successfully"
+        failed: "Something wrong!!"
+      leagues:
+        league: "League"
+        country: "Country"
+        action: "Action"
+        confirm: "Are you sure?"
+        no_league: "No League"
+      load_league:
+        warning: "League invalid"
   devise:
     confirmations:
       new:
@@ -49,30 +90,3 @@ en:
   shared:
     error_messages:
       form_contains: "This form contains"
-  admin:
-    countries:
-      new:
-        add: "Add"
-      create:
-        failed: "This country already exist"
-        success: "Added successfully"
-    leagues:
-      new:
-        create: "Create New League"
-      create:
-        success: "Successfully"
-      index:
-        league_manage: "League Manage"
-        new_league: "New League"
-      destroy:
-        has_league_seasons: "League has league seasons, can't delete"
-        success: "Successfully"
-        failed: "Something wrong!!"
-      leagues:
-        league: "League"
-        country: "Country"
-        action: "Action"
-        confirm: "Are you sure?"
-        no_league: "No League"
-      load_league:
-        warning: "League invalid"

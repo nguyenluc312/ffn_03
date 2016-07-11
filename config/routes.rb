@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount Ckeditor::Engine => '/ckeditor'
   root "static_pages#home"
   get "help" => "static_pages#help"
@@ -16,5 +15,7 @@ Rails.application.routes.draw do
     root "countries#new"
     resources :countries, only: [:new, :create]
     resources :leagues, except: [:edit, :update]
+    resources :news, except: :show
+    resources :news_types, except: :show
   end
 end
