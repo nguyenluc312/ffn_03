@@ -1,0 +1,26 @@
+<%= form_for [:admin, @team], html: {multipart: true} do |f| %>
+  <%= render "shared/error_messages", object: @team %>
+
+  <div class="form-group">
+    <%= f.text_field :name, class: "form-control", placeholder: t(".name") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.select :country_id, @countries, {include_blank: t(".country")},
+      class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :introduction, placeholder: t(".introduce"),
+      class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.file_field :logo, accept: "image/jpeg,image/gif,image/png",
+      class: "btn btn-default" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit yield(:submit_button), class: "btn btn-primary form-control"  %>
+  </div>
+<% end %>

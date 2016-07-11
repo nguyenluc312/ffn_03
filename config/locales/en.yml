@@ -67,6 +67,27 @@ en:
         no_league: "No League"
       load_league:
         warning: "League invalid"
+    teams:
+      form:
+        name: "Name.."
+        country: "Country"
+        introduce: "Intro.."
+      new:
+        add_team: "Add Team"
+        create: "Create"
+        no_country: "No country to add new team"
+      create:
+        success: "Created successfuly"
+      show:
+        warning: "Something wrong!!"
+        player: "Player: %{count}"
+        achievement: "Achievement"
+        team_member: "Team Member"
+        palyer_name: "Player Name"
+        position: "Position"
+        add_player: "Add player"
+        intro: "Introduce"
+        no_team: "No team"
   devise:
     confirmations:
       new:

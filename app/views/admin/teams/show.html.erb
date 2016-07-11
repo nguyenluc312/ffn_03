@@ -1,0 +1,44 @@
+<div class="panel panel-heading show-team">
+  <h1 class="center">
+    <%= image_tag @team.logo.url,
+      size: Settings.team.logo_size_title if @team.logo.present? %>
+    <%= @team.name %>
+  </h1>
+</div>
+<div class="col-md-3">
+  <%= image_tag @team.logo.url,
+    size: Settings.team.logo_size_left if @team.logo.present? %>
+  <h4><%=t ".player", count: @team.players.count %></h4>
+  <div>
+    <h4><%= t ".achievement" %></h4>
+  </div>
+</div>
+<div class="col-md-6">
+  <h3 class="center"><%= t ".team_member" %></h3>
+  <% if @team.players.any? %>
+    <table class="table">
+      <thead>
+        <th><%= t ".player_name" %></th>
+        <th><%= t ".position" %></th>
+      </thead>
+      <tbody>
+        <% @team.players.each do |player| %>
+          <tr>
+            <td><%= player.name %></td>
+            <td><%= player.position %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <span class="no-player-team"><%= t (".no_team") %></span>
+  <% end %>
+  <div class="add-player">
+    <%= link_to t(".add_player"), "#", class: "btn btn-primary btn-xs" %>
+  </div>
+</div>
+<div class="col-md-3">
+  <h4><%= t ".intro" %></h4>
+  <p><%= @team.introduction %></p>
+</div>
+<div class="clearfix"></div>
