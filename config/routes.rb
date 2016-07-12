@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     resources :leagues, except: [:edit, :update]
     resources :news, except: :show
     resources :news_types, except: :show
-    resources :teams
+    resources :teams, except: [:index, :destroy]
+    resources :users, only: [:index, :destroy]
   end
 
   resources :news, only: :show

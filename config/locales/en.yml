@@ -16,6 +16,14 @@ en:
       profile: "Profile"
       account_setting: "Setting"
       logout: "Logout"
+    admin:
+      user:
+        index:
+          list_all_users: "All Users"
+          stt: "STT"
+          avatar: "Avatar"
+          name: "Name"
+          email: "Email"
   admin:
     news:
       new:
