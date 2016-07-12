@@ -1,3 +1,6 @@
+admin:
+  size: "70x70"
+  url: "assets/images/avatar.jpg"
 user:
   avatar:
     sizes:
