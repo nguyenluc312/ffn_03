@@ -6,21 +6,27 @@
     <th><%= t "views.admin.user.index.name" %></th>
     <th><%= t "views.admin.user.index.email" %></th>
   </tr>
-    <% @users.each_with_index do |user, index| %>
-      <tr>
-        <td><%= index + 1 %></td>
-        <td>
-          <% if user.avatar.present? %>
-            <%= link_to image_tag(user.avatar, size: Settings.admin.size),
-              admin_users_path %>
-          <% else %>
-            <%= link_to image_tag(Settings.admin.url,
-              size: Settings.admin.size), admin_users_path %>
-          <% end %>
-        </td>
-        <td> <%= user.name %> </td>
-        <td> <%= user.email %> </td>
-      </tr>
-    <% end %>
+  <% @users.each_with_index do |user, index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td>
+        <% if user.avatar.present? %>
+          <%= link_to image_tag(user.avatar, size: Settings.admin.size),
+            admin_users_path %>
+        <% else %>
+          <%= link_to image_tag(Settings.admin.url,
+            size: Settings.admin.size), admin_users_path %>
+        <% end %>
+      </td>
+      <td> <%= user.name %> </td>
+      <td> <%= user.email %> </td>
+      <td>
+        <%= link_to t("views.admin.user.index.deletebutton"),
+          admin_user_path(user), method: :delete,
+          data: {confirm: t("views.admin.user.index.deleteconfirm")},
+          class: "btn btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
 </table>
 <%= paginate @users %>

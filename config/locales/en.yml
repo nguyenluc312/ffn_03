@@ -24,6 +24,11 @@ en:
           avatar: "Avatar"
           name: "Name"
           email: "Email"
+          deletebutton: "Delete"
+          deleteconfirm: "Are you sure"
+      flash:
+        success: "Deleted Successfully"
+        failed: "Delete failed"
   admin:
     news:
       new:
