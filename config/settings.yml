@@ -7,3 +7,7 @@ user:
 image:
   max_capacity: 5 #MB
 per_page: 4
+min_player_of_team: 5
+team:
+  logo_size_title: "70x70"
+  logo_size_left: "50x50"
