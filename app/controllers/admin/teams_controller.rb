@@ -1,7 +1,8 @@
 class Admin::TeamsController < ApplicationController
   before_action :load_countries, except: [:index, :destroy, :show]
-  before_action :load_team, except: [:index, :new, :create]
   before_action :check_destroy_team, only: :destroy
+
+  load_and_authorize_resource
 
   def index
     @teams = Team.order(:name).page(params[:page]).per Settings.per_page
@@ -12,7 +13,6 @@ class Admin::TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new team_params
     if @team.save
       flash[:success] = t ".success"
       redirect_to admin_team_url @team
@@ -52,14 +52,6 @@ class Admin::TeamsController < ApplicationController
 
   def load_countries
     @countries = Country.all.map {|country| [country.name, country.id]}
-  end
-
-  def load_team
-    @team = Team.find_by id: params[:id]
-    unless @team
-      flash[:warning] = t ".warning"
-      redirect_to admin_root_url
-    end
   end
 
   def check_destroy_team

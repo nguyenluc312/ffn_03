@@ -1,4 +1,5 @@
 class Admin::NewsTypesController < ApplicationController
+  load_and_authorize_resource
 
   def index
     @news_types = NewsType.all
@@ -9,7 +10,6 @@ class Admin::NewsTypesController < ApplicationController
   end
 
   def create
-    @news_type = NewsType.new news_type_params
     if @news_type.save
       flash[:success] = t ".success"
       redirect_to admin_news_types_path

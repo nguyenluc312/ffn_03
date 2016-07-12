@@ -1,6 +1,7 @@
 class Admin::NewsController < ApplicationController
   before_action :load_news_types, only: [:new, :edit]
-  before_action :load_news, only: [:edit, :update]
+
+  load_and_authorize_resource
 
   def index
     @list_news = News.all
@@ -11,7 +12,6 @@ class Admin::NewsController < ApplicationController
   end
 
   def create
-    @news = News.new news_params
     if @news.save
       flash[:success] = t ".success"
       redirect_to admin_news_index_path
@@ -42,13 +42,5 @@ class Admin::NewsController < ApplicationController
 
   def load_news_types
     @news_types = NewsType.all.map {|news_type| [news_type.name, news_type.id]}
-  end
-
-  def load_news
-    @news = News.find_by id: params[:id]
-    unless @news
-      flash[:danger] = t ".invalid"
-      redirect_to admin_news_index_path
-    end
   end
 end
