@@ -1,9 +1,10 @@
 <% provide :title, @news.title %>
-<section class="news">
+<section id="news-section">
   <header class="news-title">
     <h1><%= @news.title %></h1>
   </header>
   <div class="news-time">
+    <span class="glyphicon glyphicon-time"></span>
     <%= @news.updated_at %>
   </div>
   <div class="news-summary">
@@ -15,4 +16,31 @@
   <div class="news-author">
     <%= @news.author %>
   </div>
+</section>
+<section id="comments-section">
+  <% if user_signed_in? %>
+    <div id="new-comment">
+      <%= image_tag current_user.avatar.small.url %>
+      <span class="user-name"><%= current_user.name %></span>
+      <%= form_for @comment do |f| %>
+        <div class="form-group content">
+          <%= f.text_area :content, placeholder: t(".comment_invite") %>
+        </div>
+        <%= f.submit t(".comment_button"), class: "btn btn-primary",
+          id: "create-new-comment" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div id="login-invite">
+      <%= link_to t(".login_to_comment"), new_user_session_path %>
+    </div>
+  <% end %>
+  <div class="comment-stats">
+    <span class="glyphicon glyphicon-comment"></span>
+    <strong><%= t".comments" %></strong>
+    <strong id="count-comments">(<%= @comments.count %>)</strong>
+  </div>
+  <ol id="comments">
+    <%= render @comments %>
+  </ol>
 </section>

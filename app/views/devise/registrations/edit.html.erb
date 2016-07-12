@@ -27,9 +27,9 @@
           class: "form-control" %>
       </div>
 
-      <div class="avatar form-group">
+      <div class="form-group">
         <%= f.label :avatar %><br />
-        <%= avatar_for_user resource %>
+        <%= image_tag resource.avatar.large.url %>
         <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png",
           class: "form-control" %>
       </div>
