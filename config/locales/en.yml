@@ -137,6 +137,10 @@ en:
         success: "Successfully"
       new:
         new: "Create new league season"
+      edit:
+        edit: "Save changes"
+      update:
+        success: "Successfully"
   devise:
     confirmations:
       new:

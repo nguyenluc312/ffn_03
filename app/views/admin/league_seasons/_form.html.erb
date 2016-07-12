@@ -16,5 +16,7 @@
     <%= link_to_add_fields t(".add_season_teams"), f, :season_teams %>
   </div>
   <div class="clearfix"></div>
-  <div class="center"><%= f.submit t(".new"), class: "btn btn-primary" %></div>
+  <div class="center"><%= f.submit yield: :submit_button_league_season,
+    class: "btn btn-primary" %>
+  </div>
 <% end %>
