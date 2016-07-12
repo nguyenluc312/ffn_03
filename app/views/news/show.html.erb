@@ -1,0 +1,18 @@
+<% provide :title, @news.title %>
+<section class="news">
+  <header class="news-title">
+    <h1><%= @news.title %></h1>
+  </header>
+  <div class="news-time">
+    <%= @news.updated_at %>
+  </div>
+  <div class="news-summary">
+    <%= @news.brief_description %>
+  </div>
+  <div class="news-body">
+    <%= @news.content.html_safe %>
+  </div>
+  <div class="news-author">
+    <%= @news.author %>
+  </div>
+</section>
