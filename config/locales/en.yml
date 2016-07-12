@@ -94,6 +94,21 @@ en:
         save: "Save changes"
       update:
         success: "Updated successfully"
+      destroy:
+        success: "Deleted successfully"
+        failed: "Delete failed"
+        error: "Player of Team larger than 5"
+      index:
+        team: "Team"
+        player_in_team: "Player"
+        action: "Action"
+        team_manage: "Team Manage"
+        view: "View"
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Are you sure?"
+        new: "New Team"
+        no_team: "No team"
   devise:
     confirmations:
       new:
