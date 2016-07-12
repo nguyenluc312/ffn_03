@@ -130,3 +130,34 @@ body {
     margin-top: 20px;
   }
 }
+
+/* show all team */
+.action {
+  .action-view {
+    padding-right: 5px;
+      &:hover {
+        color: #E021CE;
+        text-decoration: none;
+      }
+  }
+
+  .action-edit {
+    padding-right: 5px;
+      &:hover {
+        color: #28E6C6;
+        text-decoration: none;
+      }
+  }
+
+  .action-delete {
+    &:hover {
+      color: red;
+      text-decoration: none;
+    }
+  }
+}
+
+.no-team {
+  color: red;
+  padding: 0px 0px 10px 20px;
+}

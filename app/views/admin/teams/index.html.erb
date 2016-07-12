@@ -1,0 +1,39 @@
+<div class="panel panel-heading">
+  <h1 class="center"><%= t ".team_manage" %></h1>
+</div>
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-default">
+    <table class="table">
+      <thead>
+        <th><%= t ".team" %></th>
+        <th class="player-in-team center"><%= t ".player_in_team" %></th>
+        <th class="team-actions center"><%= t ".action" %></th>
+      </thead>
+      <tbody>
+        <% @teams.each do |team| %>
+          <tr>
+            <td><%= team.name %></td>
+            <td class="center"><%= team.players.count %></td>
+            <td class="action center">
+              <%= link_to t(".view"), admin_team_path(team),
+                class: "glyphicon glyphicon-eye-open action-view" %>
+              <%= link_to t(".edit"), edit_admin_team_path(team),
+                class: "glyphicon glyphicon-pencil action-edit" %>
+              <%= link_to t(".delete"), admin_team_path(team), method: :delete,
+                data: {confirm: t(".confirm")},
+                class: "glyphicon glyphicon-remove action-delete" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="no-team">
+      <%= t ".no_team" unless @teams.any?%>
+    </div>
+    <%= paginate @teams %>
+  </div>
+  <div class="new-team">
+    <%= link_to t(".new"), new_admin_team_path, class: "btn btn-primary" %>
+  </div>
+</div>
+<div class="clearfix"></div>

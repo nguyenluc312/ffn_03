@@ -1,6 +1,11 @@
 class Admin::TeamsController < ApplicationController
   before_action :load_countries, except: [:index, :destroy, :show]
-  before_action :load_team, only: [:show, :edit, :update]
+  before_action :load_team, except: [:index, :new, :create]
+  before_action :check_destroy_team, only: :destroy
+
+  def index
+    @teams = Team.order(:name).page(params[:page]).per Settings.per_page
+  end
 
   def new
     @team = Team.new
@@ -31,6 +36,15 @@ class Admin::TeamsController < ApplicationController
     end
   end
 
+  def destroy
+    if @team.destroy
+      flash[:success] = t ".success"
+    else
+      flash[:danger] = t ".failed"
+    end
+    redirect_to :back
+  end
+
   private
   def team_params
     params.require(:team).permit :name, :country_id, :introduction, :logo
@@ -45,6 +59,13 @@ class Admin::TeamsController < ApplicationController
     unless @team
       flash[:warning] = t ".warning"
       redirect_to admin_root_url
+    end
+  end
+
+  def check_destroy_team
+    if @team.players.count > Settings.min_player_of_team
+      flash[:danger] = t ".error"
+      redirect_to :back
     end
   end
 end
