@@ -22,9 +22,19 @@ en:
         content: "Create new news"
         select_news_type: "Select news type"
         submit_button: "Create new news"
+        empty_map: "News types is empty, can't create news"
       create:
         success: "News has been created"
         fail: "Fail to create news"
+        empty_map: "News types is empty, can't create news"
+      edit:
+        content: "Update news"
+        submit_button: "Save changes"
+        invalid: "This news does not exist"
+        empty_map: "News types is empty, can't create news"
+      update:
+        success: "News has been updated"
+        empty_map: "News types is empty, can't create news"
     news_types:
       new:
         content: "Create new news type"
