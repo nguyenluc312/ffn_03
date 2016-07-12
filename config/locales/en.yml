@@ -88,6 +88,12 @@ en:
         add_player: "Add player"
         intro: "Introduce"
         no_team: "No team"
+      edit:
+        new:
+        edit_team: "Edit Team"
+        save: "Save changes"
+      update:
+        success: "Updated successfully"
   devise:
     confirmations:
       new:
