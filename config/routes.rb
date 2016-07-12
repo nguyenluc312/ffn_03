@@ -19,4 +19,6 @@ Rails.application.routes.draw do
     resources :news_types, except: :show
     resources :teams, except: [:index, :destroy]
   end
+
+  resources :news, only: :show
 end

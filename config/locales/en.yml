@@ -127,3 +127,6 @@ en:
   shared:
     error_messages:
       form_contains: "This form contains"
+  news:
+    show:
+      invalid: "This news does not exist"
