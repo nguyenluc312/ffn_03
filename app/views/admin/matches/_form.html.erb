@@ -1,0 +1,42 @@
+<%= form_for [:admin, @league_season, @match] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <%= f.hidden_field :league_season_id, value: @league_season.id %>
+
+  <table class="match">
+    <tr class="team-heading">
+      <td class="team1"><h2><%= t ".team 1" %></h2></td>
+      <td class="match-info"><h2><%= t ".vs" %></h2></td>
+      <td class="team2"><h2><%= t ".team 2" %></h2></td>
+    </tr>
+    <tr class="chose-team">
+      <td class="team1">
+        <%= f.select :team1_id, @teams, {}, class: "form-control pull-right" %>
+      </td>
+      <td class="match-infor">-</td>
+      <td class="team2">
+        <%= f.select :team2_id, @teams, {}, class: "form-control" %>
+      </td>
+    </tr>
+    <tr class="start-time">
+      <td class="start-time form-inline" colspan="3">
+        <%= f.label :start_at, class: "pull-left" %>
+        <%= f.datetime_select :start_time, {}, class: "form-control start-time" %></td>
+    </tr>
+    <tr class="team-odds">
+      <td colspan="3" class="form-inline fixed">
+        <%= f.label :odds, class: "pull-left" %>
+        <%= f.number_field :team1_odds, step: 0.1, min: 0, max:20,
+          class: "form-control odds", placeholder: t(".team1_odds") %>
+        <%= f.number_field :draw_odds, min: 0, step: 0.1, max:20,
+          class: "form-control odds draw-odds", placeholder: t(".draw_odds") %>
+        <%= f.number_field :team2_odds, step: 0.1, min: 0, max:20,
+          class: "form-control odds", placeholder: t(".team2_odds") %>
+      </td>
+    </tr>
+  </table>
+
+  <div class="form-group create-match">
+    <%= f.submit yield: :match_submit_button, class: "btn btn-primary form-control" %>
+  </div>
+<% end %>

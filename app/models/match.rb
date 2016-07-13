@@ -4,4 +4,46 @@ class Match < ActiveRecord::Base
   belongs_to :team2, class_name: User.name
   has_many :match_events
   has_many :user_bets
+
+  validates :team1_odds, :team2_odds, :draw_odds, presence: true
+  validate :validate_team_not_same, :validate_start_time,
+    :validate_max_match_of_team, :validate_match_of_two_team
+
+  scope :of_team, ->(team_id, league_season_id){where("team1_id = #{team_id}
+    OR team2_id = #{team_id} AND league_season_id = #{league_season_id}")}
+  scope :of_team_vs_team, ->(team1_id, team2_id, league_season_id) do
+    Match.of_team(team1_id, league_season_id).of_team(team2_id, league_season_id)
+  end
+
+  private
+  def validate_team_not_same
+    if self.team1_id == self.team2_id
+      self.errors.add :team, I18n.t(".team_not_same")
+    end
+  end
+
+  def validate_start_time
+    if self.start_time < Time.zone.now
+      self.errors.add :start_time, I18n.t(".larger_now")
+    end
+  end
+
+  def validate_max_match_of_team
+    max_match_of_team = self.league_season.season_teams.count * 2 - 2
+    if Match.of_team(self.team1_id, self.league_season_id).count >= max_match_of_team
+      self.errors.add :matches_of_team1,
+        I18n.t(".max_match_of_team", max_match_of_team: max_match_of_team)
+    end
+
+    if Match.of_team(self.team2_id, self.league_season_id).count >= max_match_of_team
+      self.errors.add :matches_of_team2,
+        I18n.t(".max_match_of_team", max_match_of_team: max_match_of_team)
+    end
+  end
+
+  def validate_match_of_two_team
+    if Match.of_team_vs_team(self.team1_id, self.team2_id, self.league_season_id).count >= 2
+      self.errors.add :match, I18n.t(".match_of_two_team")
+    end
+  end
 end

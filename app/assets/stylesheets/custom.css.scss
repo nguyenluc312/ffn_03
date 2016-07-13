@@ -263,3 +263,94 @@ input[type=submit]{
     }
   }
 }
+
+.match {
+  width: 100%;
+  text-align: center;
+  .team-heading {
+    td {
+      padding-bottom: 10px;
+    }
+  }
+
+  .chose-team {
+    td {
+      select {
+        option {
+          font-size: 20px;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .form-control {
+    margin: 10px;
+  }
+
+  .chose-team {
+    .team1 .team2 {
+      height: 50px;
+    }
+  }
+
+  .team-odds {
+    td {
+      .odds {
+        width: 100px;
+      }
+    }
+  }
+
+  tr {
+    td {
+      .pull-left {
+        margin: 15px 0 0 0;
+      }
+    }
+  }
+}
+
+.create-match {
+  margin-top: 20px;
+}
+
+.odds {
+  width: 80px;
+  font-size: 12px;
+}
+
+.draw-oods {
+
+}
+
+.label-odds {
+  margin: 10px;
+}
+
+select#match_team1 {
+  height: 50px;
+  font-size: 16px;
+  width: 88%;
+  margin-right: -5px;
+}
+
+select#match_team2 {
+  height: 50px;
+  font-size: 16px;
+  margin-left: -10px;
+}
+
+.new-match {
+  background-color: ghostwhite;
+  border: 2px solid silver;
+}
+
+.field_with_errors {
+    display: -webkit-inline-box;
+}
+
+h2.center.match-title {
+  color: #000F99;
+  font-family: Time New Roman;
+}
