@@ -175,6 +175,12 @@ en:
       update:
         success: "Successfully"
     matches:
+      match_events:
+        new_event: "New event.."
+        new: "New Event"
+        minute: "Minute"
+        event: "Events"
+        match_event_heading: "Match event"
       form:
         team1: "Team 1"
         team2: "Team 2"
@@ -182,10 +188,23 @@ en:
         team2_odds: "Team 2"
         draw_odds: "Draw"
         vs: "VS"
+      form_edit:
+        team1: "Team 1"
+        team2: "Team 2"
+        team1_odds: "Team 1"
+        team2_odds: "Team 2"
+        draw_odds: "Draw"
+        vs: "VS"
+        has_user_bet: "Has user bets this match or match is in process, can't edit"
+        finished: "This match finished"
+        process: "This match is happening"
+        save: "Save"
       new:
         new_match: "New Match"
       create:
         success: "Successfully"
+        edit:
+        edit_match: "Update Match"
   comments:
     comment:
       delete: "Delete"
@@ -253,3 +272,4 @@ en:
   larger_now: "invalid/must larger than now"
   max_match_of_team: "must less than %{max_match_of_team}"
   match_of_two_team: "of team1 and team 2 larger than 2"
+  end_time_larger_than_start: "not larger than start time"

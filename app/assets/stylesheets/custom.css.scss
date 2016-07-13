@@ -407,16 +407,14 @@ input[type=submit]{
         }
       }
     }
+
+    .team1 .team2 {
+      height: 50px;
+    }
   }
 
   .form-control {
     margin: 10px;
-  }
-
-  .chose-team {
-    .team1 .team2 {
-      height: 50px;
-    }
   }
 
   .team-odds {
@@ -431,6 +429,28 @@ input[type=submit]{
     td {
       .pull-left {
         margin: 15px 0 0 0;
+      }
+    }
+  }
+
+  .row-goal {
+    td {
+      #label-goal {
+      }
+      .team-goal {
+        width: 80px;
+        height: 80px;
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .goal {
+        display: inline;
+      }
+
+      #goal-center {
+        margin: 0px 100px;
+        font-size: 40px;
       }
     }
   }
@@ -562,6 +582,78 @@ h2.center.match-title {
       td.event{
         word-wrap: break-word;
         overflow-wrap: break-word;
+      }
+    }
+  }
+}
+
+#team-goal {
+  font-size: 40px;
+}
+
+table.table.table-bordered.text-center {
+  width: 70%;
+  margin: auto;
+}
+
+#table-team-heading {
+  width: 100%;
+}
+
+#finished-match {
+  color: red;
+}
+
+#match-in-process {
+  color: green;
+}
+
+#new-event {
+  margin: 2% 0% 10% 16%;
+  width: 79%;
+  .enter-time {
+    width: 20%;
+    .time {
+      width: 80%;
+      text-align: center;
+    }
+  }
+
+  .enter-event {
+    width: 50%;
+    .form-event {
+      width: 100%;
+      margin-top: 3%;
+      resize: vertical;
+    }
+  }
+
+  .submit {
+    margin-left: 2%;
+    .add-event-submit {
+      width: 115%;
+    }
+  }
+
+  .event {
+    margin: 1% 15% 0 0;
+  }
+
+  .event {
+    table {
+      thead {
+        .time-head {
+          width: 19%;
+          text-align: center;
+        }
+      }
+
+      tbody {
+        tr {
+          .event-time {
+            text-align: center
+          }
+        }
       }
     }
   }

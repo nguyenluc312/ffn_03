@@ -18,11 +18,14 @@ Rails.application.routes.draw do
       resources :league_seasons, except: :destroy
     end
     resources :league_seasons, except: :destroy do
-      resources :matches, only: [:new, :create]
+      resources :matches, except: [:index, :destroy]
     end
     resources :news, except: :show
     resources :news_types, except: :show
     resources :teams, except: [:index, :destroy]
+    resources :matches do
+      resources :match_events, only: :create
+    end
   end
 
   resources :news, only: :show do

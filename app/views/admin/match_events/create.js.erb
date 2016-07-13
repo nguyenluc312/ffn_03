@@ -1,0 +1,7 @@
+<% if @match_event.errors.any? %>
+  $('.errors').append('<%= j render "shared/error_messages", object: @match_event %>')
+<% else %>
+  $('#list-match-events').append('<%= j render @match_event %>')
+  $('.form-event').val('')
+  $('.time').val('')
+<% end %>

@@ -1,0 +1,36 @@
+<div class="new-event-heading">
+  <h2><%= t ".match_event_heading" %></h2>
+</div>
+
+<div class="event">
+  <table class="table table-bordered">
+    <thead>
+      <th class="time-head"><%= t ".minute" %></th>
+      <th class="event-head"><%= t ".event" %></th>
+    </thead>
+    <tbody id="list-match-events">
+      <%= render @match.match_events %>
+    </tbody>
+  </table>
+</div>
+<div class="new-event-heading">
+  <h3><%= t ".new" %></h3>
+</div>
+<%= form_for [:admin, @match, @match_event], remote: true do |f| %>
+  <div class="errors"></div>
+
+  <%= f.hidden_field :match_id, value: @match.id %>
+  <div class="form-group enter-time">
+    <%= f.number_field :time, min: 0, max: 150, class: "form-control time",
+      placeholder: t(".minute") %>
+  </div>
+
+  <div class="form-group enter-event">
+    <%= f.text_area :content, class: "form-control form-event",
+      placeholder: t(".new_event") %>
+  </div>
+
+  <div class="form-group submit">
+    <%= f.submit t(".new"), class: "btn btn-primary add-event-submit" %>
+  </div>
+<% end %>
