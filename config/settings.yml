@@ -14,3 +14,6 @@ min_player_of_team: 5
 team:
   logo_size_title: "70x70"
   logo_size_left: "50x50"
+league_season:
+  min_team_of_league: 4
+number_of_year: 10
