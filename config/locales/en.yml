@@ -153,3 +153,5 @@ en:
   news:
     show:
       invalid: "This news does not exist"
+  application:
+    not_found: "Not Found"

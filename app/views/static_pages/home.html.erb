@@ -7,7 +7,7 @@
   <center>
     <h2><%= t "views.static_pages.home.name_team" %></h2>
     <br/>
-    <%= link_to t("views.static_pages.home.signup"), "#",
-      class: "btn btn-lg btn-success" %>
+    <%= link_to t("views.static_pages.home.signup"), new_user_registration_path,
+      class: "btn btn-lg btn-success" unless user_signed_in?%>
   </center>
 </div>

@@ -1,4 +1,5 @@
 class Admin::CountriesController < ApplicationController
+  load_and_authorize_resource
 
   def new
     @countries = Country.page(params[:page]).per Settings.per_page
@@ -6,7 +7,6 @@ class Admin::CountriesController < ApplicationController
   end
 
   def create
-    @country = Country.new country_params
     if @country.save
       flash[:success] = t ".success"
     else

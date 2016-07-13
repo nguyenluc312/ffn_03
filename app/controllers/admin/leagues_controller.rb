@@ -1,5 +1,5 @@
 class Admin::LeaguesController < ApplicationController
-  before_action :load_league, only: :destroy
+  load_and_authorize_resource
 
   def index
     @leagues = League.order created_at: :desc
@@ -11,7 +11,6 @@ class Admin::LeaguesController < ApplicationController
   end
 
   def create
-    @league = League.new league_params
     if @league.save
       flash[:success] = t ".success"
       redirect_to admin_leagues_url
@@ -36,13 +35,5 @@ class Admin::LeaguesController < ApplicationController
   private
   def league_params
     params.require(:league).permit :name, :country_id
-  end
-
-  def load_league
-    @league = League.find_by id: params[:id]
-    unless @league
-      flash[:warning] = t ".warning"
-      redirect_to admin_leagues_url
-    end
   end
 end
