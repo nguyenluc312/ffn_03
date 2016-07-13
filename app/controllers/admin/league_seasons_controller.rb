@@ -1,7 +1,6 @@
 class Admin::LeagueSeasonsController < ApplicationController
-  before_action :load_league, only: [:new, :create, :index]
-  before_action :load_teams, only: [:new, :create]
-  before_action :load_years, only: [:new, :create]
+  before_action :load_league, except: [:show, :destroy]
+  before_action :load_years, :load_teams, except: [:index, :destroy, :show]
 
   load_and_authorize_resource
 
@@ -21,6 +20,18 @@ class Admin::LeagueSeasonsController < ApplicationController
       redirect_to :back
     else
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @league_season.update_attributes league_season_params
+      flash[:success]= t ".success"
+      redirect_to @league_season
+    else
+      render :edit
     end
   end
 

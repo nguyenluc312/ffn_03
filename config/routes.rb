@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     root "countries#new"
     resources :countries, only: [:new, :create]
     resources :leagues, except: [:edit, :update] do
-      resources :league_seasons, except: [:edit, :update, :destroy]
+      resources :league_seasons, except: :destroy
     end
     resources :news, except: :show
     resources :news_types, except: :show
