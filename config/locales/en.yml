@@ -31,6 +31,21 @@ en:
         failed: "Delete failed"
   admin:
     news:
+      index:
+        content: "News manager"
+        create_news: "Create new news"
+        title_contains: "Title contains..."
+        all_news_types: "All news types"
+        filter: "Filter"
+        header_serial: "Index"
+        header_title: "Title"
+        header_create_time: "Created at"
+        header_type: "News type"
+        header_comments: "Comments"
+        header_action: "Action"
+        edit_tip: "Edit this news"
+        delete_tip: "Delete this news"
+        confirm_delete: "Do you really want to delete this news?"
       new:
         content: "Create new news"
         select_news_type: "Select news type"
@@ -48,6 +63,9 @@ en:
       update:
         success: "News has been updated"
         empty_map: "News types is empty, can't create news"
+      destroy:
+        success: "News has been deleted"
+        fail: "Fail to delete news"
     news_types:
       new:
         content: "Create new news type"

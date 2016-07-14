@@ -1,5 +1,58 @@
-<ul>
-  <% @list_news.each do |news| %>
-    <li><%= news.id %>|<%= news.title %></li>
+<div id="header-manager">
+  <h1><%= t ".content" %></h1>
+</div>
+<div id="add-news">
+  <%= link_to new_admin_news_path, class: "btn btn-primary add-news" do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <span><%= t ".create_news" %></span>
   <% end %>
-</ul>
+</div>
+<div class="filter-form">
+  <%= search_form_for [:admin, @q], class: "form-inline" do |f| %>
+    <%= f.search_field :title_cont, placeholder: t(".title_contains"),
+      class: "form-control" %>
+    <%= f.select :news_type_id_eq,
+      options_for_select(@news_types, @q.news_type_id_eq),
+      {include_blank: t(".all_news_types")}, class: "form-control" %>
+    <%= f.submit t(".filter"), class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div class="news">
+  <table id="news-manager" class="table table-bordered">
+    <thead>
+      <th class="serial"><%= t ".header_serial" %></th>
+      <th class="title"><%= t ".header_title" %></th>
+      <th class="create-time"><%= t ".header_create_time" %></th>
+      <th class="type"><%= t ".header_type" %></th>
+      <th class="comments"><%= t ".header_comments" %></th>
+      <th class="action"><%= t ".header_action" %></th>
+    </thead>
+    <tbody>
+      <% @news.each_with_index do |news, index| %>
+        <tr>
+          <td class="serial">
+            <%= index + 1 + (@news.current_page - 1) * Settings.news.per_page %>
+          </td>
+          <td class="title">
+            <%= link_to news.title, news, title: news.title,
+              data: {toggle: "tooltip"} %>
+          </td>
+          <td><%= news.created_at %></td>
+          <td><%= news.news_type_name %></td>
+          <td class="comments"><%= news.comments.count %></td>
+          <td class="action">
+            <%= link_to "", edit_admin_news_path(news), title: t(".edit_tip"),
+              data: {toggle: "tooltip"},
+              class: "glyphicon glyphicon-edit" %>
+            <%= link_to "", admin_news_path(news), method: :delete,
+              title: t(".delete_tip"),
+              data: {toggle: "tooltip", confirm: t(".confirm_delete")},
+              class: "glyphicon glyphicon-trash" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @news%>
+</div>

@@ -6,7 +6,6 @@ class Admin::NewsTypesController < ApplicationController
   end
 
   def new
-    @news_type = NewsType.new
   end
 
   def create
