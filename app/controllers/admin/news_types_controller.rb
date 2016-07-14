@@ -2,7 +2,7 @@ class Admin::NewsTypesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @news_types = NewsType.all
+    @news_types = NewsType.order(updated_at: :desc).includes :news
   end
 
   def new
@@ -10,10 +10,35 @@ class Admin::NewsTypesController < ApplicationController
 
   def create
     if @news_type.save
-      flash[:success] = t ".success"
-      redirect_to admin_news_types_path
+      respond_to do |format|
+        format.html {redirect_to admin_news_types_path}
+        format.js
+      end
     else
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @news_type.update_attributes news_type_params
+      respond_to do |format|
+        format.html {redirect_to admin_news_types_path}
+        format.js
+      end
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @news_type.destroy
+      respond_to do |format|
+        format.html {redirect_to admin_news_types_path}
+        format.js
+      end
     end
   end
 

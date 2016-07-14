@@ -1,0 +1,15 @@
+<tr id="news-type-<%= news_type.id %>">
+  <td><%= news_type.id %></td>
+  <td class="not-overflow"><%= news_type.name %></td>
+  <td><%= news_type.created_at %></td>
+  <td><%= news_type.news.size %></td>
+  <td class="action">
+    <%= link_to "", edit_admin_news_type_path(news_type),
+      title: t(".edit_tip"), data: {toggle: "tooltip"}, remote: true,
+      class: "glyphicon glyphicon-edit" %>
+    <%= link_to "", admin_news_type_path(news_type), method: :delete,
+      title: t(".delete_tip"),
+      data: {toggle: "tooltip", confirm: t(".confirm_delete")},
+      class: "glyphicon glyphicon-trash" %>
+  </td>
+</tr>
