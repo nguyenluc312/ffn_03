@@ -1,12 +1,8 @@
 admin:
   size: "70x70"
   url: "assets/images/avatar.jpg"
-user:
-  avatar:
-    sizes:
-      default: 200
-      small: 100
-      large: 500
+news:
+  per_page: 2
 image:
   max_capacity: 5 #MB
 per_page: 4

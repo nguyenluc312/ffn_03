@@ -32,6 +32,7 @@ gem "delayed_job_active_record"
 gem "daemons"
 gem "public_activity"
 gem "ckeditor"
+gem "kaminari-bootstrap"
 
 group :development, :test do
   gem "byebug"
