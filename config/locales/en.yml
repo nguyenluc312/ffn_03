@@ -159,6 +159,18 @@ en:
         edit: "Save changes"
       update:
         success: "Successfully"
+    matches:
+      form:
+        team1: "Team 1"
+        team2: "Team 2"
+        team1_odds: "Team 1"
+        team2_odds: "Team 2"
+        draw_odds: "Draw"
+        vs: "VS"
+      new:
+        new_match: "New Match"
+      create:
+        success: "Successfully"
   devise:
     confirmations:
       new:
@@ -201,3 +213,6 @@ en:
     name: "%{league_name} %{start_year} - %{end_year}"
   team_less_than_four: "must larger than 4"
   team_not_same: "can't be same"
+  larger_now: "invalid/must larger than now"
+  max_match_of_team: "must less than %{max_match_of_team}"
+  match_of_two_team: "of team1 and team 2 larger than 2"

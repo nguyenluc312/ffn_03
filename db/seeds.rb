@@ -4,6 +4,13 @@ User.create name: "Do Gia Dat",
   password_confirmation: "dogiadat",
   role: 1
 
+User.create name: "Admin",
+  email: "admin@framgia.com",
+  password: "iamadmin",
+  password_confirmation: "iamadmin",
+  role: 1,
+  confirmed_at: Time.now
+
 Country.create code: "VN"
 
 10.times do |n|
