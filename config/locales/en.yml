@@ -207,6 +207,10 @@ en:
   news:
     show:
       invalid: "This news does not exist"
+      comment_button: "Comment"
+      comment_invite: "Write your comment about this news..."
+      comments: "Comments"
+      login_to_comment: "Login to comment on this news"
   application:
     not_found: "Not Found"
   league_seasons:

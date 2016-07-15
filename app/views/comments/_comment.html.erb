@@ -1,0 +1,12 @@
+<li>
+  <div class="avatar">
+    <%= image_tag comment.user_avatar.small.url %>
+  </div>
+  <div class="comment-body">
+    <div class="user-name"><%= comment.user_name %></div>
+    <div class="content"><%= comment.content %></div>
+    <div class="timestamp">
+      <%= time_ago_in_words comment.created_at %>
+    </div>
+  </div>
+</li>
