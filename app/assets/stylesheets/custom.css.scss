@@ -321,7 +321,7 @@ input[type=submit]{
 .table{
   tbody{
     tr{
-      td{
+      td.not-overflow{
         max-width: 0;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -420,4 +420,91 @@ select#match_team2 {
 h2.center.match-title {
   color: #000F99;
   font-family: Time New Roman;
+}
+
+/* user view match */
+#match-section{
+  width: 70%;
+  #league-name{
+    font-size: 2em;
+    text-align: center;
+  }
+  #match-info{
+    margin-top: 30px;
+    padding-top: 30px;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    .team{
+      display: inline-block;
+      a:hover{
+        text-decoration: none;
+      }
+      img{
+        border: 1px solid #e8e8e8;
+        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      p{
+        font-size: 1.2em;
+        margin-top: 15px;
+      }
+    }
+    #info{
+      margin-top: 20px;
+      vertical-align: top;
+      width: 30%;
+      display: inline-block;
+      span{
+        font-size: 2.75em;
+        margin: 0 10px;
+      }
+      .goals{
+        font-size: 3em;
+        margin: 0 5px;
+      }
+      p.label{
+        margin: 40px 0;
+        font-size: 1em;
+      }
+    }
+    #start-time{
+      font-weight: bold;
+    }
+  }
+}
+
+.nav-tabs{
+  margin: 50px 0;
+}
+
+#bet-odds{
+  table{
+    text-align: center;
+    thead tr th{
+      width: 33%;
+      text-align: center;
+    }
+  }
+}
+#match-events{
+  table{
+    thead tr{
+      th#header-time{
+        width: 10%;
+        text-align: center;
+      }
+      th#header-event{
+        text-align: center;
+      }
+    }
+    tbody tr{
+      td.time{
+        text-align: center;
+      }
+      td.event{
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+    }
+  }
 }

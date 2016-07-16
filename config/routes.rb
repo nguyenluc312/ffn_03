@@ -30,4 +30,7 @@ Rails.application.routes.draw do
       resources :comments, only: :create
     end
   end
+
+  resources :matches, only: :show
+  resources :teams, only: [:index, :show]
 end

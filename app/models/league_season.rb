@@ -8,11 +8,12 @@ class LeagueSeason < ActiveRecord::Base
   validate :check_season_team
 
   accepts_nested_attributes_for :season_teams, allow_destroy: true
+  delegate :name, to: :league
 
-  def name
-    I18n.t "league_seasons.name", league_name: self.league.name,
-      start_year: self.year, end_year: self.year + 1
-  end
+  # def name
+  #   I18n.t "league_seasons.name", league_name: self.league.name,
+  #     start_year: self.year, end_year: self.year + 1
+  # end
 
   private
   def check_season_team
