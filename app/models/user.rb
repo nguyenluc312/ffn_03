@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  enum role: [:user, :admin]
+
   has_many :news
   has_many :comments
   has_many :user_bets
@@ -10,8 +12,6 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true, length: {maximum: 50}
   validate :image_size
-
-  enum role: [:user, :admin]
 
   private
   def image_size

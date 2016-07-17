@@ -1,9 +1,24 @@
-<li>
+<li id="comment-<%= comment.id %>">
   <div class="avatar">
     <%= image_tag comment.user_avatar.small.url %>
   </div>
   <div class="comment-body">
-    <div class="user-name"><%= comment.user_name %></div>
+    <div class="user-name">
+      <%= comment.user_name %>
+      <% if can? :destroy, comment %>
+        <span class="dropdown pull-right">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to t(".delete"), comment_path(comment), class: "delete-comment",
+              data: {confirm: t(".confirm_delete"), id: comment.id} %>
+            </li>
+          </ul>
+        </span>
+      <% end %>
+    </div>
     <div class="content"><%= comment.content %></div>
     <div class="timestamp">
       <%= time_ago_in_words comment.created_at %>
