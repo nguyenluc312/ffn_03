@@ -23,7 +23,7 @@
       <%= image_tag current_user.avatar.small.url %>
       <span class="user-name"><%= current_user.name %></span>
       <%= form_for @comment do |f| %>
-        <div class="form-group content">
+        <div class="form-group new-content">
           <%= f.text_area :content, placeholder: t(".comment_invite") %>
         </div>
         <%= f.submit t(".comment_button"), class: "btn btn-primary",
@@ -37,8 +37,10 @@
   <% end %>
   <div class="comment-stats">
     <span class="glyphicon glyphicon-comment"></span>
-    <strong><%= t".comments" %></strong>
-    <strong id="count-comments">(<%= @comments.count %>)</strong>
+    <strong>
+      <%= t".comments" %>
+      (<span id="count-comments"><%= @comments.count %></span>)
+    </strong>
   </div>
   <ol id="comments">
     <%= render @comments %>

@@ -144,7 +144,7 @@ body {
     vertical-align: top;
   }
   #new_comment{
-    .content{
+    .new-content{
       textarea{
         width: 100%;
         height: 100px;
@@ -158,6 +158,7 @@ body {
     }
   }
 }
+
 
 #login-invite{
   margin-top: 50px;
@@ -195,6 +196,16 @@ body {
     }
     .timestamp {
       color: #999999;
+    }
+    textarea{
+      resize: vertical;
+      width: 96%;
+      height: 80px;
+      margin: 5px 0;
+    }
+    button{
+      border-radius: 0px;
+      margin-right: 5px;
     }
   }
 }

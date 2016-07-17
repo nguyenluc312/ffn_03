@@ -33,5 +33,5 @@ Rails.application.routes.draw do
 
   resources :matches, only: :show
   resources :teams, only: [:index, :show]
-  resources :comments, only: :destroy
+  resources :comments, except: [:index, :show]
 end
