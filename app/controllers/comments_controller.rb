@@ -17,6 +17,19 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    respond_to do |format|
+      format.json {render json: @comment}
+    end
+  end
+
+  def update
+    @comment.update_attributes comment_params
+    respond_to do |format|
+      format.json {render json: @comment}
+    end
+  end
+
   def destroy
     @comment.destroy
     respond_to do |format|

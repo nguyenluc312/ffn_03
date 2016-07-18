@@ -11,6 +11,12 @@
             <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
+            <% if can? :update, comment %>
+              <li>
+                <%= link_to t(".edit"), edit_comment_path(comment),
+                  class: "edit-comment" %>
+              </li>
+            <% end %>
             <li>
               <%= link_to t(".delete"), comment_path(comment), class: "delete-comment",
               data: {confirm: t(".confirm_delete"), id: comment.id} %>
