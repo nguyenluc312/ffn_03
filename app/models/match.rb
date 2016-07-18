@@ -1,7 +1,9 @@
 class Match < ActiveRecord::Base
+  enum status: [:not_started_yet, :is_on, :finished]
+
   belongs_to :league_season
-  belongs_to :team1, class_name: User.name
-  belongs_to :team2, class_name: User.name
+  belongs_to :team1, class_name: Team.name
+  belongs_to :team2, class_name: Team.name
   has_many :match_events
   has_many :user_bets
 

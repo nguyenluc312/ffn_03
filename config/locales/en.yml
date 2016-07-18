@@ -201,6 +201,19 @@ en:
       new:
         content: "Resend unlock instructions"
         resend_unlock_button: "Resend unlock instructions"
+  matches:
+    show:
+      start_at: "Start at"
+      bet_odds: "Bet odds"
+      match_events: "Match events"
+      win: "Win"
+      draw: "Draw"
+      not_started_yet: "Not started yet"
+      is_on: "Is on"
+      finished: "Finished"
+      header_time: "Time"
+      header_events: "Events"
+      inform_match_not_started_yet: "This match has not started yet"
   shared:
     error_messages:
       form_contains: "This form contains"

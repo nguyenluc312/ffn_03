@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711171726) do
+ActiveRecord::Schema.define(version: 20160716165721) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20160711171726) do
   create_table "match_events", force: :cascade do |t|
     t.integer  "match_id"
     t.text     "content"
-    t.datetime "time"
+    t.integer  "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20160711171726) do
     t.float    "draw_odds"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "status"
   end
 
   add_index "matches", ["league_season_id"], name: "index_matches_on_league_season_id"

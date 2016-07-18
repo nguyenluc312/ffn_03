@@ -1,0 +1,86 @@
+<% provide :title, @match.team1.name + " - " + @match.team2.name %>
+<section id="match-section">
+  <p id="league-name">
+    <%= @match.league_season.name + " " + @match.league_season.year.to_s %>
+  </p>
+  <div id="match-info" class="well">
+    <div class="team">
+      <%= link_to @match.team1 do %>
+        <%= image_tag @match.team1.logo.medium.url %>
+      <% end %>
+      <p><%= link_to @match.team1.name, @match.team1 %></p>
+    </div>
+    <div id="info">
+      <span class="goals"><%= @match.team1_goal || "1" %></span>
+      <span>:</span>
+      <span class="goals"><%= @match.team2_goal || "2" %></span>
+      <br/>
+      <% case %>
+      <% when @match.not_started_yet? %>
+        <p class="label label-info"><%= t ".#{@match.status}" %></p>
+      <% when @match.is_on? %>
+        <p class="label label-warning"><%= t ".#{@match.status}" %></p>
+      <% when @match.finished? %>
+        <p class="label label-success"><%= t ".#{@match.status}" %></p>
+      <% end %>
+    </div>
+    <div class="team">
+      <%= link_to @match.team2 do %>
+        <%= image_tag @match.team2.logo.medium.url %>
+      <% end %>
+      <p><%= link_to @match.team2.name, @match.team2 %></p>
+    </div>
+    <div id="start-time">
+      <%= t(".start_at") + ": " %>
+      <%= @match.start_time.to_s %>
+    </div>
+  </div>
+
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a data-toggle="tab" href="#bet-odds"><%= t ".bet_odds" %></a>
+    </li>
+    <li>
+      <a data-toggle="tab" href="#match-events"><%= t ".match_events" %></a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="bet-odds" class="tab-pane fade in active">
+      <table class="table table-bordered">
+        <thead>
+          <th><%= @match.team1.name + " " + t(".win") %></th>
+          <th><%= t ".draw" %></th>
+          <th><%= @match.team2.name + " " + t(".win") %></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @match.team1_odds %></td>
+            <td><%= @match.draw_odds %></td>
+            <td><%= @match.team2_odds %></td>
+          </tr>
+      </table>
+    </div>
+
+    <div id="match-events" class="tab-pane fade">
+      <% if @match.not_started_yet? %>
+        <p><%= t ".inform_match_not_started_yet" %></p>
+      <% else %>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <th id="header-time"><%= t ".header_time" %></th>
+            <th id="header-event"><%= t ".header_events" %></th>
+          </thead>
+          <tbody>
+            <% @match.match_events.each do |event| %>
+              <tr>
+                <td class="time"><%= event.time %></td>
+                <td class="event"><%= event.content %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</section>
