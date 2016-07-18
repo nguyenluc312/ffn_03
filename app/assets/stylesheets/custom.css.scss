@@ -110,6 +110,7 @@ body {
 
 /* view news */
 #news-section{
+  width: 70%;
   .news-time{
     color: #999999;
   }
@@ -129,6 +130,9 @@ body {
   }
 }
 
+#comments-section{
+  width: 70%;
+}
 /* new comment */
 #new-comment{
   margin-top: 50px;

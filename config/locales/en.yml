@@ -171,6 +171,10 @@ en:
         new_match: "New Match"
       create:
         success: "Successfully"
+  comments:
+    comment:
+      delete: "Delete"
+      confirm_delete: "Delete this comment?"
   devise:
     confirmations:
       new:

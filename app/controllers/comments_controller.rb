@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
   before_action :load_news, only: :create
+  load_and_authorize_resource
+  skip_load_resource only: :create
+
   include CommentsHelp
 
   def create
@@ -11,6 +14,13 @@ class CommentsController < ApplicationController
       respond_to do |format|
         format.json {render json: data}
       end
+    end
+  end
+
+  def destroy
+    @comment.destroy
+    respond_to do |format|
+      format.html {head :ok}
     end
   end
 
