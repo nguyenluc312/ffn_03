@@ -1,0 +1,24 @@
+<h1><%= t ".content" %></h1>
+<div id="news-type-form">
+</div>
+<div id="add-news">
+  <%= link_to new_admin_news_type_path, id: "new-news-type",
+    class: "btn btn-primary", remote: true do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <span><%= t ".create_news_type" %></span>
+  <% end %>
+</div>
+<div id="all-news-types">
+  <table class="table table-bordered table-hover" id="news-types-manager">
+    <thead>
+      <th class="header-index"><%= t ".header_index" %></th>
+      <th class="header-name"><%= t ".header_name" %></th>
+      <th class="header-create-time"><%= t ".header_created_at" %></th>
+      <th class="header-news"><%= t ".header_news" %></th>
+      <th class="header-action"><%= t ".header_action" %></th>
+    </thead>
+    <tbody id="list-news-types">
+      <%= render @news_types %>
+    </tbody>
+  </table>
+</div>

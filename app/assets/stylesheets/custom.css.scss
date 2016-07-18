@@ -323,13 +323,56 @@ body {
     }
   }
 }
-
+/* manager news types */
+#news-type-form{
+  width: 40%;
+}
+#add-news{
+  #new-news-type{
+    border-radius: 0px;
+  }
+}
+#news-types-manager{
+  width: 100%;
+  thead{
+    tr{
+      th.header-index{
+        width: 5%;
+      }
+      th.header-name{
+        width: 45%;
+      }
+      th.header-create-time{
+        width: 25%;
+      }
+      th.header-news{
+        width: 10%;
+      }
+      th.action{
+        width: 15%;
+      }
+    }
+  }
+  tbody{
+    tr{
+      td.action{
+        text-align: center;
+        a{
+          margin: 0 10%;
+        }
+      }
+    }
+  }
+}
 /* common properties */
 .form-control{
   border-radius: 0px;
 }
 
 input[type=submit]{
+  border-radius: 0px;
+}
+.btn-default{
   border-radius: 0px;
 }
 

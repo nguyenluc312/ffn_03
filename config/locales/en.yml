@@ -67,11 +67,26 @@ en:
         success: "News has been deleted"
         fail: "Fail to delete news"
     news_types:
+      index:
+        content: "News types manager"
+        header_index: "Index"
+        header_name: "Name"
+        header_created_at: "Create at"
+        header_news: "News"
+        header_action: "Action"
+        create_news_type: "Create news type"
       new:
         content: "Create new news type"
         submit_button: "Create new news type"
       create:
         success: "News type has been created"
+      form:
+        holder_news_types: "News type name..."
+        cancel_button: "Cancel"
+      news_type:
+        edit_tip: "Edit this news type"
+        delete_tip: "Delete this news type"
+        confirm_delete: "Do you really want to delete this news type?"
     countries:
       new:
         add: "Add"
