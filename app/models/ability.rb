@@ -10,6 +10,7 @@ class Ability
       can :read, :all
       can :create, Comment
       can [:update, :destroy], Comment, user_id: user.id
+      can :create, UserBet
     else
       can :read, :all
     end

@@ -253,6 +253,19 @@ en:
       header_time: "Time"
       header_events: "Events"
       inform_match_not_started_yet: "This match has not started yet"
+      make_a_bet: "Make a bet"
+      draw: "Draw"
+      coin: "Coin"
+      make: "Make"
+  user_bets:
+    create:
+      success: "You make a bet success"
+    index:
+      your_bet: "Your Bets"
+      index: "Index"
+      match: "Match"
+      chosen: "Chosen"
+      coin: "Coin"
   shared:
     error_messages:
       form_contains: "This form contains"

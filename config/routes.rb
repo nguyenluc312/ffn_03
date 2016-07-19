@@ -37,4 +37,5 @@ Rails.application.routes.draw do
   resources :matches, only: :show
   resources :teams, only: [:index, :show]
   resources :comments, except: [:index, :show]
+  resources :user_bets, only: [:create, :index]
 end
