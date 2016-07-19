@@ -8,11 +8,14 @@ class Match < ActiveRecord::Base
   has_many :user_bets
 
   validates :team1_odds, :team2_odds, :draw_odds, presence: true
-  validate :validate_team_not_same, :validate_start_time,
-    :validate_max_match_of_team, :validate_match_of_two_team
-
-  scope :of_team, ->(team_id, league_season_id){where("team1_id = #{team_id}
-    OR team2_id = #{team_id} AND league_season_id = #{league_season_id}")}
+  validate :validate_team_not_same, :validate_max_match_of_team,
+    :validate_match_of_two_team
+  before_validation :validate_start_time, on: :create
+  before_validation :validate_end_time, on: :update
+  scope :of_team, ->(team_id, league_season_id) do
+    where("team1_id = #{team_id}
+    OR team2_id = #{team_id} AND league_season_id = #{league_season_id}")
+  end
   scope :of_team_vs_team, ->(team1_id, team2_id, league_season_id) do
     Match.of_team(team1_id, league_season_id).of_team(team2_id, league_season_id)
   end
@@ -46,6 +49,12 @@ class Match < ActiveRecord::Base
   def validate_match_of_two_team
     if Match.of_team_vs_team(self.team1_id, self.team2_id, self.league_season_id).count >= 2
       self.errors.add :match, I18n.t(".match_of_two_team")
+    end
+  end
+
+  def validate_end_time
+    if self.end_time && self.end_time <= self.start_time
+      self.errors.add :end_time, I18n.t(".end_time_larger_than_start")
     end
   end
 end

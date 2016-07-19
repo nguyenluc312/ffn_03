@@ -41,7 +41,17 @@ class LogoTeamUploader < CarrierWave::Uploader::Base
   # def extension_white_list
   #   %w(jpg jpeg gif png)
   # end
+  version :logo_title do
+    process resize_to_fill: [100, 100]
+  end
 
+  version :small do
+    process resize_to_fill: [50, 50]
+  end
+
+  version :large do
+    process resize_to_fill: [300, 300]
+  end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename

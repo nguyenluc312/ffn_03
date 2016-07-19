@@ -41,7 +41,7 @@ class Admin::LeagueSeasonsController < ApplicationController
   end
 
   def league_season_params
-    params.require(:league_season).permit :year,
+    params.require(:league_season).permit :league_id, :year,
       season_teams_attributes: [:id, :team_id, :_destroy]
   end
 
