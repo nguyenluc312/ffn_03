@@ -1,0 +1,10 @@
+<% if @user_bet.errors.any? %>
+  $('.user-bet-errors').empty()
+  $('.user-bet-errors').append('<%= j render "shared/error_messages", object: @user_bet %>')
+<% else %>
+  $('.user-bet-errors').empty()
+  $('.bet-coin').val('')
+  $('#user-bet').addClass('hidden')
+  $('#bet-match').show()
+  $('.make-bet-success').html('<%= t(".success") %>')
+<% end %>

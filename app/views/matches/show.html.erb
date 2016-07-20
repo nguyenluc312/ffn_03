@@ -53,13 +53,48 @@
           <th><%= t ".draw" %></th>
           <th><%= @match.team2.name + " " + t(".win") %></th>
         </thead>
-        <tbody>
+        <tbody id="team-odds">
           <tr>
             <td><%= @match.team1_odds %></td>
             <td><%= @match.draw_odds %></td>
             <td><%= @match.team2_odds %></td>
           </tr>
       </table>
+      <% if user_signed_in? && @match.start_time > Time.zone.now %>
+        <%= link_to t(".make_a_bet"), "#", class: "btn btn-primary",
+          id: "bet-match" %>
+        <div class="make-bet-success"></div>
+        <div class="hidden" id="user-bet">
+          <%= form_for @user_bet, remote: true do |f| %>
+            <div class="user-bet-errors"></div>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :match_id, value: @match.id %>
+            <div class="form-inline">
+              <div class="form-group team1">
+                <label><%= @match.team1.name %><%= t ".win" %></label>
+                <%= f.radio_button :chosen, :team1 %>
+              </div>
+              <div class="form-group draw">
+                <label><%= t ".draw" %></label>
+                <%= f.radio_button :chosen, :draw %>
+              </div>
+              <div class="form-group team2">
+                <label><%= @match.team2.name %><%= t ".win" %></label>
+                <%= f.radio_button :chosen, :team2 %>
+              </div>
+            </div>
+            <div class="form-group form-inline">
+              <label><%= t ".coin" %></label>
+              <%= f.number_field :coin, min: 0, max: current_user.coin,
+                class: "form-control bet-coin" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.submit t(".make"), class: "btn btn-primary form-control" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
     <div id="match-events" class="tab-pane fade">

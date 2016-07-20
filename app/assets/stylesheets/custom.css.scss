@@ -563,6 +563,37 @@ h2.center.match-title {
       text-align: center;
     }
   }
+
+  .make-bet-success {
+    color: green;
+  }
+
+  #user-bet {
+    background: rgba(37, 183, 0, 0.52);
+    padding: 36px;
+    text-align: center;
+    .btn {
+      width: 25%;
+    }
+
+    .bet-coin {
+      width: 20%;
+    }
+
+    .form-inline {
+      .team1 {
+        margin: 0 10px 0 0;
+      }
+
+      .draw {
+        margin: 0 5px;
+      }
+
+      .team2 {
+        margin-left: 10px;
+      }
+    }
+  }
 }
 #match-events{
   table{
@@ -653,6 +684,30 @@ table.table.table-bordered.text-center {
           .event-time {
             text-align: center
           }
+        }
+      }
+    }
+  }
+}
+
+.show-bet-user {
+  text-align: center;
+
+  .list-bet-user {
+    padding: 0 20%;
+    table {
+      thead {
+        .index-user-bet {
+          align: center;
+          width: 6%;
+        }
+
+        .chosen-user-bet {
+          width: 20%;
+        }
+
+        .coin-uset-bet {
+          width: 5%;
         }
       }
     }
