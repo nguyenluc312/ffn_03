@@ -20,6 +20,27 @@ class Match < ActiveRecord::Base
     Match.of_team(team1_id, league_season_id).of_team(team2_id, league_season_id)
   end
 
+  def label_for_status
+    case
+    when self.not_started_yet?
+      "info"
+    when self.is_on?
+      "warning"
+    when self.finished?
+      "success"
+    end
+  end
+
+  def winner
+    return nil unless self.finished?
+    case
+    when self.team1_goal > team2_goal
+      self.team1
+    when self.team1_goal < team2_goal
+      self.team2
+    end
+  end
+
   private
   def validate_team_not_same
     if self.team1_id == self.team2_id

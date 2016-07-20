@@ -1,0 +1,31 @@
+<div id="schedule-table-name">
+  <span class="glyphicon glyphicon-calendar"></span>
+  <%= @league_season.name + " " + @league_season.year.to_s + " " + t(".schedule")%>
+</div>
+<table id="table-matches" class="table table-striped table-bordered">
+  <% @matches.each do |date, matches| %>
+    <tr><td colspan="5" class="start-date"><%= date %></td></tr>
+    <% matches.each do |match| %>
+      <tr>
+        <td class="start-time">
+          <%= match.start_time.strftime "%H:%M" %>
+        </td>
+        <td class="team1">
+          <%= match.team1.name %>
+        </td>
+        <td class="result">
+          <span class="goals-team1"><%= match.team1_goal || "?" %></span>-
+          <span class="goals-team2"><%= match.team2_goal || "?" %></span>
+          <br>
+        <td class="team2">
+          <%= match.team2.name %>
+        </td>
+        <td class="action">
+          <%= link_to match, title: t(".match_detail"), data: {toggle: "tooltip"} do %>
+            <span class="glyphicon glyphicon-play-circle"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
