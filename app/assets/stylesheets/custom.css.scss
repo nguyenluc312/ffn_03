@@ -713,3 +713,79 @@ table.table.table-bordered.text-center {
     }
   }
 }
+#league-menu{
+  border: 1px solid #e8e8e8;
+  padding: 0px;
+  #league-header{
+    margin-top: 10px;
+    font-size: 1.25em;
+  }
+  .dropdown{
+    border-top: 1px solid #e8e8e8;
+    font-weight: bold;
+    a{
+      color: black;
+    }
+  }
+}
+#league-season-info{
+  padding: 0px;
+  margin-left: 20px;
+  .season-info-container{
+    border: 1px solid #e8e8e8;
+    margin-bottom: 20px;
+  }
+}
+
+#table-matches tr{
+  td.start-date{
+    text-align: center;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+  }
+  td.start-time{
+    text-align: center;
+  }
+  td.team1{
+    width: 35%;
+    text-align: right;
+  }
+  td.result{
+    width: 10%;
+    text-align: center;
+    color: red;
+    .goals-team1{
+      margin-right: 5px;
+    }
+    font-weight: bold;
+  }
+  td.team2{
+    width: 35%;
+  }
+  td.action{
+    width: 10%;
+    text-align: center;
+  }
+}
+
+#rank-table{
+  thead{
+    background-color: green;
+    color: white;
+  }
+  .stats{
+    width: 6%;
+    text-align: center;
+  }
+}
+
+#ranking-table-name{
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#schedule-table-name{
+  font-weight: bold;
+  margin-bottom: 5px;
+}

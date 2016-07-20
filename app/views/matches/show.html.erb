@@ -15,14 +15,9 @@
       <span>:</span>
       <span class="goals"><%= @match.team2_goal || "2" %></span>
       <br/>
-      <% case %>
-      <% when @match.not_started_yet? %>
-        <p class="label label-info"><%= t ".#{@match.status}" %></p>
-      <% when @match.is_on? %>
-        <p class="label label-warning"><%= t ".#{@match.status}" %></p>
-      <% when @match.finished? %>
-        <p class="label label-success"><%= t ".#{@match.status}" %></p>
-      <% end %>
+      <p class="label label-<%= @match.label_for_status %>">
+        <%= t ".#{@match.status}" %>
+      </p>
     </div>
     <div class="team">
       <%= link_to @match.team2 do %>
