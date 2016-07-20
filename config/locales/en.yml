@@ -328,3 +328,7 @@ en:
   start_time_must_larger_than_now: "not started yet, start time must larger than now"
   start_time_must_less_than_now: "%{status}, start time must less than now"
   match_invalid: "was existed in league_season"
+  user_bet: "User bet a match"
+  mail:
+    heading_email_when_user_make_a_bet: "Bet match %{team1} vs %{team2}"
+    content_email_when_user_make_a_bet: "%{user_name} chosen %{chosen} with bet coin is %{coin}"

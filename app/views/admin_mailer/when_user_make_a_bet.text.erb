@@ -1,0 +1,4 @@
+<%= t "mail.heading_email_when_user_make_a_bet", team1: @user_bet.match.team1.name,
+  team2: @user_bet.match.team2.name %>
+<%= t "mail.content_email_when_user_make_a_bet", user_name: @user_bet.user.name,
+  chosen: @user_bet.chosen, coin:  @user_bet.coin %>
