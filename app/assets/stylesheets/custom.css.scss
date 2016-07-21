@@ -635,16 +635,10 @@ table.table.table-bordered.text-center {
   .enter-event {
     width: 50%;
     .form-event {
-      width: 100%;
+      width: 160%;
       margin-top: 3%;
+      margin-left: -20px;
       resize: vertical;
-    }
-  }
-
-  .submit {
-    margin-left: 2%;
-    .add-event-submit {
-      width: 115%;
     }
   }
 
@@ -868,4 +862,110 @@ table.table.table-bordered.text-center {
 
 .heading {
   color: green;
+}
+
+.edit-match {
+  -webkit-box-shadow: 5px 4px 0px 0px rgba(105, 114, 107, 0.4);
+  -moz-box-shadow: 5px 4px 0px 0px rgba(105, 114, 107, 0.4);
+  box-shadow: 5px 4px 0px 0px rgba(105, 114, 107, 0.4);
+  width: 55%;
+  margin: 0 auto;
+  .team-heading {
+    width: 100%;
+    padding-left: 5%;
+    padding-top: 2%;
+    margin-left: 0.1%;
+    background: rgba(220, 220, 220, 0.65);
+    a {
+      text-decoration: none;
+      img {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+    }
+    .image {
+      margin-top: 1%;
+      p {
+        margin-top: -10px;
+        font-size: 14px;
+      }
+      img {
+        margin-top: 11px;
+      }
+    }
+
+    #start-time {
+      padding-right: 9%;
+    }
+  }
+
+  .form {
+    margin-top: 3%;
+    .start-time {
+      margin: 0 auto;
+      padding-right: 10%;
+    }
+
+    .status {
+      margin: 1% auto;
+      padding-right: 7%;
+      select {
+        width: 248px;
+      }
+    }
+
+    .goals {
+      width: 40%;
+      margin: 2% auto;
+      margin-top: 2%;
+      height: 69px;
+      .team1-goals {
+        width: 30%;
+        float: left;
+        input {
+          height: 69px;
+          text-align: center;
+          font-size: 20px;
+        }
+      }
+      #space {
+        width: 40%;
+        float: left;
+        font-size: 39px;
+      }
+      .team2-goals {
+        float: left;
+        width: 30%;
+        input {
+          height: 69px;
+          text-align: center;
+          font-size: 20px;
+        }
+      }
+    }
+
+    .odds {
+      margin: 3% 0;
+      table {
+        width: 60%;
+        margin: 0 auto;
+        input {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.form-new-event {
+  border: 1px solid green;
+  padding-left: 5%;
+  width: 85%;
+  padding-bottom: 28px;
+
+  .submit {
+    .add-event-submit {
+      width: 110px;
+      margin: 10px;
+    }
+  }
 }

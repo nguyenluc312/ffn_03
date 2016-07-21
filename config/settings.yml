@@ -15,3 +15,4 @@ league_season:
 number_of_year: 10
 match:
   ball_size: "70x70"
+  ball_img: "league-icon.png"

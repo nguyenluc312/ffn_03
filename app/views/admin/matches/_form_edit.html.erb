@@ -1,136 +1,155 @@
-<%= form_for [:admin, @league_season, @match] do |f| %>
-  <%= render "shared/error_messages", object: @match %>
-
-  <%= f.hidden_field :league_season_id, value: @league_season.id %>
-
-  <% if @match.end_time.present? && @match.errors.blank? %>
-    <span class="center" id="finished-match"><%= t ".finished" %></span>
-  <% elsif @match.start_time <= Time.now %>
-    <span class="center" id="match-in-process"><%= t ".process" %></span>
-  <% end %>
-
-  <table class="match">
-    <tr class="team-heading">
-      <td class="team1">
-        <%= image_tag @match.team1.logo.logo_title.url %>
-        <h2><%= @match.team1.name %></h2>
-      </td>
-      <td class="match-info"><h2><%= t ".vs" %></h2></td>
-      <td class="team2">
-        <%= image_tag @match.team2.logo.logo_title.url %>
-        <h2><%= @match.team2.name %></h2>
-      </td>
-    </tr>
-    <tr class="chose-team">
-      <% if @match.user_bets.any? || @match.start_time <= Time.now %>
-        <td class="team1">
-          <%= f.select :team1_id, @teams, {}, disabled: true,
-            title: t(".has_user_bet"), data: {toggle: "tooltip"},
-            class: "form-control pull-right" %>
-        </td>
-        <td class="match-infor">-</td>
-        <td class="team2">
-          <%= f.select :team2_id, @teams, {}, disabled: true,
-            title: t(".has_user_bet"), data: {toggle: "tooltip"},
-            class: "form-control" %>
-        </td>
-      <% else %>
-        <td class="team1">
-          <%= f.select :team1_id, @teams, {}, class: "form-control pull-right" %>
-        </td>
-        <td class="match-infor">-</td>
-        <td class="team2">
-          <%= f.select :team2_id, @teams, {}, class: "form-control" %>
-        </td>
-      <% end %>
-    </tr>
-    <tr class="start-time">
-      <td class="start-time form-inline" colspan="3">
-        <%= f.label :start_at, class: "pull-left" %>
-        <% if @match.start_time >= Time.now %>
-          <%= f.datetime_select :start_time, {}, class: "form-control start-time" %>
-        <% else %>
-          <%= f.datetime_select :start_time, {}, disabled: true,
-            class: "form-control start-time" %>
-        <% end %>
-      </td>
-    </tr>
-    <tr class="team-odds">
-      <% if @match.user_bets.any? || @match.start_time <= Time.now %>
-        <td colspan="3" class="form-inline fixed">
-          <%= f.label :odds, class: "pull-left" %>
-          <%= f.number_field :team1_odds, step: 0.1, min: 0, max:20, disabled: true,
-            title: t(".has_user_bet"), data: {toggle: "tooltip"},
-            class: "form-control odds", placeholder: t(".team1_odds") %>
-          <%= f.number_field :draw_odds, min: 0, step: 0.1, max:20, disabled: true,
-            title: t(".has_user_bet"), data: {toggle: "tooltip"},
-            class: "form-control odds draw-odds", placeholder: t(".draw_odds") %>
-          <%= f.number_field :team2_odds, step: 0.1, min: 0, max:20, disabled: true,
-            title: t(".has_user_bet"), data: {toggle: "tooltip"},
-            class: "form-control odds", placeholder: t(".team2_odds") %>
-        </td>
-      <% else %>
-        <td colspan="3" class="form-inline fixed">
-          <%= f.label :odds, class: "pull-left" %>
-          <%= f.number_field :team1_odds, step: 0.1, min: 0, max:20,
-            class: "form-control odds", placeholder: t(".team1_odds") %>
-          <%= f.number_field :draw_odds, min: 0, step: 0.1, max:20,
-            class: "form-control odds draw-odds", placeholder: t(".draw_odds") %>
-          <%= f.number_field :team2_odds, step: 0.1, min: 0, max:20,
-            class: "form-control odds", placeholder: t(".team2_odds") %>
-        </td>
-      <% end %>
-    </tr>
-    <% if @match.start_time <= Time.now %>
-      <tr class="row-goal">
-        <% if @match.end_time.present? && @match.errors.blank? %>
-          <td colspan="3">
-            <span id="label-goal" class="pull-left"><%= f.label :goal %></span>
-            <div class="goal team1-goal">
-              <%= f.number_field :team1_goal, step: 1, min: 0, disabled: true,
-                class: "team-goal", placeholder: t(".team1") %>
-            </div>
-            <div id="goal-center" class="goal">:</div>
-            <div class="goal team2-goal">
-              <%= f.number_field :team2_goal, step: 1, min: 0, disabled: true,
-                class: "team-goal", placeholder: t(".team2") %>
-            </div>
-          </td>
-        <% else %>
-          <td colspan="3">
-            <span id="label-goal" class="pull-left"><%= f.label :goal %></span>
-            <div class="goal team1-goal">
-              <%= f.number_field :team1_goal, step: 1, min: 0,
-                value: @match.team1_goal || 0, class: "team-goal",
-                placeholder: t(".team1") %>
-            </div>
-            <div id="goal-center" class="goal">:</div>
-            <div class="goal team2-goal">
-              <%= f.number_field :team2_goal, step: 1, min: 0,
-                value: @match.team2_goal || 0, class: "team-goal",
-                placeholder: t(".team2") %>
-            </div>
-          </td>
-        <% end %>
-      </tr>
+<div class="team-heading row center">
+  <div class="team1 col-sm-4">
+    <%= link_to @match.team1 do %>
+      <%= image_tag @match.team1.logo.logo_title.url %>
     <% end %>
-    <tr>
-      <td class="start-time form-inline" colspan="3">
-        <%= f.label :end_at, class: "pull-left" %>
-        <% if @match.end_time.nil? || @match.errors.present? %>
-          <%= f.datetime_select :end_time, {include_blank: true},
-            class: "form-control start-time" %>
-        <% else %>
-          <%= f.datetime_select :end_time, {}, disabled: true,
-            class: "form-control start-time" %>
-        <% end %>
-      </td>
-    </tr>
-  </table>
-
-  <% unless @match.end_time.present? && @match.errors.blank? %>
-    <div class="form-group create-match">
-      <%= f.submit t(".save"), class: "btn btn-primary form-control" %>
+    <p><%= link_to @match.team1.name, @match.team1 %></p>
+  </div>
+  <div class="image col-sm-3">
+    <% if @match.errors.blank? %>
+      <p class="label label-<%= @match.label_for_status %>">
+        <strong><%= t ".#{@match.status}" %></strong>
+      </p>
+    <% end %>
+    <br>
+    <%= image_tag Settings.match.ball_img, size: Settings.match.ball_size %>
+  </div>
+  <div class="team2 col-sm-4">
+    <%= link_to @match.team2 do %>
+      <%= image_tag @match.team2.logo.logo_title.url %>
+    <% end %>
+    <p><%= link_to @match.team2.name, @match.team2 %></p>
+  </div>
+  <div class="clearfix"></div>
+  <div id="start-time">
+    <strong>
+      <%= t(".start_at") + ": " %>
+      <%= @match.start_time.to_s %>
+    </strong>
+  </div>
+</div>
+<div class="form center">
+  <%= form_for [:admin, @match] do |f| %>
+    <%= render "shared/error_messages", object: @match %>
+    <div class="form-inline start-time">
+      <%= f.label :start_time %>
+      <% if (@match.finished? || @match.is_on?) && @match.errors.blank? %>
+      <%= f.datetime_local_field :start_time, disabled: true,
+          class: "form-control center" %>
+      <% else %>
+        <%= f.datetime_local_field :start_time, class: "form-control center" %>
+      <% end %>
     </div>
+    <div class="form-inline status">
+      <label><%= t ".status" %></label>
+      <% if @match.not_started_yet? || @match.start_time > Time.zone.now %>
+        <%= f.select :status, @statuses, {}, class: "form-control",
+          id: "select-status" %>
+      <% elsif @match.is_on? %>
+        <%= f.select :status, @statuses, {disabled: @statuses[0]},
+          class: "form-control", id: "select-status" %>
+      <% elsif @match.finished? && @match.start_time < Time.zone.now %>
+        <%= f.select :status, @statuses, {}, disabled: true, class: "form-control",
+          id: "select-status" %>
+      <% end %>
+    </div>
+
+    <% if @match.finished? && @match.errors.blank? %>
+      <div class="goals">
+        <div class="team1-goals">
+          <%= f.number_field :team1_goal, step: 1, min: 0,
+            value: @match.team1_goal || 0, disabled: true, class: "form-control",
+            placeholder: t(".team1") %>
+        </div>
+        <div id="space">-</div>
+        <div class="team2-goals">
+          <%= f.number_field :team1_goal, step: 1, min: 0,
+            value: @match.team1_goal || 0, disabled: true, class: "form-control",
+            placeholder: t(".team1") %>
+        </div>
+      </div>
+    <% elsif @match.is_on? %>
+      <div class="goals">
+        <div class="team1-goals">
+          <%= f.number_field :team1_goal, step: 1, min: 0,
+            value: @match.team1_goal || 0, class: "form-control",
+            placeholder: t(".team1") %>
+        </div>
+        <div id="space">-</div>
+        <div class="team2-goals">
+          <%= f.number_field :team1_goal, step: 1, min: 0,
+            value: @match.team1_goal || 0, class: "form-control",
+            placeholder: t(".team1") %>
+        </div>
+      </div>
+    <% else %>
+      <div class="goals hidden">
+        <div class="team1-goals">
+          <%= f.number_field :team1_goal, step: 1, min: 0,
+            value: @match.team1_goal || 0, class: "form-control",
+            placeholder: t(".team1") %>
+        </div>
+        <div id="space">-</div>
+        <div class="team2-goals">
+          <%= f.number_field :team1_goal, step: 1, min: 0,
+            value: @match.team1_goal || 0, class: "form-control",
+            placeholder: t(".team1") %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @match.start_time < Time.zone.now && @match.user_bets.blank? %>
+      <div class="odds">
+        <label><%= t ".odds" %></label>
+        <table class="table table-bordered table-striped">
+          <tr class="table-head">
+            <td><strong><%= t ".team1_odds" %></strong></td>
+            <td><strong><%= t ".draw_odds" %></strong></td>
+            <td><strong><%= t ".team2_odds" %></strong></td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.number_field :team1_odds, step: 0.1, min: 0, max:20, disabled: true,
+                class: "form-control odds", placeholder: t(".team1_odds") %>
+            </td>
+            <td>
+              <%= f.number_field :draw_odds, min: 0, step: 0.1, max:20, disabled: true,
+                class: "form-control odds draw-odds", placeholder: t(".draw_odds") %>
+            </td>
+            <td><%= f.number_field :team2_odds, step: 0.1, min: 0, max:20, disabled: true,
+            class: "form-control odds", placeholder: t(".team2_odds") %></td>
+          </tr>
+        </table>
+      </div>
+    <% else %>
+      <div class="odds">
+        <label><%= t ".odds" %></label>
+        <table class="table table-bordered table-striped">
+          <tr class="table-head">
+            <td><strong><%= t ".team1_odds" %></strong></td>
+            <td><strong><%= t ".draw_odds" %></strong></td>
+            <td><strong><%= t ".team2_odds" %></strong></td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.number_field :team1_odds, step: 0.1, min: 0, max:20,
+                class: "form-control odds", placeholder: t(".team1_odds") %>
+            </td>
+            <td>
+              <%= f.number_field :draw_odds, min: 0, step: 0.1, max:20,
+                class: "form-control odds draw-odds", placeholder: t(".draw_odds") %>
+            </td>
+            <td><%= f.number_field :team2_odds, step: 0.1, min: 0, max:20,
+            class: "form-control odds", placeholder: t(".team2_odds") %></td>
+          </tr>
+        </table>
+      </div>
+    <% end %>
+
+    <% unless @match.finished? && @match.errors.blank? %>
+      <div class="submit">
+        <%= f.submit t(".save"), class: "btn btn-primary form-control" %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
