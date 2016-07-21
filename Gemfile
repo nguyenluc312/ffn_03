@@ -33,6 +33,7 @@ gem "daemons"
 gem "public_activity"
 gem "ckeditor"
 gem "kaminari-bootstrap"
+gem "figaro"
 
 group :development, :test do
   gem "byebug"
