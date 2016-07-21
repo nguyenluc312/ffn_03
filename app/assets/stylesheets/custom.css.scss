@@ -460,19 +460,6 @@ input[type=submit]{
   margin-top: 20px;
 }
 
-.odds {
-  width: 80px;
-  font-size: 12px;
-}
-
-.draw-oods {
-
-}
-
-.label-odds {
-  margin: 10px;
-}
-
 select#match_team1 {
   height: 50px;
   font-size: 16px;
@@ -484,11 +471,6 @@ select#match_team2 {
   height: 50px;
   font-size: 16px;
   margin-left: -10px;
-}
-
-.new-match {
-  background-color: ghostwhite;
-  border: 2px solid silver;
 }
 
 .field_with_errors {
@@ -788,4 +770,102 @@ table.table.table-bordered.text-center {
 #schedule-table-name{
   font-weight: bold;
   margin-bottom: 5px;
+}
+
+.new-match {
+  width: 55%;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  .team-heading {
+    width: 100%;
+    padding-left: 5%;
+    margin-left: 0.1%;
+    background: rgba(220, 220, 220, 0.65);
+  }
+
+  .form {
+    margin-top: 5%;
+    margin-left: -7%;
+    padding-left: 5%;
+    .chose-team {
+      .team1 {
+        width: 40%;
+        .form-control {
+          width: 88%;
+        }
+      }
+      .team2 {
+        width: 40%;
+        .form-control {
+          width: 88%;
+        }
+      }
+    }
+
+    .start-time {
+      margin: 2% auto;
+      width: 40%;
+      text-align: center;
+    }
+    .status {
+      margin: 3% auto;
+      width: 40%;
+    }
+
+    .odds {
+      margin-top: 1%;
+      .form-inline {
+        .odds {
+          width: 20%;
+        }
+      }
+    }
+
+    .goals {
+      width: 40%;
+      margin: 1% auto;
+      margin-top: 2%;
+      height: 69px;
+      .team1-goals {
+        width: 30%;
+        float: left;
+        input {
+          height: 69px;
+          text-align: center;
+          font-size: 20px;
+        }
+      }
+      #space {
+        width: 40%;
+        float: left;
+        font-size: 39px;
+      }
+      .team2-goals {
+        float: left;
+        width: 30%;
+        input {
+          height: 69px;
+          text-align: center;
+          font-size: 20px;
+        }
+      }
+    }
+
+    .submit {
+      margin-left: 2%;
+    }
+  }
+
+  #error_explanation {
+    margin: 0 3%;
+    text-align: left;
+  }
+}
+
+.field_with_errors {
+  display: inline;
+}
+
+.heading {
+  color: green;
 }

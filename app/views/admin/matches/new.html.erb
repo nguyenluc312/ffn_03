@@ -1,12 +1,11 @@
 <%= provide :match_submit_button, t(".new_match") %>
 
 <div class="row">
-  <div class="panel panel-heading">
-    <h1 class="center"><%= @league_season.name %></h1>
-    <h2 class="center match-title"><strong><%= t ".new_match" %></strong></h2>
+  <div class="heading center">
+    <h1><%= t ".new" %></h1>
   </div>
-  <div class="col-md-8 col-md-offset-2 new-match">
-    <%= render "form" %>
+  <div class="new-match center">
+    <%= render "form_new" %>
   </div>
   <div class="clearfix"></div>
 </div>

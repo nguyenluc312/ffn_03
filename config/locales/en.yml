@@ -205,6 +205,19 @@ en:
         team2_odds: "Team 2"
         draw_odds: "Draw"
         vs: "VS"
+      form_new:
+        team1: "Team 1"
+        team2: "Team 2"
+        team1_odds: "Team 1"
+        team2_odds: "Team 2"
+        draw_odds: "Draw"
+        vs: "VS"
+        chose_team1: "Chose team 1"
+        chose_team2: "Chose team 2"
+        start_time: "Start time"
+        chose_status: "Chose status"
+        submit: "Add"
+        odds: "Odds"
       form_edit:
         team1: "Team 1"
         team2: "Team 2"
@@ -218,6 +231,7 @@ en:
         save: "Save"
       new:
         new_match: "New Match"
+        new: "Add new match"
       create:
         success: "Successfully"
         edit:
@@ -311,3 +325,6 @@ en:
   max_match_of_team: "must less than %{max_match_of_team}"
   match_of_two_team: "of team1 and team 2 larger than 2"
   end_time_larger_than_start: "not larger than start time"
+  start_time_must_larger_than_now: "not started yet, start time must larger than now"
+  start_time_must_less_than_now: "%{status}, start time must less than now"
+  match_invalid: "was existed in league_season"

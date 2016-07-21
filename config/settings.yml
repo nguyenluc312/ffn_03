@@ -13,3 +13,5 @@ team:
 league_season:
   min_team_of_league: 4
 number_of_year: 10
+match:
+  ball_size: "70x70"
