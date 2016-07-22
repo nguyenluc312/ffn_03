@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     delete "logout" => "devise/sessions#destroy", as: :destroy_user_session
   end
 
-  mount Ckeditor::Engine => '/ckeditor'
+  mount Ckeditor::Engine => "/ckeditor"
   root "static_pages#home"
   get "help" => "static_pages#help"
   get "contact" => "static_pages#contact"

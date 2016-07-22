@@ -21,12 +21,6 @@
           </li>
         <% else %>
           <li><%= link_to t("views.header.login"), new_user_session_path %></li>
-          <li>
-            <%= link_to user_omniauth_authorize_path(:facebook) do %>
-              <%= image_tag("icon_facebook.png",
-                class: "img-circle icon_image_social") %>
-            <% end %>
-          </li>
         <% end %>
       </ul>
     </nav>
