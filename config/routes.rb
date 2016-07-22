@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :matches, only: [:edit, :update] do
       resources :match_events, only: :create
     end
+    resources :players
   end
 
   resources :news, only: :show do
@@ -41,4 +42,5 @@ Rails.application.routes.draw do
   resources :user_bets, only: [:create, :index]
   resources :leagues, only: :index
   resources :league_seasons, only: :show
+  resources :players, only: [:index, :show]
 end

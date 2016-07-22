@@ -537,10 +537,6 @@ h2.center.match-title {
   }
 }
 
-.nav-tabs{
-  margin: 50px 0;
-}
-
 #bet-odds{
   table{
     text-align: center;
@@ -971,5 +967,33 @@ table.table.table-bordered.text-center {
       width: 110px;
       margin: 10px;
     }
+  }
+}
+
+#player-profile{
+  #player-info{
+    display: inline-block;
+    width: 25%;
+    img{
+      border: 1px solid #e8e8e8;
+      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-bottom: 20px;
+    }
+    .attribute-info{
+      .attribute{
+        display: inline-block;
+        font-weight: bold;
+        width: 40%;
+      }
+      .value{
+        display: inline-block;
+      }
+      border-bottom: 1px solid #e8e8e8;
+    }
+  }
+  #player-content{
+    width: 74%;
+    display: inline-block;
+    vertical-align: top;
   }
 }
