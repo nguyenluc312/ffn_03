@@ -13,6 +13,8 @@ class Team < ActiveRecord::Base
 
   scope :in_country, ->(country_id){where country_id: country_id}
 
+  delegate :name, to: :country, prefix: true
+
   class << self
     def add_attributes_season
       ATTRIBUTES_IN_SEASON.each do |attribute|
