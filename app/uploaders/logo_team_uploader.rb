@@ -42,7 +42,7 @@ class LogoTeamUploader < CarrierWave::Uploader::Base
   #   %w(jpg jpeg gif png)
   # end
   version :logo_title do
-    process resize_to_fill: [100, 100]
+    process resize_to_fit: [100, 100]
   end
 
   version :small do

@@ -194,10 +194,12 @@ en:
     matches:
       match_events:
         new_event: "New event.."
-        new: "New Event"
+        new: "New event"
+        submit_event: "Add"
         minute: "Minute"
         event: "Events"
         match_event_heading: "Match event"
+        add_new_event: "Add new event"
       form:
         team1: "Team 1"
         team2: "Team 2"
@@ -224,11 +226,11 @@ en:
         team1_odds: "Team 1"
         team2_odds: "Team 2"
         draw_odds: "Draw"
-        vs: "VS"
-        has_user_bet: "Has user bets this match or match is in process, can't edit"
-        finished: "This match finished"
-        process: "This match is happening"
         save: "Save"
+        start_at: "Start at"
+        not_started_yet: "Not started yet"
+        is_on: "is on"
+        finished: "Finished"
       new:
         new_match: "New Match"
         new: "Add new match"
@@ -236,6 +238,8 @@ en:
         success: "Successfully"
         edit:
         edit_match: "Update Match"
+      update:
+        success: "Successfully"
   comments:
     comment:
       delete: "Delete"
