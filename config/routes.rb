@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
+  mount Ckeditor::Engine => "/ckeditor"
+
+  require "sidekiq/web"
+  authenticate :user, lambda {|user| user.admin?} do
+    mount Sidekiq::Web => "/sidekiq"
+  end
+
   root "static_pages#home"
   get "help" => "static_pages#help"
   get "contact" => "static_pages#contact"
