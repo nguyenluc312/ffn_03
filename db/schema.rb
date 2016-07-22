@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721032928) do
+ActiveRecord::Schema.define(version: 20160722053936) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -128,13 +128,16 @@ ActiveRecord::Schema.define(version: 20160721032928) do
   create_table "players", force: :cascade do |t|
     t.string   "name"
     t.text     "introduction"
-    t.string   "position"
+    t.integer  "position"
     t.integer  "team_id"
-    t.datetime "date_of_birth"
     t.string   "avatar"
     t.integer  "country_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.date     "date_of_birth"
+    t.integer  "jersey_number"
+    t.float    "height"
+    t.float    "weight"
   end
 
   add_index "players", ["country_id"], name: "index_players_on_country_id"
@@ -166,6 +169,9 @@ ActiveRecord::Schema.define(version: 20160721032928) do
     t.text     "introduction"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "coach"
+    t.string   "nickname"
+    t.string   "short_name"
   end
 
   add_index "teams", ["country_id"], name: "index_teams_on_country_id"

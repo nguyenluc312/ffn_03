@@ -1,0 +1,64 @@
+<%= form_for [:admin, @player], html: {class: "form-horizontal"}  do |f| %>
+  <%= render "shared/error_messages", object: @player %>
+  <div class="form-group">
+    <%= f.label :name, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.text_field :name, class: "form-control", placeholder: :name %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :avatar, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <% if @player.avatar %>
+        <%= image_tag @player.avatar.medium.url %>
+      <% end %>
+      <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :date_of_birth, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.date_field :date_of_birth, class: "form-control", placeholder: :date_of_birth %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :country_id, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.select :country_id, options_for_select(@countries, @player.country_id),
+        {include_blank: t(".select_country")}, class: "form-control", placeholder: :country_id %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :height, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.number_field :height, class: "form-control", placeholder: :height,
+        min: 1, max: 200, step: 0.1 %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :weight, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.number_field :weight, class: "form-control", placeholder: :weight,
+        min: 1, max: 300, step: 0.1 %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :position, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.select :position, options_for_select(@positions, @player.position),
+        {include_blank: t(".select_position")}, class: "form-control", placeholder: :position %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :introduction, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.text_area :introduction, class: "form-control",
+        placeholder: :introduction %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-5">
+      <%= f.submit yield: :summit_button, class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
