@@ -20,6 +20,8 @@ class Match < ActiveRecord::Base
     where(team2_id: team_id).where(league_season_id: league_season_id)
   end
 
+  after_update :update_user_coin_when_match_end
+
   def label_for_status
     case
     when self.not_started_yet?
@@ -38,6 +40,19 @@ class Match < ActiveRecord::Base
       self.team1
     when self.team1_goal < team2_goal
       self.team2
+    end
+  end
+
+  def result
+    if self.finished?
+      case self.winner
+      when self.team1
+        "team1"
+      when self.team2
+        "team2"
+      else
+        "draw"
+      end
     end
   end
 
@@ -62,6 +77,15 @@ class Match < ActiveRecord::Base
       elsif (self.finished? || self.is_on?) && self.start_time > Time.zone.now
         self.errors.add :match, I18n.t(".start_time_must_less_than_now",
           status: self.status)
+      end
+    end
+  end
+
+  def update_user_coin_when_match_end
+    self.user_bets.each do |user_bet|
+      if user_bet.is_correct?
+        user_bet.user.update_attribute :coin,
+          user_bet.user.coin + user_bet.coin * self.send(self.result + "_odds")
       end
     end
   end
