@@ -1,21 +1,16 @@
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => "/ckeditor"
-
-  require "sidekiq/web"
-  authenticate :user, lambda {|user| user.admin?} do
-    mount Sidekiq::Web => "/sidekiq"
-  end
-
-  root "static_pages#home"
-  get "help" => "static_pages#help"
-  get "contact" => "static_pages#contact"
-
-  devise_for :users, skip: :sessions
+  devise_for :users, skip: :sessions,
+   controllers: {omniauth_callbacks: "omniauth_callbacks"}
   as :user do
     get "login" => "devise/sessions#new", as: :new_user_session
     post "login" => "devise/sessions#create", as: :user_session
     delete "logout" => "devise/sessions#destroy", as: :destroy_user_session
   end
+
+  mount Ckeditor::Engine => '/ckeditor'
+  root "static_pages#home"
+  get "help" => "static_pages#help"
+  get "contact" => "static_pages#contact"
 
   namespace :admin do
     root "countries#new"

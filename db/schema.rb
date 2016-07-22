@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716165721) do
+ActiveRecord::Schema.define(version: 20160721032928) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -128,9 +128,9 @@ ActiveRecord::Schema.define(version: 20160716165721) do
   create_table "players", force: :cascade do |t|
     t.string   "name"
     t.text     "introduction"
-    t.integer  "position"
+    t.string   "position"
     t.integer  "team_id"
-    t.datetime "data_of_birth"
+    t.datetime "date_of_birth"
     t.string   "avatar"
     t.integer  "country_id"
     t.datetime "created_at",    null: false
@@ -203,6 +203,8 @@ ActiveRecord::Schema.define(version: 20160716165721) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
