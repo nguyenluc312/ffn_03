@@ -43,4 +43,5 @@ Rails.application.routes.draw do
   resources :leagues, only: :index
   resources :league_seasons, only: :show
   resources :players, only: [:index, :show]
+  resources :teams, only: :show
 end

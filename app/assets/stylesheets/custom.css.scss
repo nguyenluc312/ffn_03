@@ -997,3 +997,74 @@ table.table.table-bordered.text-center {
     vertical-align: top;
   }
 }
+
+#team-profile{
+  #team-info{
+    display: inline-block;
+    width: 25%;
+    img{
+      border: 1px solid #e8e8e8;
+      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-bottom: 20px;
+    }
+  }
+  #team-content{
+    width: 74%;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+.table-info-template{
+  tr{
+  }
+  vertical-align: top;
+  width: 100%;
+  .attribute{
+    font-weight: bold;
+    width: 40%;
+    vertical-align: top;
+    padding: 3px 0;
+  }
+  .value{
+    width: 70%;
+    word-break: keep-all;
+    vertical-align: top;
+    padding: 3px 0;
+  }
+}
+
+.nav.nav-tabs{
+  margin-bottom: 30px;
+}
+
+.players-in-group{
+  tbody tr td{
+    vertical-align: middle;
+  }
+  tbody tr td.position{
+    font-weight: bold;
+  }
+  .avatar{
+    width: 7%;
+    text-align: center;
+    padding: 5px 0;
+  }
+  .jersey-number{
+    width: 7%;
+    text-align: center;
+    font-weight: bold;
+  }
+  .name{
+    width: 35%;
+  }
+  .country-flag{
+    width: 8%;
+  }
+  .country-name{
+    width: 20%;
+  }
+  .date-of-birth{
+    width: 15%;
+    text-align: center;
+  }
+}

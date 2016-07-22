@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722053936) do
+ActiveRecord::Schema.define(version: 20160722082421) do
+
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 20160722053936) do
     t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "flag"
   end
 
   create_table "league_seasons", force: :cascade do |t|
@@ -127,7 +129,7 @@ ActiveRecord::Schema.define(version: 20160722053936) do
   create_table "players", force: :cascade do |t|
     t.string   "name"
     t.text     "introduction"
-    t.string   "position"
+    t.integer  "position"
     t.integer  "team_id"
     t.string   "avatar"
     t.integer  "country_id"
@@ -168,9 +170,10 @@ ActiveRecord::Schema.define(version: 20160722053936) do
     t.text     "introduction"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "coach"
+    t.string   "coach"
     t.string   "nickname"
     t.string   "short_name"
+    t.string   "full_name"
   end
 
   add_index "teams", ["country_id"], name: "index_teams_on_country_id"

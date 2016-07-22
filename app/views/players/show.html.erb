@@ -2,14 +2,20 @@
 <div id="player-profile">
   <div id="player-info">
     <%= image_tag @player.avatar.medium.url %>
-    <% [:date_of_birth, :country_name, :current_team, :height, :weight, :position].each do |attribute| %>
-      <div class="attribute-info">
-        <div class="attribute"><%= t "." + attribute.to_s %></div>
-        <div class="value" %>
-          <%= @player.send(attribute) || "-" %>
-        </div>
-      </div>
-    <% end %>
+    <table class="table-info-template">
+      <% [:date_of_birth, :country_name, :team_name, :height, :weight, :position].each do |attribute| %>
+        <tr>
+          <td class="attribute"><%= t "." + attribute.to_s %></td>
+          <td class="value" %>
+            <% if attribute == :team_name && @player.team_name %>
+              <%= link_to @player.team_name, @player.team %>
+            <% else %>
+              <%= @player.send(attribute) || "-" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   </div>
   <div id="player-content">
 

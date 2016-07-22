@@ -1,0 +1,37 @@
+<h1><%= @team.name %></h1>
+<div id="team-profile">
+  <div id="team-info">
+    <%= image_tag @team.logo.medium.url %>
+    <table class="table-info-template">
+      <% [:full_name, :nickname, :short_name, :country_name, :coach].each do |attribute| %>
+        <tr>
+          <td class="attribute"><%= t "." + attribute.to_s %></td>
+          <td class="value" %>
+            <%= @team.send(attribute) || "-" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div id="team-content">
+
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a data-toggle="tab" href="#introduction"><%= t ".introduction" %></a>
+      </li>
+      <li><a data-toggle="tab" href="#players"><%= t ".players" %></a></li>
+      <li><a data-toggle="tab" href="#history"><%= t ".history" %></a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="introduction" class="tab-pane fade in active">
+        <%= @team.introduction.gsub("\n", "<br>").html_safe %>
+      </div>
+      <div id="players" class="tab-pane fade">
+        <%= render "players/players_with_group" %>
+      </div>
+      <div id="history" class="tab-pane fade">
+      </div>
+    </div>
+  </div>
+</div>
