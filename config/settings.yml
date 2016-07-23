@@ -5,8 +5,10 @@ news:
   per_page: 2
 image:
   max_capacity: 5 #MB
+teams:
+  per_page: 1
 per_page: 4
-min_player_of_team: 5
+min_player_of_team: 2
 team:
   logo_size_title: "70x70"
   logo_size_left: "50x50"

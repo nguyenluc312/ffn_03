@@ -1,26 +1,60 @@
-<%= form_for [:admin, @team], html: {multipart: true} do |f| %>
+<%= form_for [:admin, @team], html: {class: "form-horizontal"} do |f| %>
   <%= render "shared/error_messages", object: @team %>
-
   <div class="form-group">
-    <%= f.text_field :name, class: "form-control", placeholder: t(".name") %>
+    <%= f.label :name, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.text_field :name, class: "form-control", placeholder: :name %>
+    </div>
   </div>
-
   <div class="form-group">
-    <%= f.select :country_id, @countries, {include_blank: t(".country")},
-      class: "form-control" %>
+    <%= f.label :logo, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <% if @team.logo %>
+        <%= image_tag @team.logo.medium.url %>
+      <% end %>
+      <%= f.file_field :logo, accept: "image/jpeg,image/gif,image/png" %>
+    </div>
   </div>
-
   <div class="form-group">
-    <%= f.text_area :introduction, placeholder: t(".introduce"),
-      class: "form-control" %>
+    <%= f.label :full_name, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.text_field :full_name, class: "form-control", placeholder: :full_name %>
+    </div>
   </div>
-
   <div class="form-group">
-    <%= f.file_field :logo, accept: "image/jpeg,image/gif,image/png",
-      class: "btn btn-default" %>
+    <%= f.label :nickname, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.text_field :nickname, class: "form-control", placeholder: :nickname %>
+    </div>
   </div>
-
   <div class="form-group">
-    <%= f.submit yield(:submit_button), class: "btn btn-primary form-control"  %>
+    <%= f.label :short_name, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.text_field :short_name, class: "form-control", placeholder: :short_name %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :country_id, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.select :country_id, options_for_select(@countries, @team.country_id),
+        {include_blank: t(".select_country")}, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :coach, class: "control-label col-sm-2" %>
+    <div class="col-sm-5">
+      <%= f.text_field :coach, class: "form-control", placeholder: :coach %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :introduction, class: "control-label col-sm-2" %>
+    <div class="col-sm-8">
+      <%= f.text_area :introduction, class: "form-control", placeholder: :introduction %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-5">
+      <%= f.submit yield: :summit_button, class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
