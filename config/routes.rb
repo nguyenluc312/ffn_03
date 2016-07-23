@@ -23,11 +23,11 @@ Rails.application.routes.draw do
     end
     resources :news, except: :show
     resources :news_types, except: :show
-    resources :teams, except: [:index, :destroy]
+    resources :teams, :except
     resources :matches, only: [:edit, :update] do
       resources :match_events, only: :create
     end
-    resources :players
+    resources :players, except: :show
   end
 
   resources :news, only: :show do

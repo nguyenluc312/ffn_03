@@ -380,10 +380,10 @@ input[type=submit]{
   border-radius: 0px;
 }
 
-.table{
+.table.not-overflow{
   tbody{
     tr{
-      td.not-overflow{
+      td{
         max-width: 0;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -1067,4 +1067,71 @@ table.table.table-bordered.text-center {
     width: 15%;
     text-align: center;
   }
+}
+
+/* form for team & player */
+.form-horizontal{
+  img{
+    margin-bottom: 15px;
+    border: 1px solid #e8e8e8;
+  }
+  textarea{
+    resize: vertical;
+    height: 200px;
+    width: 100%;
+  }
+}
+#team_search{
+  width: 100%;
+  .search-name{
+    width: 40%;
+  }
+  .search-country{
+    width: 25%;
+    select{
+      width: 100%;
+    }
+  }
+  input{
+    width: 100%;
+  }
+}
+.table-manager-teams{
+  tbody tr td{
+    vertical-align: middle;
+  }
+  .header-index{
+    width: 5%;
+  }
+  .header-logo{
+    width: 8%;
+  }
+  .header-flag{
+    width: 10%;
+  }
+  .header-country{
+    width: 20%;
+  }
+  .header-coach{
+    width: 15%;
+  }
+  .header-players{
+    width: 5%;
+  }
+  .header-action{
+    width: 10%;
+  }
+  a{
+    margin-right: 10px;
+  }
+}
+#count-teams{
+  font-weight: bold;
+  margin-top: 20px;
+}
+.center{
+  text-align: center;
+}
+.no-radius{
+  border-radius: 0px;
 }

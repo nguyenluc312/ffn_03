@@ -1,39 +1,65 @@
-<div class="panel panel-heading">
-  <h1 class="center"><%= t ".team_manage" %></h1>
+<h1><%= t ".teams_manager" %></h1>
+<div class="pull-right">
+  <%= link_to new_admin_team_path, class: "btn btn-primary no-radius" do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <span><%= t ".create_team" %></span>
+  <% end %>
 </div>
-<div class="col-md-6 col-md-offset-3">
-  <div class="panel panel-default">
-    <table class="table">
-      <thead>
-        <th><%= t ".team" %></th>
-        <th class="player-in-team center"><%= t ".player_in_team" %></th>
-        <th class="team-actions center"><%= t ".action" %></th>
-      </thead>
-      <tbody>
-        <% @teams.each do |team| %>
-          <tr>
-            <td><%= team.name %></td>
-            <td class="center"><%= team.players.count %></td>
-            <td class="action center">
-              <%= link_to t(".view"), admin_team_path(team),
-                class: "glyphicon glyphicon-eye-open action-view" %>
-              <%= link_to t(".edit"), edit_admin_team_path(team),
-                class: "glyphicon glyphicon-pencil action-edit" %>
-              <%= link_to t(".delete"), admin_team_path(team), method: :delete,
-                data: {confirm: t(".confirm")},
-                class: "glyphicon glyphicon-remove action-delete" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="no-team">
-      <%= t ".no_team" unless @teams.any?%>
-    </div>
-    <%= paginate @teams %>
+<%= search_form_for [:admin, @search], class: "form-inline" do |f| %>
+  <div class="form-group search-name">
+    <%= f.text_field :name_or_full_name_or_nickname_or_short_name_cont,
+      class: "form-control", placeholder: t(".search_by_name") %>
   </div>
-    <div class="new-team">
-      <%= link_to t(".new"), new_admin_team_path, class: "btn btn-primary" %>
-    </div>
+  <div class="form-group search-country">
+    <%= f.select :country_id_eq, options_for_select(@countries, @search.country_id_eq),
+      {include_blank: t(".select_country")}, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.button class: "btn btn-primary no-radius" do %>
+      <span class="glyphicon glyphicon-search"></span>
+      <span><%= t ".search" %></span>
+    <% end %>
+  </div>
+<% end %>
+<div id="count-teams">
+  <%= t ".total_teams" %>: <%= @count_teams %>
 </div>
-<div class="clearfix"></div>
+<%= paginate @teams %>
+<table class="table table-striped table-bordered table-manager-teams not-overflow">
+  <thead>
+    <th class="header-index center">#</th>
+    <th class="header-logo"><%= t ".logo" %></th>
+    <th class="header-name"><%= t ".name" %></th>
+    <th class="header-flag"><%= t ".flag" %></th>
+    <th class="header-country"><%= t ".country" %></th>
+    <th class="header-coach"><%= t ".coach" %></th>
+    <th class="header-players"><%= t ".players" %></th>
+    <th class="header-action"><%= t ".action" %></th>
+  </thead>
+  <tbody>
+    <% @teams.each_with_index do |team, index| %>
+      <tr>
+        <td class="center"><%= index + 1 %></td>
+        <td class="center"><%= image_tag team.logo.small.url %></td>
+        <td><%= team.name %></td>
+        <td class="center"></td>
+        <td><%= team.country_name %></td>
+        <td><%= team.coach %></td>
+        <td class="center"><%= team.players.size %></td>
+        <td class="center">
+          <%= link_to "#", title: t(".add_players"), data: {toggle: "tooltip"} do %>
+            <span class="glyphicon glyphicon-user"></span>
+          <% end %>
+          <%= link_to edit_admin_team_path(team), title: t(".edit_team") do%>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+          <%= link_to admin_team_path(team), method: :delete, title: t(".delete_team"),
+            data: {confirm: t(".confirm_delete", team: team.name)} do%>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @teams %>

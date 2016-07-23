@@ -1,5 +1,9 @@
 <%= form_for [:admin, @player], html: {class: "form-horizontal"}  do |f| %>
-  <%= render "shared/error_messages", object: @player %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-5">
+      <%= render "shared/error_messages", object: @player %>
+    </div>
+  </div>
   <div class="form-group">
     <%= f.label :name, class: "control-label col-sm-2" %>
     <div class="col-sm-5">
@@ -51,7 +55,7 @@
   </div>
   <div class="form-group">
     <%= f.label :introduction, class: "control-label col-sm-2" %>
-    <div class="col-sm-5">
+    <div class="col-sm-8">
       <%= f.text_area :introduction, class: "form-control",
         placeholder: :introduction %>
     </div>

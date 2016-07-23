@@ -7,13 +7,17 @@ class Team < ActiveRecord::Base
   has_many :season_teams
   mount_uploader :logo, LogoTeamUploader
 
-  validates :name, presence: true, uniqueness: true, length: {maximum: 200}
-  validates :introduction, length: {maximum: 10000}
-  validates :country, presence: true
+  validates :name, :full_name, presence: true, uniqueness: {case_sensitive: false},
+    length: {maximum: 100}
+  validates :short_name, uniqueness: {case_sensitive: false}
+  validates :introduction, length: {maximum: 1000}
+  validates :country, :logo, presence: true
+  validate :image_size
 
   scope :in_country, ->(country_id){where country_id: country_id}
 
   delegate :name, to: :country, prefix: true
+  after_destroy :remove_players
 
   class << self
     def add_attributes_season
@@ -85,4 +89,17 @@ class Team < ActiveRecord::Base
     end
   end
 
+  private
+  def image_size
+    if logo.size > Settings.image.max_capacity.megabytes
+      errors.add :logo,
+        I18n.t("error_capacity_image", maximum: Settings.image.max_capacity)
+    end
+  end
+
+  def remove_players
+    if self.players.any?
+      self.players.update_all team_id: nil
+    end
+  end
 end
