@@ -1,6 +1,12 @@
 class Admin::PlayersController < ApplicationController
-  before_action :load_countries, :load_positions, only: [:new , :edit]
+  before_action :load_countries, only: [:index, :new, :edit]
+  before_action :load_positions, only: [:new, :edit]
   load_and_authorize_resource
+
+  def index
+    @search = Player.includes(:team, :country).search params[:q]
+    @players = @search.result.page(params[:page]).per Settings.players.per_page
+  end
 
   def new
   end

@@ -33,7 +33,6 @@ gem "delayed_job_active_record"
 gem "daemons"
 gem "public_activity"
 gem "ckeditor"
-gem "kaminari-bootstrap"
 gem "figaro"
 
 group :development, :test do

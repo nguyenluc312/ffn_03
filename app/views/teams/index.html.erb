@@ -1,11 +1,5 @@
-<h1><%= t ".teams_manager" %></h1>
-<div>
-  <%= link_to new_admin_team_path, class: "btn btn-primary no-radius" do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    <span><%= t ".create_team" %></span>
-  <% end %>
-</div>
-<%= search_form_for [:admin, @search], class: "form-inline" do |f| %>
+<h1><%= t ".teams" %></h1>
+<%= search_form_for @search, class: "form-inline" do |f| %>
   <div class="form-group search-name">
     <%= f.text_field :name_or_full_name_or_nickname_or_short_name_cont,
       class: "form-control", placeholder: t(".search_by_name") %>
@@ -23,46 +17,29 @@
 <% end %>
 <% if @teams.any? %>
   <%= paginate @teams %>
-  <table class="table table-striped table-bordered table-manager-teams not-overflow">
+  <table class="table table-striped table-bordered table-teams not-overflow">
     <thead>
-      <th class="header-index center">#</th>
       <th class="header-logo"><%= t ".logo" %></th>
       <th class="header-name"><%= t ".name" %></th>
       <th class="header-flag"><%= t ".flag" %></th>
       <th class="header-country"><%= t ".country" %></th>
       <th class="header-coach"><%= t ".coach" %></th>
       <th class="header-players"><%= t ".players" %></th>
-      <th class="header-action"><%= t ".action" %></th>
     </thead>
     <tbody>
       <% @teams.each_with_index do |team, index| %>
         <tr>
-          <td class="center">
-            <%= Settings.teams.per_page * (@teams.current_page - 1) + index + 1 %>
-          </td>
           <td class="center"><%= image_tag team.logo.small.url %></td>
-          <td><%= team.name %></td>
+          <td><%= link_to team.name, team %></td>
           <td class="center"></td>
           <td><%= team.country_name %></td>
           <td><%= team.coach %></td>
           <td class="center"><%= team.players.size %></td>
-          <td class="center">
-            <%= link_to "#", title: t(".add_players"), data: {toggle: "tooltip"} do %>
-              <span class="glyphicon glyphicon-user"></span>
-            <% end %>
-            <%= link_to edit_admin_team_path(team), title: t(".edit_team") do%>
-              <span class="glyphicon glyphicon-edit"></span>
-            <% end %>
-            <%= link_to admin_team_path(team), method: :delete, title: t(".delete_team"),
-              data: {confirm: t(".confirm_delete", team: team.name)} do%>
-              <span class="glyphicon glyphicon-trash"></span>
-            <% end %>
-          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
   <%= paginate @teams %>
 <% else %>
-  <div class="no-result"><%= t ".no_team" %><div>
+  <div class="no-result"><%= t ".no_team" %></div>
 <% end %>

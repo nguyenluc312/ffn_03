@@ -9,6 +9,13 @@ body {
   text-align: center;
 }
 
+.no-radius{
+  border-radius: 0px;
+}
+.form-inline{
+  text-align: right;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -1125,13 +1132,85 @@ table.table.table-bordered.text-center {
     margin-right: 10px;
   }
 }
+
+.table-teams{
+  tbody tr td{
+    vertical-align: middle;
+  }
+  .header-logo{
+    width: 8%;
+  }
+  .header-flag{
+    width: 10%;
+  }
+  .header-country{
+    width: 20%;
+  }
+  .header-coach{
+    width: 25%;
+  }
+  .header-players{
+    width: 5%;
+  }
+}
 #count-teams{
   font-weight: bold;
   margin-top: 20px;
 }
-.center{
-  text-align: center;
+
+#table-players{
+  tbody tr td{
+    vertical-align: middle;
+  }
+  .avatar{
+    width: 7%;
+  }
+  .country-flag{
+    width: 10%;
+  }
+  .country-name{
+    width: 20%;
+  }
+  .team-logo{
+    width: 7%;
+  }
+  .team-name{
+    width: 20%;
+  }
+  .position{
+    width: 10%;
+  }
 }
-.no-radius{
-  border-radius: 0px;
+
+#table-manager-players{
+  tbody tr td{
+    vertical-align: middle;
+  }
+  .index{
+    width: 5%;
+  }
+  .avatar{
+    width: 7%;
+  }
+  .country-flag{
+    width: 10%;
+  }
+  .country-name{
+    width: 15%;
+  }
+  .team-logo{
+    width: 7%;
+  }
+  .team-name{
+    width: 15%;
+  }
+  .position{
+    width: 10%;
+  }
+  .action{
+    width: 10%;
+  }
+  a{
+    margin-right: 10px;
+  }
 }

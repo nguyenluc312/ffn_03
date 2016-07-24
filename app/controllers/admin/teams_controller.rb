@@ -5,7 +5,6 @@ class Admin::TeamsController < ApplicationController
   def index
     @search = Team.includes(:country, :players).order(:name).search params[:q]
     @teams = @search.result.page(params[:page]).per Settings.teams.per_page
-    @count_teams = @search.result.size
   end
 
   def new
