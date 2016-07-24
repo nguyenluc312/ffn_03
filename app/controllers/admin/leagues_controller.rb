@@ -1,4 +1,4 @@
-class Admin::LeaguesController < ApplicationController
+class Admin::LeaguesController < Admin::BaseController
   load_and_authorize_resource
 
   def index

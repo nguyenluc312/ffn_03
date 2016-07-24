@@ -1,4 +1,4 @@
-class Admin::NewsTypesController < ApplicationController
+class Admin::NewsTypesController < Admin::BaseController
   load_and_authorize_resource
 
   def index

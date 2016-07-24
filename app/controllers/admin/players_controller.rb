@@ -1,4 +1,4 @@
-class Admin::PlayersController < ApplicationController
+class Admin::PlayersController < Admin::BaseController
   before_action :load_countries, only: [:index, :new, :edit]
   before_action :load_positions, only: [:new, :edit]
   load_and_authorize_resource

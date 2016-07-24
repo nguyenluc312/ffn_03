@@ -6,6 +6,11 @@ class Ability
     case
     when user.admin?
       can :manage, :all
+      cannot :destroy, User do |user|
+        user.admin? || user.moderate?
+      end
+    when user.moderate?
+      can :manage, News
     when user.user?
       can :read, :all
       can :create, Comment
@@ -16,3 +21,4 @@ class Ability
     end
   end
 end
+

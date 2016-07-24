@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:danger] = exception.message
-    redirect_to root_url
+    if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+      redirect_to :back
+    else
+      redirect_to root_url
+    end
   end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|

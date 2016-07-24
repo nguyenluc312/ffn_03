@@ -1,6 +1,6 @@
 admin:
-  size: "70x70"
-  url: "assets/images/avatar.jpg"
+  size: "50x50"
+  url: "default_avatar.jpg"
 news:
   per_page: 2
 image:
@@ -20,3 +20,5 @@ number_of_year: 10
 match:
   ball_size: "70x70"
   ball_img: "league-icon.png"
+users:
+  per_page: 5

@@ -1,4 +1,4 @@
-class Admin::TeamsController < ApplicationController
+class Admin::TeamsController < Admin::BaseController
   before_action :load_countries, only: [:new, :edit, :index]
   load_and_authorize_resource
 

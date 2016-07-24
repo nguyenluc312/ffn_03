@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  enum role: [:user, :admin]
+  enum role: [:user, :admin, :moderate]
 
   has_many :news
   has_many :comments

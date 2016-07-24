@@ -1,32 +1,79 @@
-<h1><%= t "views.admin.user.index.list_all_users" %></h1>
-<table class="table table-hover">
-  <tr>
-    <th><%= t "views.admin.user.index.stt" %></th>
-    <th><%= t "views.admin.user.index.avatar" %></th>
-    <th><%= t "views.admin.user.index.name" %></th>
-    <th><%= t "views.admin.user.index.email" %></th>
-  </tr>
-  <% @users.each_with_index do |user, index| %>
-    <tr>
-      <td><%= index + 1 %></td>
-      <td>
-        <% if user.avatar.present? %>
-          <%= link_to image_tag(user.avatar, size: Settings.admin.size),
-            admin_users_path %>
-        <% else %>
-          <%= link_to image_tag(Settings.admin.url,
-            size: Settings.admin.size), admin_users_path %>
+<div class="show-all-users">
+  <div class="heading">
+    <h1 class="center"><%= t ".all_users" %></h1>
+  </div>
+  <hr>
+  <div class="filter form-inline">
+    <%= search_form_for [:admin, @search] do |f| %>
+      <div class="form-group content">
+        <%= f.text_field :name_or_email_cont, class: "form-control",
+          placeholder: t(".content") %>
+      </div>
+
+      <div class="form-group role">
+        <%= f.select :role_eq, User.roles, {include_blank: t(".role")},
+          class: "form-control"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.button class: "btn btn-primary no-radius" do %>
+          <span class="glyphicon glyphicon-search"></span>
+          <span><%= t ".search" %></span>
         <% end %>
-      </td>
-      <td> <%= user.name %> </td>
-      <td> <%= user.email %> </td>
-      <td>
-        <%= link_to t("views.admin.user.index.deletebutton"),
-          admin_user_path(user), method: :delete,
-          data: {confirm: t("views.admin.user.index.deleteconfirm")},
-          class: "btn btn-danger" %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-<%= paginate @users %>
+      </div>
+    <% end %>
+  </div>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <th class="index center"><%= t ".index" %></th>
+      <th class="avatar center"><%= t ".avatar" %></th>
+      <th class="name"><%= t ".user_name" %></th>
+      <th class="email"><%= t "user_email" %></th>
+      <th class="role"><%= t ".role" %></th>
+      <th class="assign center"><%= t ".moderate" %></th>
+      <th class="action center"><%= t ".action" %></th>
+    </thead>
+    <tbody>
+      <% @users.each_with_index do |user, index| %>
+        <tr>
+          <td class="center">
+            <%= Settings.users.per_page * (@users.current_page - 1) + index + 1 %>
+          </td>
+          <td class="center">
+            <% if user.avatar.present? %>
+              <%= link_to image_tag(user.avatar.small.url), "#" %>
+            <% else %>
+              <%= link_to image_tag(Settings.admin.url, size: Settings.admin.size),
+                "#" %>
+            <% end %>
+          </td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td class="center">
+            <% if user.user? %>
+              <%= form_for [:admin, user] do |f| %>
+                <%= f.hidden_field :user_id, value: user.id %>
+                <%= f.submit t(".assign"), class: "btn btn-primary" %>
+              <% end %>
+            <% elsif user.moderate? %>
+              <%= form_for [:admin, user] do |f| %>
+                <%= f.hidden_field :user_id, value: user.id %>
+                <%= f.submit t(".reject"), class: "btn btn-default" %>
+              <% end %>
+            <% else %>
+              -
+            <% end %>
+          </td>
+          <td class="center">
+            <% unless user.admin? || user.moderate? %>
+              <%= link_to "", admin_user_path(user), method: :delete,
+                data: {confirm: t(".confirm")}, class: "glyphicon glyphicon-trash" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @users %>
+</div>

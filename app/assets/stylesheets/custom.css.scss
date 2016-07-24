@@ -1214,3 +1214,44 @@ table.table.table-bordered.text-center {
     margin-right: 10px;
   }
 }
+
+.table{
+  tbody tr td{
+    vertical-align: middle;
+  }
+}
+
+.show-all-users {
+  .heading {
+    margin-bottom: 5%;
+  }
+
+  .filter {
+    margin: 1%;
+  }
+  .table {
+    thead {
+      .index {
+        width: 6%;
+      }
+      .avatar {
+        width: 13%;
+      }
+      .name {
+        width: 22%;
+      }
+      .email {
+        width: 32%
+      }
+      .mode {
+        width: 10%
+      }
+      .role {
+        width: 11%;
+      }
+      .action {
+        width: 6%;
+      }
+    }
+  }
+}
