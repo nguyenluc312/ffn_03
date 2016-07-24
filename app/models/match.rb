@@ -20,7 +20,7 @@ class Match < ActiveRecord::Base
     where(team2_id: team_id).where(league_season_id: league_season_id)
   end
 
-  after_update :update_user_coin_when_match_end
+  after_update :update_user_coin_when_match_end, :send_mail_bet_result
 
   def label_for_status
     case
@@ -87,6 +87,12 @@ class Match < ActiveRecord::Base
         user_bet.user.update_attribute :coin,
           user_bet.user.coin + user_bet.coin * self.send(self.result + "_odds")
       end
+    end
+  end
+
+  def send_mail_bet_result
+    if self.finished?
+      SendMailBetResultWorker.perform_async self.id
     end
   end
 end

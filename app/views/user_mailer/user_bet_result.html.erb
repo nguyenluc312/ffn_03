@@ -1,0 +1,8 @@
+<h1><%= t "mail.users.bet_result_heading" %></h1>
+<% if @user_bet.is_correct? %>
+  <%= t "mail.users.bet_result_won", team1: @user_bet.match.team1.name,
+    team2: @user_bet.match.team2.name, coin: @user_bet.user.coin %>
+<% else %>
+  <%= t "mail.users.bet_result_lost", team1: @user_bet.match.team1.name,
+    team2: @user_bet.match.team2.name %>
+<% end %>

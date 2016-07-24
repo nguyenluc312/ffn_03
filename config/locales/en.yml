@@ -371,3 +371,8 @@ en:
   mail:
     heading_email_when_user_make_a_bet: "Bet match %{team1} vs %{team2}"
     content_email_when_user_make_a_bet: "%{user_name} chosen %{chosen} with bet coin is %{coin}"
+    users:
+      bet_result_heading: "Bet result"
+      bet_result_won: "You won the bet of match %{team1} vs %{team2}. Your coin is %{coin}"
+      bet_result_lost: "You lose the bet of match %{team2} vs %{team2}"
+      subject: "Bet result"
