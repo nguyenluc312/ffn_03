@@ -247,6 +247,16 @@ en:
         edit_match: "Update Match"
       update:
         success: "Successfully"
+    players:
+      index:
+        create_player: "Create new player"
+        search_name: "Search by name..."
+        select_position: "All positions"
+        select_country: "All countries"
+        search: "Search"
+        edit_player: "Edit this player"
+        delete_player: "Delete this player"
+        confirm_delete: "Are you sure to delete player %{player}"
   comments:
     comment:
       delete: "Delete"
@@ -330,6 +340,23 @@ en:
   leagues:
     index:
       league_header: "Leagues"
+  teams:
+    index:
+      search_by_name: "Search by name, full name, nickname or short name..."
+      select_country: "All countries"
+      search: "Search"
+      logo: "Logo"
+      name: "Name"
+      flag: "Flag"
+      country: "Country"
+      coach: "Coach"
+      players: "Players"
+  players:
+    index:
+      search: "Search"
+      search_name: "Search by name..."
+      select_country: "All countries"
+      select_position: "All position"
   team_less_than_four: "must larger than 4"
   team_not_same: "can't be same"
   larger_now: "invalid/must larger than now"

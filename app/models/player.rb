@@ -10,6 +10,7 @@ class Player < ActiveRecord::Base
   validate :image_size
   delegate :name, to: :country, prefix: true
   delegate :name, to: :team, prefix: true, allow_nil: true
+  delegate :logo, to: :team, prefix: true
 
   private
   def image_size
