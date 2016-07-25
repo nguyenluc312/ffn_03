@@ -1,0 +1,41 @@
+<h1><%= @user.name %></h1>
+<div id="user-profile">
+  <div id="user-info">
+    <% if @user.avatar %>
+      <%= image_tag Settings.users.avt_default, size: Settings.users.avatar_size %>
+    <% else %>
+      <%= image_tag @user.avatar.medium.url %>
+    <% end %>
+    <table class="table-info-template">
+      <% [:name, :email, :coin].each do |attribute| %>
+        <tr>
+          <td class="attribute"><%= t "." + attribute.to_s %></td>
+          <td class="value" %>
+            <%= @user.send(attribute) || "-" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to t(".update_profile"), edit_user_registration_path,
+      class: "btn btn-primary" %>
+  </div>
+  <div id="user-content">
+    <h2 class="center"><%= t ".activities" %></h2>
+    <div class="activities">
+      <% @activities.each do |activity| %>
+        <div class="activity">
+          <%= image_tag @user.avatar.small.url, class: "pull-left" %>
+          <div class="content">
+            <strong><%= activity.owner.name %></strong>
+            <%= show_activity activity %>
+            <p class="time-ago">
+              <%= time_ago_in_words activity.created_at %>
+              <%= t ".time_ago" %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @activities %>
+    </div>
+  </div>
+</div>

@@ -21,4 +21,8 @@ match:
   ball_size: "70x70"
   ball_img: "league-icon.png"
 users:
+  avatar_size: "200x200"
+  avt_default: "default_avatar.jpg"
+activity:
+  logo_team: "30x30"
   per_page: 5
