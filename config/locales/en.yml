@@ -257,6 +257,8 @@ en:
         edit_player: "Edit this player"
         delete_player: "Delete this player"
         confirm_delete: "Are you sure to delete player %{player}"
+      destroy:
+        success: "Deleted successfully"
   comments:
     comment:
       delete: "Delete"

@@ -34,6 +34,12 @@ class Admin::PlayersController < ApplicationController
     end
   end
 
+  def destroy
+    @player.destroy
+    flash[:success] = t "admin.players.destroy.success"
+    redirect_to admin_players_path
+  end
+
   private
   def player_params
     params.require(:player).permit :name, :avatar, :date_of_birth, :country_id,
