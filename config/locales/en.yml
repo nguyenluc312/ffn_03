@@ -388,3 +388,14 @@ en:
       bet_result_won: "You won the bet of match %{team1} vs %{team2}. Your coin is %{coin}"
       bet_result_lost: "You lose the bet of match %{team2} vs %{team2}"
       subject: "Bet result"
+  users:
+    show:
+      time_ago: "ago"
+  activity:
+    user_bet: "bet %{chosen} of match %{team1} - %{team2} with %{coin} coin"
+    comment: "commented on"
+    coin:   " with %{coin} coin"
+    bet: "bet %{chosen} of "
+    vs: " vs "
+    post: "post"
+    match: "match"

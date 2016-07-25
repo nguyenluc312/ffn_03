@@ -10,6 +10,10 @@ class UserBet < ActiveRecord::Base
 
   after_create :update_user_coin, :send_email_to_admin
 
+  include PublicActivity::Model
+  tracked owner: :user
+  tracked recipient: :match
+
   def update_user_coin
     self.user.update_attribute :coin, self.user.coin - self.coin
   end

@@ -33,7 +33,7 @@ class LogoTeamUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :medium do
-    process resize_to_fill: [200, 200]
+    process resize_to_fill: [100, 100]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -42,7 +42,7 @@ class LogoTeamUploader < CarrierWave::Uploader::Base
   #   %w(jpg jpeg gif png)
   # end
   version :logo_title do
-    process resize_to_fit: [100, 100]
+    process resize_to_fill: [100, 100]
   end
 
   version :small do
