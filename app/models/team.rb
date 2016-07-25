@@ -3,8 +3,8 @@ class Team < ActiveRecord::Base
     :draw_matches, :total_matches, :rank
   belongs_to :country
   has_many :matches
-  has_many :players
   has_many :season_teams
+  has_many :players
   mount_uploader :logo, LogoTeamUploader
 
   validates :name, :full_name, presence: true, uniqueness: {case_sensitive: false},

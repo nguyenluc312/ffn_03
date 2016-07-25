@@ -47,7 +47,8 @@
           <td><%= team.coach %></td>
           <td class="center"><%= team.players.size %></td>
           <td class="center">
-            <%= link_to "#", title: t(".add_players"), data: {toggle: "tooltip"} do %>
+            <%= link_to admin_team_assign_players_url(team_id: team.id),
+              title: t(".add_players") do %>
               <span class="glyphicon glyphicon-user"></span>
             <% end %>
             <%= link_to edit_admin_team_path(team), title: t(".edit_team") do%>

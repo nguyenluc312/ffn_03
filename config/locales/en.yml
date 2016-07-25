@@ -269,6 +269,29 @@ en:
         confirm_delete: "Are you sure to delete player %{player}"
       destroy:
         success: "Deleted successfully"
+    assign_players:
+      show:
+        search_name: "Search by name..."
+        select_position: "All positions"
+        select_country: "All countries"
+        edit_player: "Edit player in team"
+        remove_player: "Remove this player form team"
+        confirm_remove_player: "Are you sure to remove player %{player}?"
+        add_player: "Add this player to team"
+      new_form:
+        squad_number: "Squad number"
+        add_player: "Add player"
+        join_date: "Join date"
+        player_name: "Player"
+        team_name: "Team"
+        add_this_player: "Add this player to team"
+      edit_form:
+        squad_number: "Squad number"
+        edit_player: "Edit player"
+        join_date: "Join date"
+        player_name: "Player"
+        team_name: "Team"
+        edit_this_player: "Edit this player in team"
   comments:
     comment:
       delete: "Delete"

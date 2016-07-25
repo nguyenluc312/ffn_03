@@ -1,0 +1,5 @@
+<% if @player.errors.any? %>
+  $('#edit-player-<%= @player.id %>-errors').html('<%= j render "shared/error_messages", object: @player %>');
+<% else %>
+  location.reload();
+<% end %>

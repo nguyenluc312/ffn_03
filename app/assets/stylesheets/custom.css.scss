@@ -12,7 +12,17 @@ body {
 .no-radius{
   border-radius: 0px;
 }
+.form-inline{
+  margin-bottom: 20px;
+  text-align: right;
+}
 
+.half-width{
+  width: 50%;
+}
+.modal-body{
+  text-align: left;
+}
 #logo {
   float: left;
   margin-right: 10px;
@@ -1287,5 +1297,68 @@ table.table.table-bordered.text-center {
         }
       }
     }
+  }
+}
+#current-team-squad{
+  width: 100%;
+  .header-squad-number{
+    width: 5%;
+  }
+  .squad-number{
+    font-weight: bold;
+  }
+  .header-avatar{
+    width: 8%;
+  }
+  .header-age{
+    width: 5%;
+  }
+  .header-flag{
+    width: 10%;
+  }
+  .header-country{
+    width: 20%;
+  }
+  .header-position{
+    width: 10%;
+  }
+  .header-joined-date{
+    width: 10%;
+  }
+  .action{
+    width: 10%;
+  }
+  a{
+    margin-right: 10px;
+  }
+}
+
+#transfer-team-players{
+  .header-index{
+    width: 5%;
+  }
+  .header-avatar{
+    width: 8%;
+  }
+  .header-age{
+    width: 5%;
+  }
+  .header-height{
+    width: 8%;
+  }
+  .header-weight{
+    width: 8%;
+  }
+  .header-flag{
+    width: 10%;
+  }
+  .header-country{
+    width: 20%;
+  }
+  .header-position{
+    width: 10%;
+  }
+  .header-action{
+    width: 5%;
   }
 }
