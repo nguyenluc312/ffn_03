@@ -1,4 +1,4 @@
-class Admin::NewsController < ApplicationController
+class Admin::NewsController < Admin::BaseController
   before_action :load_news_types, only: [:new, :edit, :index]
 
   load_and_authorize_resource

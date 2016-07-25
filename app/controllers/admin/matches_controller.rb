@@ -1,4 +1,4 @@
-class Admin::MatchesController < ApplicationController
+class Admin::MatchesController < Admin::BaseController
   load_and_authorize_resource :league_season
   load_and_authorize_resource through: :league_season, only: [:new, :create]
   load_and_authorize_resource except: [:new, :create]

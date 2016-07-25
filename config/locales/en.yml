@@ -1,4 +1,8 @@
 en:
+  unauthorized:
+    default: "You are not authorized to access this page"
+    manage:
+      all: "Not authorized to %{action} this %{subject}."
   rank:
     total_matches: "TM"
     win_matches: "WM"
@@ -33,20 +37,26 @@ en:
       profile: "Profile"
       account_setting: "Setting"
       logout: "Logout"
-    admin:
-      user:
-        index:
-          list_all_users: "All Users"
-          stt: "STT"
-          avatar: "Avatar"
-          name: "Name"
-          email: "Email"
-          deletebutton: "Delete"
-          deleteconfirm: "Are you sure"
-      flash:
-        success: "Deleted Successfully"
-        failed: "Delete failed"
   admin:
+    verify_admin: "You are not authorized to access this page"
+    users:
+      index:
+        all_users: "Manage Users"
+        index: "#"
+        avatar: "Avatar"
+        user_name: "Name"
+        user_email: "Email"
+        role: "Role"
+        action: "Action"
+        confirm: "Are you sure?"
+        content: "Enter name or email.."
+        search: "Search"
+        role: "Role"
+        assign: "Assign"
+        reject: "Reject"
+      destroy:
+        success: "Deleted Successfully"
+        failed: "Deleted Fail"
     news:
       index:
         content: "News manager"

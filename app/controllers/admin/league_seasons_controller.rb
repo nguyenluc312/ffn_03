@@ -1,4 +1,4 @@
-class Admin::LeagueSeasonsController < ApplicationController
+class Admin::LeagueSeasonsController < Admin::BaseController
   before_action :load_league, except: [:show, :destroy]
   before_action :load_years, :load_teams, except: [:index, :destroy, :show]
 

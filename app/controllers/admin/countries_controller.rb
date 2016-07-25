@@ -1,4 +1,4 @@
-class Admin::CountriesController < ApplicationController
+class Admin::CountriesController < Admin::BaseController
   load_and_authorize_resource
 
   def new

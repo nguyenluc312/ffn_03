@@ -1,4 +1,4 @@
-class Admin::MatchEventsController < ApplicationController
+class Admin::MatchEventsController < Admin::BaseController
   load_and_authorize_resource :match
   load_and_authorize_resource :match_event, through: :match
 

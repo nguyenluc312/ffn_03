@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :match_events, only: :create
     end
     resources :players, except: :show
+    resources :users, only: [:index, :update, :destroy]
   end
 
   resources :news, only: :show do
