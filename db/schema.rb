@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725071753) do
+ActiveRecord::Schema.define(version: 20160725083217) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -153,9 +153,10 @@ ActiveRecord::Schema.define(version: 20160725071753) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.date     "date_of_birth"
-    t.integer  "jersey_number"
     t.float    "height"
     t.float    "weight"
+    t.integer  "squad_number"
+    t.date     "joined_at"
   end
 
   add_index "players", ["country_id"], name: "index_players_on_country_id"
