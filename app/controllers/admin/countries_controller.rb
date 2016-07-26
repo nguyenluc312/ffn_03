@@ -1,23 +1,25 @@
 class Admin::CountriesController < Admin::BaseController
   load_and_authorize_resource
 
+  def index
+    @search = Country.order(:name).search params[:q]
+    @countries = @search.result.page(params[:page]) .per Settings.country.per_page
+  end
+
   def new
-    @countries = Country.page(params[:page]).per Settings.per_page
-    @country = Country.new
   end
 
   def create
     if @country.save
       flash[:success] = t ".success"
+        redirect_to admin_countries_url
     else
-      flash[:danger] = t ".failed"
+      render :new
     end
-    redirect_to new_admin_country_url
   end
 
   private
-
   def country_params
-    params.require(:country).permit :code
+    params.require(:country).permit :code, :flag
   end
 end

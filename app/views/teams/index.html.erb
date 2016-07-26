@@ -21,7 +21,7 @@
     <thead>
       <th class="header-logo"><%= t ".logo" %></th>
       <th class="header-name"><%= t ".name" %></th>
-      <th class="header-flag"><%= t ".flag" %></th>
+      <th class="header-flag center"><%= t ".flag" %></th>
       <th class="header-country"><%= t ".country" %></th>
       <th class="header-coach"><%= t ".coach" %></th>
       <th class="header-players"><%= t ".players" %></th>
@@ -31,7 +31,9 @@
         <tr>
           <td class="center"><%= image_tag team.logo.small.url %></td>
           <td><%= link_to team.name, team %></td>
-          <td class="center"></td>
+          <td class="center">
+            <%= image_tag team.country.flag.url, size: Settings.country.size_small %>
+          </td>
           <td><%= team.country_name %></td>
           <td><%= team.coach %></td>
           <td class="center"><%= team.players.size %></td>

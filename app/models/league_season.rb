@@ -10,11 +10,6 @@ class LeagueSeason < ActiveRecord::Base
   accepts_nested_attributes_for :season_teams, allow_destroy: true
   delegate :name, to: :league
 
-  # def name
-  #   I18n.t "league_seasons.name", league_name: self.league.name,
-  #     start_year: self.year, end_year: self.year + 1
-  # end
-
   def get_schedule
     self.matches.includes(:team1, :team2).group_by{|match| match.start_time.to_date}
   end

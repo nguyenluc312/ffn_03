@@ -21,7 +21,9 @@
             <td class="center squad-number"><%= player.squad_number %></td>
             <td title="<%= player.name %>" data-toggle="tooltip"><%= player.name %></td>
             <td class="center"><%= player.age %></td>
-            <td class="center"></td>
+            <td class="center">
+              <%= image_tag player.country.flag.url, size: Settings.country.size_small %>
+            </td>
             <td><%= player.country_name %></td>
             <td><%= player.position %></td>
             <td class="center"><%= player.joined_at %></td>
@@ -89,7 +91,9 @@
             <td class="center"><%= player.age %></td>
             <td><%= player.height || "-" %></th>
             <td><%= player.weight || "-" %></th>
-            <td class="center"></td>
+            <td class="center">
+              <%= image_tag player.country.flag.url, size: Settings.country.size_small %>
+            </td>
             <td title="<%= player.country_name %>"><%= player.country_name %></td>
             <td><%= player.position %></td>
             <td class="center">

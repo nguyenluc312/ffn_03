@@ -26,3 +26,7 @@ users:
 activity:
   logo_team: "30x30"
   per_page: 5
+country:
+  per_page: 4
+  size_tiny: "40x20"
+  size_small: "60x30"

@@ -1363,3 +1363,45 @@ table.table.table-bordered.text-center {
     width: 5%;
   }
 }
+
+.new-country {
+  margin: 0px -2%;
+  padding-left: 22%;
+  margin-top: 2%;
+}
+
+.show-all-countries {
+  width: 70%;
+  margin: 0 auto;
+
+  .create-country {
+    margin-bottom: 1%;
+  }
+
+  .table {
+    .index {
+      width: 8%;
+    }
+
+    .flag {
+      width: 15%;
+    }
+
+    .name {
+      width: 30%;
+      text-align: left;
+    }
+
+    .league {
+      width: 14%;
+    }
+
+    .league_season {
+      width: 19%;
+    }
+
+    .player {
+      width: 14%
+    }
+  }
+}
