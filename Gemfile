@@ -34,6 +34,7 @@ gem "daemons"
 gem "public_activity"
 gem "ckeditor"
 gem "figaro"
+gem "social-share-button"
 
 group :development, :test do
   gem "byebug"
