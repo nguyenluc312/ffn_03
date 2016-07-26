@@ -3,17 +3,20 @@ admin:
   url: "default_avatar.jpg"
 news:
   per_page: 2
+  preview_represent_image_size: "500x300"
 image:
   max_capacity: 5 #MB
 teams:
   per_page: 1
 players:
   per_page: 3
+  preview_avatar_size: "200x200"
 per_page: 4
 min_player_of_team: 2
 team:
   logo_size_title: "70x70"
   logo_size_left: "50x50"
+  preview_logo_size: "200x200"
 league_season:
   min_team_of_league: 4
 number_of_year: 10
@@ -24,6 +27,7 @@ match:
 users:
   avatar_size: "200x200"
   avt_default: "default_avatar.jpg"
+  preview_avatar_size: "200x200"
 activity:
   logo_team: "30x30"
   per_page: 5

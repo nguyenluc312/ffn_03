@@ -24,6 +24,18 @@ body {
 .modal-body{
   text-align: left;
 }
+
+.hidden{
+  display: none;
+}
+
+#image-view{
+  border: 1px solid #e8e8e8;
+  margin-bottom: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
