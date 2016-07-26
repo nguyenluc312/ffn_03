@@ -16,23 +16,31 @@
         </tr>
       <% end %>
     </table>
-    <%= link_to t(".update_profile"), edit_user_registration_path,
-      class: "btn btn-primary" %>
+    <% if user_signed_in? %>
+      <%= link_to t(".update_profile"), edit_user_registration_path,
+        class: "btn btn-primary" if @user.is? current_user%>
+    <% end %>
   </div>
   <div id="user-content">
     <h2 class="center"><%= t ".activities" %></h2>
     <div class="activities">
-      <% @activities.each do |activity| %>
+      <% if @activities.any? %>
+        <% @activities.each do |activity| %>
         <div class="activity">
           <%= image_tag @user.avatar.small.url, class: "pull-left" %>
-          <div class="content">
-            <strong><%= activity.owner.name %></strong>
-            <%= show_activity activity %>
-            <p class="time-ago">
-              <%= time_ago_in_words activity.created_at %>
-              <%= t ".time_ago" %>
-            </p>
+            <div class="content">
+              <strong><%= activity.owner.name %></strong>
+              <%= show_activity activity %>
+              <p class="time-ago">
+                <%= time_ago_in_words activity.created_at %>
+                <%= t ".time_ago" %>
+              </p>
+            </div>
           </div>
+        <% end %>
+      <% else %>
+        <div class="activity">
+          <%= t ".no_activity" %>
         </div>
       <% end %>
       <%= paginate @activities %>

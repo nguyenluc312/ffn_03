@@ -352,6 +352,7 @@ en:
       coin: "Coin"
       make: "Make"
   user_bets:
+    max_coin: "larger than your coin, must less than %{coin}"
     create:
       success: "You make a bet success"
     index:
@@ -421,6 +422,8 @@ en:
   users:
     show:
       time_ago: "ago"
+      no_activity: "No activity"
+      activities: "Activities"
   activity:
     user_bet: "bet %{chosen} of match %{team1} - %{team2} with %{coin} coin"
     comment: "commented on"

@@ -51,6 +51,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is? user
+    self == user
+  end
+
   private
   def image_size
     if avatar.size > Settings.image.max_capacity.megabytes
