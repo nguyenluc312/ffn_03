@@ -1,13 +1,14 @@
 class Admin::LeaguesController < Admin::BaseController
   load_and_authorize_resource
 
+  before_action :load_countries, only: [:new, :create]
+
   def index
-    @leagues = League.order created_at: :desc
+    @leagues = League.order(created_at: :desc).includes(:country)
+      .group_by{|league| league.country}
   end
 
   def new
-    @countries = Country.all.map {|country| [country.name, country.id]}
-    @league = League.new
   end
 
   def create
@@ -33,7 +34,12 @@ class Admin::LeaguesController < Admin::BaseController
   end
 
   private
+
+  def load_countries
+    @countries = Country.pluck :name, :id
+  end
+
   def league_params
-    params.require(:league).permit :name, :country_id
+    params.require(:league).permit :name, :country_id, :founded_at, :introduction
   end
 end

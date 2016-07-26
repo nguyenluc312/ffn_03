@@ -1,8 +1,39 @@
-<div class="panel panel-heading">
-  <h1 class="center"><%= t ".league_manage" %></h1>
+<div class="show-all-leagues">
+  <div class="heading">
+    <h1 class="center"><%= t ".manage_leagues" %></h1>
+  </div>
+  <hr>
+  <div class="create-league pull-right">
+    <%= link_to t(".new_league"), new_admin_league_path, class: "btn btn-primary" %>
+  </div>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <th class="name"><%= t ".name" %></th>
+      <th class="founded_at center"><%= t ".founded_at" %></th>
+      <th class="league-season center"><%= t ".league_season" %></th>
+    </thead>
+    <tbody>
+      <% @leagues.each do |country, leagues| %>
+        <tr>
+          <td colspan="4" class="country center">
+            <%= image_tag country.flag.url, size: Settings.country.size_tiny %>
+            <%= country.name %>
+          </td>
+        </tr>
+        <% leagues.each do |league| %>
+          <tr class="league">
+            <td class="name">
+              <%= league.name %>
+            </td>
+            <td class="founded_at center">
+              <%= league.founded_at %>
+            </td>
+            <td class="league-season center">
+              <%= league.league_seasons.count %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-<div class="col-md-8 col-md-offset-2">
-  <%= render "leagues" %>
-  <%= link_to t(".new_league"), new_admin_league_path, class: "btn btn-primary" %>
-</div>
-<div class="clearfix"></div>

@@ -93,8 +93,10 @@ ActiveRecord::Schema.define(version: 20160726063632) do
   create_table "leagues", force: :cascade do |t|
     t.string   "name"
     t.integer  "country_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.date     "founded_at"
+    t.text     "introduction"
   end
 
   add_index "leagues", ["country_id"], name: "index_leagues_on_country_id"

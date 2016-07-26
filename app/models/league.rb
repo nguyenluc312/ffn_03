@@ -3,4 +3,5 @@ class League < ActiveRecord::Base
   has_many :league_seasons
 
   validates :name, presence: true, uniqueness: true
+  validates :founded_at, :country, presence: true
 end
