@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725083217) do
+ActiveRecord::Schema.define(version: 20160726063632) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -65,6 +65,22 @@ ActiveRecord::Schema.define(version: 20160725083217) do
     t.string   "flag"
   end
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
   create_table "league_seasons", force: :cascade do |t|
     t.integer  "year"
     t.integer  "league_id"
@@ -107,6 +123,7 @@ ActiveRecord::Schema.define(version: 20160725083217) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "status"
+    t.integer  "delayed_job_id"
   end
 
   add_index "matches", ["league_season_id"], name: "index_matches_on_league_season_id"

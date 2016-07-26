@@ -20,6 +20,7 @@ number_of_year: 10
 match:
   ball_size: "70x70"
   ball_img: "league-icon.png"
+  duration: 1
 users:
   avatar_size: "200x200"
   avt_default: "default_avatar.jpg"

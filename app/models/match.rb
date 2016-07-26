@@ -20,7 +20,7 @@ class Match < ActiveRecord::Base
     where(team2_id: team_id).where(league_season_id: league_season_id)
   end
 
-  after_update :update_user_coin_when_match_end, :send_mail_bet_result
+  after_save :start_match_job
 
   def label_for_status
     case
@@ -56,6 +56,19 @@ class Match < ActiveRecord::Base
     end
   end
 
+  def start
+    self.update_attributes status: :is_on
+    Delayed::Job.enqueue FinishMatchJob.new(self.id), 1, Settings.match.duration.minutes.from_now
+  end
+
+  def finish
+    unless self.finished?
+      self.update_attributes status: :finished
+      update_user_coin_when_match_end
+      send_mail_bet_result
+    end
+  end
+
   private
   def validate_team_not_same
     if self.team1 && self.team2 && self.team1_id == self.team2_id
@@ -77,6 +90,17 @@ class Match < ActiveRecord::Base
       elsif (self.finished? || self.is_on?) && self.start_time > Time.zone.now
         self.errors.add :match, I18n.t(".start_time_must_less_than_now",
           status: self.status)
+      end
+    end
+  end
+
+  def start_match_job
+    if self.valid? && self.not_started_yet?
+      if self.delayed_job_id
+        Delayed::Job.find(self.delayed_job_id).update_attributes run_at: self.start_time
+      else
+        job = Delayed::Job.enqueue StartMatchJob.new(self.id), 1, self.start_time
+        self.update_column :delayed_job_id, job.id
       end
     end
   end
