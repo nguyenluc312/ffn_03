@@ -1417,3 +1417,45 @@ table.table.table-bordered.text-center {
     }
   }
 }
+
+.new-league {
+  padding-left: 6%;
+  .text-area {
+    height: 123px;
+    width: 616px;
+  }
+}
+
+.show-all-leagues {
+  width: 60%;
+  margin: 0 auto;
+  .create-league {
+    margin-bottom: 1%;
+  }
+
+  .table {
+    thead {
+      .name {
+        width: 33%;
+      }
+      .founded_at {
+        width: 33%;
+      }
+      .league-season {
+        width: 33%;
+      }
+    }
+
+    tbody {
+      .country {
+        vertical-align: middle;
+      }
+
+      .league {
+        .name {
+          padding-left: 2%;
+        }
+      }
+    }
+  }
+}

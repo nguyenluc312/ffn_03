@@ -130,6 +130,7 @@ en:
     leagues:
       new:
         create: "Create New League"
+        select_country: "Select country"
       create:
         success: "Successfully"
       index:
