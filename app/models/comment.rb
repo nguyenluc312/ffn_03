@@ -5,6 +5,5 @@ class Comment < ActiveRecord::Base
   delegate :name, :avatar, to: :user, prefix: true
 
   include PublicActivity::Model
-  tracked owner: :user
-  tracked recipient: :news
+  tracked only: :create, owner: :user, recipient: :news
 end

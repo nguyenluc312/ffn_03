@@ -6,13 +6,12 @@ class UserBet < ActiveRecord::Base
 
   validates :chosen, presence: true
   validates :coin, presence: true
-  validate :match_out_of_bet
+  validate :match_out_of_bet, :max_coin_of_user_bet
 
   after_create :update_user_coin, :send_email_to_admin
 
   include PublicActivity::Model
-  tracked owner: :user
-  tracked recipient: :match
+  tracked only: :create, owner: :user, recipient: :match
 
   def update_user_coin
     self.user.update_attribute :coin, self.user.coin - self.coin
@@ -30,6 +29,12 @@ class UserBet < ActiveRecord::Base
   def match_out_of_bet
     if self.match.finished? || self.match.is_on?
       self.errors.add :match, I18n.t(".match_out_of_bet", status: self.match.status.to_s)
+    end
+  end
+
+  def max_coin_of_user_bet
+    if self.coin > self.user.coin
+      self.errors.add :coin, I18n.t("user_bets.max_coin", coin: self.user.coin)
     end
   end
 end
