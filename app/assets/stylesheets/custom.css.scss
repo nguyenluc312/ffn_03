@@ -277,10 +277,8 @@ body {
 }
 
 .remove_season_teams {
-  &:hover {
-    color: red;
-    text-decoration: none;
-  }
+  color: red;
+  text-decoration: none;
 }
 
 .current-league {
@@ -1454,6 +1452,71 @@ table.table.table-bordered.text-center {
       .league {
         .name {
           padding-left: 2%;
+        }
+      }
+    }
+  }
+}
+
+.league-season {
+  .form {
+    .alert {
+      width: 63%;
+    }
+    margin-left: 25%;
+    .year {
+      .form-control {
+        width: 400px;
+      }
+    }
+
+    .teams {
+      .add_fields {
+        margin-right: 2%;
+      }
+      .field {
+        margin-bottom: 1%;
+        margin-left: 12%;
+        .form-control {
+          width: 250px;
+          margin-left: 3%;
+        }
+      }
+    }
+
+    .submit {
+      padding-left: 14.7%;
+    }
+  }
+}
+
+.show-league-seasons {
+  width: 70%;
+  margin: 0 auto;
+  .search-form {
+    .season {
+      .form-control {
+        width: 100px;
+      }
+    }
+  }
+  .league-seasons {
+    .table {
+      thead {
+        .index {
+          width: 10%;
+        }
+        .name {
+          width: 25%;
+        }
+        .league {
+          width: 30%;
+        }
+        .country {
+          width: 20%;
+        }
+        .players {
+          width: 15%;
         }
       }
     }

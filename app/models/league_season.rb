@@ -4,11 +4,12 @@ class LeagueSeason < ActiveRecord::Base
   has_many :player_awards
   has_many :season_teams
 
-  validates :year, uniqueness: {scope: :league}
+  validates :year, presence: true, uniqueness: {scope: :league}
   validate :check_season_team
 
   accepts_nested_attributes_for :season_teams, allow_destroy: true
   delegate :name, to: :league
+  delegate :country, to: :league
 
   def get_schedule
     self.matches.includes(:team1, :team2).group_by{|match| match.start_time.to_date}

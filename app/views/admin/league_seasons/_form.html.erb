@@ -1,23 +1,19 @@
 <%=  form_for [:admin, @league, @league_season] do |f| %>
   <%= f.hidden_field :league_id, value: @league.id %>
-  <div class="col-md-12">
     <%= render "shared/error_messages", object: f.object %>
-  </div>
-  <div class="col-md-6">
-    <div class="pull-right form-inline">
+  <div class="year form-inline">
       <label><%= t ".season", league: @league.name %></label>
-      <%= f.select :year, @years, {},
-        {class: "form-control", style: "width: 200px"} %>
-    </div>
+      <%= f.select :year, @years, {include_blank: t(".select_year")},
+        {class: "form-control"} %>
   </div>
-  <div class="col-md-6">
+  <div class="teams">
+    <%= link_to_add_fields t(".add_season_teams"), f, :season_teams %>
     <%= f.fields_for :season_teams do |builder| %>
       <%= render "season_team_fields", f: builder %>
     <% end %>
-    <%= link_to_add_fields t(".add_season_teams"), f, :season_teams %>
   </div>
   <div class="clearfix"></div>
-  <div class="center"><%= f.submit yield: :submit_button_league_season,
+  <div class="submit"><%= f.submit yield: :submit_button_league_season,
     class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -204,18 +204,25 @@ en:
         no_league_season: "Have no league seasons"
         current_league: "Current League"
         league_season: "League season"
+        edit_league_season: "Edit"
+        season_search: "Season.."
+        league_search: "League.."
+        country_search: "Country.."
       form:
         add_season_teams: "Add team"
         new: "New League Season"
         season: "%{league} season"
+        select_year: "Select year"
       create:
         success: "Successfully"
       new:
-        new: "Create new league season"
+        new: "New league season in "
       edit:
-        edit: "Save changes"
+        edit: "Edit league season in "
       update:
         success: "Successfully"
+      season_team_fields:
+        select_team: "Select team"
     matches:
       match_events:
         new_event: "New event.."
