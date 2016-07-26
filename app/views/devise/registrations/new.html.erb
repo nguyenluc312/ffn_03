@@ -27,9 +27,16 @@
       </div>
 
       <div class="avatar form-group">
-        <%= f.label :avatar %>
+        <%= f.label :avatar %><br/>
+        <% if resource.avatar.size > 0 %>
+          <%= image_tag resource.avatar.url, id: "image-view",
+            size: Settings.users.preview_avatar_size %>
+        <% else %>
+          <%= image_tag "", id: "image-view", size: Settings.users.preview_avatar_size,
+            class: "hidden" %>
+        <% end %>
         <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png",
-          class: "form-control" %>
+          class: "upload-image" %>
       </div>
 
       <div class="actions form-group">

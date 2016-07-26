@@ -17,3 +17,20 @@
 //= require bootstrap
 //= require ckeditor/init
 //= require social-share-button
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('#image-view').attr('src', e.target.result);
+      $('#image-view').removeClass('hidden');
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$(document).ready(function(){
+  $(document).on('change', '.upload-image', function(){
+    readURL(this);
+  });
+});

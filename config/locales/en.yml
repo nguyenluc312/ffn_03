@@ -181,7 +181,7 @@ en:
       index:
         teams_manager: "Teams manager"
         create_team: "Create new team"
-        add_players: "Change players of this team"
+        add_players: "Manage players in this team"
         edit_team: "Edit this team"
         delete_team: "Delete this team"
         search_by_name: "Search by name, fullname, nickname or short name, ..."
@@ -276,6 +276,9 @@ en:
         confirm_delete: "Are you sure to delete player %{player}"
       destroy:
         success: "Deleted successfully"
+      form:
+        weight: "Weight (kg)"
+        height: "Height (cm)"
     assign_players:
       show:
         search_name: "Search by name..."
@@ -285,6 +288,8 @@ en:
         remove_player: "Remove this player form team"
         confirm_remove_player: "Are you sure to remove player %{player}?"
         add_player: "Add this player to team"
+        weight: "Weight"
+        height: "Height"
       new_form:
         squad_number: "Squad number"
         add_player: "Add player"
