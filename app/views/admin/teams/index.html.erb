@@ -26,9 +26,9 @@
   <table class="table table-striped table-bordered table-manager-teams not-overflow">
     <thead>
       <th class="header-index center">#</th>
-      <th class="header-logo"><%= t ".logo" %></th>
+      <th class="header-logo center"><%= t ".logo" %></th>
       <th class="header-name"><%= t ".name" %></th>
-      <th class="header-flag"><%= t ".flag" %></th>
+      <th class="header-flag center"><%= t ".flag" %></th>
       <th class="header-country"><%= t ".country" %></th>
       <th class="header-coach"><%= t ".coach" %></th>
       <th class="header-players"><%= t ".players" %></th>
@@ -42,7 +42,9 @@
           </td>
           <td class="center"><%= image_tag team.logo.small.url %></td>
           <td><%= team.name %></td>
-          <td class="center"></td>
+          <td class="center">
+            <%= image_tag team.country.flag.url, size: Settings.country.size_small %>
+          </td>
           <td><%= team.country_name %></td>
           <td><%= team.coach %></td>
           <td class="center"><%= team.players.size %></td>

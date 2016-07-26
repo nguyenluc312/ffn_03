@@ -30,11 +30,11 @@
   <table class="table table-striped table-bordered not-overflow" id="table-manager-players" %>
     <thead>
       <th class="index center">#</th>
-      <th class="avatar"><%= t ".avatar" %></th>
+      <th class="avatar center"><%= t ".avatar" %></th>
       <th class="name"><%= t ".name" %></th>
-      <th class="country-flag"><%= t ".flag" %></th>
+      <th class="country-flag center"><%= t ".flag" %></th>
       <th class="country-name"><%= t ".country_name" %></th>
-      <th class="team-logo"><%= t ".logo" %></th>
+      <th class="team-logo center"><%= t ".logo" %></th>
       <th class="team-name"><%= t ".team_name" %></th>
       <th class="position"><%= t ".position" %></th>
       <th class="action"><%= t ".action" %></th>
@@ -47,7 +47,9 @@
           </td>
           <td class="center"><%= image_tag player.avatar.small.url %></td>
           <td><%= player.name %></td>
-          <td class="center"></td>
+          <td class="center">
+            <%= image_tag player.country.flag.url, size: Settings.country.size_small %>
+          </td>
           <td><%= player.country_name %></td>
           <td class="center">
             <%= player.team ? image_tag(player.team_logo.small.url) : "-" %>
