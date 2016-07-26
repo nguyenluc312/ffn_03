@@ -14,7 +14,7 @@ class Player < ActiveRecord::Base
   delegate :name, to: :country, prefix: true
   delegate :name, to: :team, prefix: true, allow_nil: true
   delegate :logo, to: :team, prefix: true
-
+  scope :free, -> {where team_id: nil}
 
   def age
     Time.zone.now.year - date_of_birth.year

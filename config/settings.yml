@@ -7,7 +7,7 @@ news:
 image:
   max_capacity: 5 #MB
 teams:
-  per_page: 1
+  per_page: 3
 players:
   per_page: 3
   preview_avatar_size: "200x200"
@@ -25,6 +25,7 @@ match:
   ball_img: "league-icon.png"
   duration: 1
 users:
+  per_page: 5
   avatar_size: "200x200"
   avt_default: "default_avatar.jpg"
   preview_avatar_size: "200x200"

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :news, except: :show
     resources :news_types, except: :show
     resources :teams, except: :show do
-      resource :assign_players, only: :show
+      resource :assign_players, only: [:show, :new]
     end
     resources :matches, only: [:edit, :update] do
       resources :match_events, only: :create

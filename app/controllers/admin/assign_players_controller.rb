@@ -1,8 +1,14 @@
 class Admin::AssignPlayersController < ApplicationController
 
-  load_resource :team, only: [:show, :create]
+  load_resource :team, only: [:show, :new, :create]
   load_and_authorize_resource :player, only: [:create, :update, :destroy]
-  before_action :load_countries, only: :show
+  before_action :load_countries, only: :new
+
+
+  def new
+    @search = Player.free.includes(:country).search params[:q]
+    @players = @search.result.page(params[:page]).per Settings.players.per_page
+  end
 
   def create
     if @player.update_attributes assign_player_params
@@ -14,10 +20,7 @@ class Admin::AssignPlayersController < ApplicationController
   end
 
   def show
-    @players_of_team = @team.players.order(:position, :squad_number).includes :country
-    @search = Player.where(team_id: nil).includes(:country)
-      .search params[:q]
-    @players = @search.result.page(params[:page]).per Settings.players.per_page
+    @players = @team.players.order(:position, :squad_number).includes :country
   end
 
   def update

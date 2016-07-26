@@ -65,7 +65,7 @@ en:
       index:
         content: "News manager"
         create_news: "Create new news"
-        title_contains: "Title contains..."
+        title_contains: "Search by title or content..."
         all_news_types: "All news types"
         filter: "Filter"
         header_serial: "Index"
@@ -281,6 +281,10 @@ en:
         weight: "Weight (kg)"
         height: "Height (cm)"
     assign_players:
+      new:
+        search_name: "Search by name..."
+        select_position: "All positions"
+        select_country: "All countries"
       show:
         search_name: "Search by name..."
         select_position: "All positions"
