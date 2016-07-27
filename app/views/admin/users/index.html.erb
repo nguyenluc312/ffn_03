@@ -1,34 +1,29 @@
 <div class="show-all-users">
-  <div class="heading">
-    <h1 class="center"><%= t ".all_users" %></h1>
-  </div>
+  <h1 class="center"><%= t ".user_management" %></h1>
   <hr>
   <div class="filter form-inline">
-    <%= search_form_for [:admin, @search] do |f| %>
+    <%= search_form_for [:admin, @search], class: "form-inline search-form" do |f| %>
       <div class="form-group content">
         <%= f.text_field :name_or_email_cont, class: "form-control",
           placeholder: t(".content") %>
       </div>
-
       <div class="form-group role">
-        <%= f.select :role_eq, User.roles, {include_blank: t(".role")},
+        <%= f.select :role_eq, User.roles, {include_blank: t(".all_roles")},
           class: "form-control"  %>
       </div>
-
       <div class="form-group">
         <%= f.button class: "btn btn-primary no-radius" do %>
           <span class="glyphicon glyphicon-search"></span>
-          <span><%= t ".search" %></span>
         <% end %>
       </div>
     <% end %>
   </div>
   <table class="table table-striped table-bordered">
     <thead>
-      <th class="index center"><%= t ".index" %></th>
+      <th class="index center">#</th>
       <th class="avatar center"><%= t ".avatar" %></th>
-      <th class="name"><%= t ".user_name" %></th>
-      <th class="email"><%= t "user_email" %></th>
+      <th class="name"><%= sort_link @search, :name %></th>
+      <th class="email"><%= sort_link @search, :email %></th>
       <th class="role"><%= t ".role" %></th>
       <th class="assign center"><%= t ".moderate" %></th>
       <th class="action center"><%= t ".action" %></th>
@@ -76,4 +71,7 @@
     </tbody>
   </table>
   <%= paginate @users %>
+  <% if @users.empty? %>
+    <div class="no-result"><%= t ".no_user" %></div>
+  <% end %>
 </div>
