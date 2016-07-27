@@ -8,11 +8,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render "layouts/header" %>
+
+  <div class="container header">
+    <% if "admin" == params[:controller].split("/").first %>
+      <%= render "layouts/manager_header" %>
+    <% else %>
+      <%= render "layouts/header" %>
+    <% end %>
+  </div>
   <div class="container body">
     <div id="messagebox">
       <% flash.each do |message_type, message| %>
-        <%= content_tag :div, message, class: "alert alert-#{message_type} text-center" %>
+        <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
       <% end %>
     </div>
     <%= yield %>

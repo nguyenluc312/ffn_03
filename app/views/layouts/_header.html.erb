@@ -1,28 +1,45 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to t("views.header.name_app"), "#", id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to t("views.header.home"), root_path %></li>
-        <% if user_signed_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= current_user.name %><b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to t("views.header.profile"), "#" %></li>
-              <li><%= link_to t("views.header.account_setting"), "#" %></li>
-              <li>
-                <%= link_to t("views.header.logout"),
-                  destroy_user_session_path, method: :delete %>
-              </li>
-              <li class="divider"></li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to t("views.header.login"), new_user_session_path %></li>
+<div id="banner">
+
+</div>
+<nav class="navbar navbar-inverse no-radius" data-spy="affix" data-offset-top="150" id="nav-header">
+    <ul class="nav navbar-nav">
+      <li>
+        <%= link_to root_path do %>
+          <span class="glyphicon glyphicon-home"></span>
         <% end %>
-      </ul>
-    </nav>
+      </li>
+      <li><%= link_to "News", news_index_path %></li>
+      <li><%= link_to "League", "#" %></li>
+      <li><%= link_to "Teams", teams_path %></li>
+      <li><%= link_to "Players", players_path %></li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+      <% if user_signed_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%= image_tag current_user.avatar.url, id: "avatar-on-nav" %>
+            <%= current_user.name %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to t(".profile"), current_user %></li>
+            <li><%= link_to t(".settings"), edit_user_registration_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to new_user_registration_path do %>
+            <span class="glyphicon glyphicon-user"></span><%= t ".sign_up" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_session_path do %>
+            <span class="glyphicon glyphicon-log-in"></span> <%= t ".login" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
-</header>
+</nav>

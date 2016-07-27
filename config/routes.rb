@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   mount Ckeditor::Engine => "/ckeditor"
-  root "static_pages#home"
+  root "news#index"
   get "help" => "static_pages#help"
   get "contact" => "static_pages#contact"
 
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :news, only: :show do
+  resources :news, only: [:show, :index] do
     member do
       resources :comments, only: :create
     end
