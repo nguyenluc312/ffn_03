@@ -1467,7 +1467,7 @@ span.pull-left.transfer-players{
 }
 
 .show-all-leagues {
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   .create-league {
     margin-bottom: 1%;
@@ -1475,14 +1475,20 @@ span.pull-left.transfer-players{
 
   .table {
     thead {
+      .index {
+        width: 14%;
+      }
       .name {
-        width: 33%;
+        width: 26%;
+      }
+      .country {
+        width: 15%;
       }
       .founded_at {
-        width: 33%;
+        width: 25%;
       }
       .league-season {
-        width: 33%;
+        width: 20%;
       }
     }
 

@@ -38,3 +38,5 @@ country:
   size_small: "60x30"
 league_seasons:
   per_page: 3
+leagues:
+  per_page: 2

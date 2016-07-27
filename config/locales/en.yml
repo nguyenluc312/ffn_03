@@ -136,6 +136,9 @@ en:
       index:
         league_manage: "League Manage"
         new_league: "New League"
+        select_country: "All Country"
+        search_name: "Enter name.."
+        new_league_season: "create new league season in this league"
       destroy:
         has_league_seasons: "League has league seasons, can't delete"
         success: "Successfully"
@@ -449,3 +452,9 @@ en:
     vs: " vs "
     post: "post"
     match: "match"
+  league_seasons:
+    index:
+      all_league_seasons: "All League Seasons"
+      season_search: "Season.."
+      league_search: "League.."
+      country_search: "Country.."
