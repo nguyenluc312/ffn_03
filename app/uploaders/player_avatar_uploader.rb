@@ -37,7 +37,7 @@ class PlayerAvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :small do
-    process resize_to_fit: [50, 50]
+    process resize_to_fill: [50, 50]
   end
 
   version :medium do

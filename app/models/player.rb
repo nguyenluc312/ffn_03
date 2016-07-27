@@ -11,6 +11,7 @@ class Player < ActiveRecord::Base
   validates :joined_at, presence: true, if: :in_team?
   validate :check_joined_date, if: :in_team?
   validate :image_size
+  validate :check_date_of_birth
   delegate :name, to: :country, prefix: true
   delegate :name, to: :team, prefix: true, allow_nil: true
   delegate :logo, to: :team, prefix: true
@@ -35,6 +36,12 @@ class Player < ActiveRecord::Base
   def check_joined_date
     if joined_at && joined_at > Time.zone.now
       errors.add :joined_at, I18n.t(".errors")
+    end
+  end
+
+  def check_date_of_birth
+    if self.date_of_birth && self.date_of_birth > Time.zone.now
+      self.errors.add :date_of_birth, I18n.t("players.date_of_birth")
     end
   end
 end

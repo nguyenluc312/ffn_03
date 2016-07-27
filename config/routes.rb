@@ -51,5 +51,5 @@ Rails.application.routes.draw do
   resources :teams, only: [:index, :show]
   resources :users, only: :show
   resources :countries, only: :index
-  resources :league_seasons, only: :index
+  resources :league_seasons, only: [:index, :show]
 end

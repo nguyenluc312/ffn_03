@@ -9,6 +9,7 @@ class Ability
       cannot :destroy, User do |user|
         user.admin? || user.moderate?
       end
+      cannot :update, Match, status: :finished
       cannot :update, Comment do |comment|
         comment.user != user
       end
