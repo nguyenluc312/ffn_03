@@ -1,11 +1,12 @@
 class Admin::LeaguesController < Admin::BaseController
   load_and_authorize_resource
 
-  before_action :load_countries, only: [:new, :create]
+  before_action :load_countries, only: [:new, :create, :index]
 
   def index
-    @leagues = League.order(created_at: :desc).includes(:country)
-      .group_by{|league| league.country}
+    @search = League.includes(:country, :league_seasons).search params[:q]
+    @leagues = @search.result.order(created_at: :desc)
+      .page(params[:page]).per Settings.leagues.per_page
   end
 
   def new
