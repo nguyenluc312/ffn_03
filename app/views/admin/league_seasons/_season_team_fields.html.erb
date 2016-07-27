@@ -1,9 +1,7 @@
-<div class="form-inline team">
-  <fieldset>
-    <%= f.select(:team_id, @teams,
-      {}, {class: "form-control", style: "width: 200px"}) %>
-    <%= f.hidden_field :_destroy %>
-    <%= link_to t(".remove"), "#",
-      class: "remove_season_teams glyphicon glyphicon-remove-sign" %>
-  </fieldset>
-</div>
+<fieldset class="field form-inline">
+  <%= f.select(:team_id, @teams, {include_blank: t(".select_team")},
+    {class: "form-control"}) %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "", "#",
+    class: "remove_season_teams glyphicon glyphicon-remove-sign" %>
+</fieldset>

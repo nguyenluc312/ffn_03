@@ -6,5 +6,5 @@ $(document).on 'click', 'form .remove_season_teams', (event) ->
 $(document).on 'click', 'form .add_fields', (event) ->
   time = new Date().getTime()
   regexp = new RegExp($(@).data('id'), 'g')
-  $(@).before($(@).data('season-teams').replace(regexp, time))
+  $(@).after($(@).data('season-teams').replace(regexp, time))
   event.preventDefault()

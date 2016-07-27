@@ -1,9 +1,6 @@
-<%= provide :submit_button_league_season, t(".new") %>
-
-<div class="col-md-12">
-  <h1 class="center"><%= @league.name %></h1>
-  <h2 class="center"><%= t ".new" %></h2>
-  <br>
+<div class="league-season">
+  <h1 class="center"><%= t ".new" %><%= @league.name %></h1>
+  <hr>
   <div class="form">
     <%= render "form" %>
   </div>

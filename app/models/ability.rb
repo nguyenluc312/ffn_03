@@ -9,8 +9,12 @@ class Ability
       cannot :destroy, User do |user|
         user.admin? || user.moderate?
       end
+      cannot :update, Comment do |comment|
+        comment.user != user
+      end
     when user.moderate?
       can :manage, News
+      can :destroy, Comment
     when user.user?
       can :read, :all
       can :create, Comment

@@ -1,12 +1,14 @@
 class Admin::LeagueSeasonsController < Admin::BaseController
-  before_action :load_league, except: [:show, :destroy]
+  load_and_authorize_resource :league, except: [:index, :destroy, :show]
+  load_and_authorize_resource through: :league, except: [:index, :destroy, :show]
+  load_and_authorize_resource only: :index
   before_action :load_years, :load_teams, except: [:index, :destroy, :show]
 
-  load_and_authorize_resource
-
   def index
-    @league_seasons = @league.league_seasons.order(created_at: :desc)
-      .page(params[:page]).per Settings.per_page
+    @search = LeagueSeason.includes(:league).order(created_at: :desc)
+      .search params[:q]
+    @league_seasons = @search.result.page(params[:page]).
+      per Settings.league_seasons.per_page
   end
 
   def new
@@ -36,9 +38,6 @@ class Admin::LeagueSeasonsController < Admin::BaseController
   end
 
   private
-  def load_league
-    @league = League.find_by id: params[:league_id]
-  end
 
   def league_season_params
     params.require(:league_season).permit :league_id, :year,
@@ -46,8 +45,7 @@ class Admin::LeagueSeasonsController < Admin::BaseController
   end
 
   def load_teams
-    @teams = Team.in_country(@league.country_id)
-      .map {|team| [team.name, team.id]}
+    @teams = Team.in_country(@league.country_id).pluck :name, :id
   end
 
   def load_years
