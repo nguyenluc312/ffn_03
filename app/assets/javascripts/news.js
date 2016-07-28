@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $("#new_comment").submit(function(e){
+  $(document).on('submit', '#new_comment', function(e){
     e.preventDefault();
     var url = $(this).attr('action');
     var method = $(this).attr('method');
@@ -10,9 +10,18 @@ $(document).ready(function(){
       data: data,
       dataType: 'json',
       success: function(result){
+        console.log(result);
         $('#count-comments').html(result.count_comments);
         $('#comments').prepend(to_html(result));
         $('#comment_content').val('');
+      },
+      error: function(xhr){
+        var errors = $.parseJSON(xhr.responseText).errors;
+        var errMsg = "";
+        $.each(errors, function(key, data){
+          errMsg += data + "\n";
+        });
+        alert(errMsg);
       }
     });
   });
@@ -77,6 +86,14 @@ $(document).ready(function(){
         currentComment.find('.content').show();
         currentComment.find('.dropdown').show();
         currentComment.find('.timestamp').show();
+      },
+      error: function(xhr){
+        var errors = $.parseJSON(xhr.responseText).errors;
+        var errMsg = "";
+        $.each(errors, function(key, data){
+          errMsg += data + "\n";
+        });
+        alert(errMsg);
       }
     });
   });
@@ -94,10 +111,10 @@ function editFormFor(obj){
 }
 
 function to_html(obj){
-  var res = "<li id='comment-" + obj.id + "'><div class='avatar'>" +
-    "<img src='" + obj.image_url + "'></div>" +
-    "<div class='comment-body'><div class='user-name'>" + obj.user_name +
-    "<span class='dropdown pull-right'>" +
+  var res = "<li id='comment-" + obj.id + "' class='comment'><div class='avatar'>" +
+    "<a href='/users/" + obj.user_id + "'><img src='" + obj.image_url + "'></a></div>" +
+    "<div class='comment-body'><div class='user-name'><a href='/users/" + obj.user_id + "'>" +
+    obj.user_name + "</a><span class='dropdown pull-right'>" +
     "<a href='#' class='dropdown-toggle' data-toggle='dropdown'>" +
     "<b class='caret'></b></a><ul class='dropdown-menu'><li>" +
     "<a class='edit-comment' href='/comments/" + obj.id + "/edit'>Edit</a></li>" +

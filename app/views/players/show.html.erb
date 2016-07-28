@@ -29,6 +29,11 @@
 
     <div class="tab-content">
       <div id="introduction" class="tab-pane fade in active">
+        <% if @player.introduction.present? %>
+          <%= @player.introduction.gsub("\n", "<br/>").html_safe %>
+        <% else %>
+          <div class="no-result"><%= t ".no_introduction" %></div>
+        <% end %>
       </div>
       <div id="awards" class="tab-pane fade">
       </div>

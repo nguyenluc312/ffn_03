@@ -25,7 +25,11 @@
 
     <div class="tab-content">
       <div id="introduction" class="tab-pane fade in active">
-        <%= @team.introduction.gsub("\n", "<br>").html_safe %>
+        <% if @team.introduction.present? %>
+          <%= @team.introduction.gsub("\n", "<br>").html_safe %>
+        <% else %>
+          <div class="no-result"><%= t ".no_introduction" %></div>
+        <% end %>
       </div>
       <div id="players" class="tab-pane fade">
         <%= render "players/players_with_group" %>
