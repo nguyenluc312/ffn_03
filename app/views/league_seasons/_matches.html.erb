@@ -8,7 +8,7 @@
     <% matches.each do |match| %>
       <tr>
         <td class="start-time">
-          <%= match.start_time.strftime "%H:%M" %>
+          <%= match.start_time.strftime Settings.format.time %>
         </td>
         <td class="team1">
           <%= match.team1.name %>

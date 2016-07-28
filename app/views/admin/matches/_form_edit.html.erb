@@ -24,7 +24,7 @@
   <div id="start-time">
     <strong>
       <%= t(".start_at") + ": " %>
-      <%= @match.start_time.to_s %>
+      <%= @match.start_time.strftime Settings.format.date_time %>
     </strong>
   </div>
 </div>

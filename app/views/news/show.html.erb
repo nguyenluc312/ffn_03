@@ -5,7 +5,7 @@
   </header>
   <div class="news-time">
     <span class="glyphicon glyphicon-time"></span>
-    <%= @news.updated_at %>
+    <%= @news.updated_at.strftime Settings.format.date_time %>
   </div>
   <div class="news-summary">
     <%= @news.brief_description %>
