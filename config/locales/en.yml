@@ -124,8 +124,18 @@ en:
     countries:
       index:
         content: "Enter name or code.."
+        delete: "Delete"
+        action: "Action"
+        add_new_country: "Add New Country"
+        flag: "Flag"
+        league: "League"
+        league_season: "League Season"
+        player: "Player"
+        edit: Edit"
+        confirm: "Are you sure?"
       new:
-        add: "Add"
+        add_country: "Add Country"
+      form:
         select_country: "Select country"
       create:
         failed: "This country already exist"
@@ -142,18 +152,19 @@ en:
         select_country: "All Country"
         search_name: "Enter name.."
         new_league_season: "create new league season in this league"
+        edit: "Edit this league"
+        delete: "Delete this league"
+        confirm: "Are you sure?"
       destroy:
         has_league_seasons: "League has league seasons, can't delete"
         success: "Successfully"
         failed: "Something wrong!!"
-      leagues:
-        league: "League"
-        country: "Country"
-        action: "Action"
-        confirm: "Are you sure?"
-        no_league: "No League"
       load_league:
         warning: "League invalid"
+      update:
+        success: "Successfully"
+      edit:
+        edit_league: "Edit League"
     teams:
       form:
         name: "Name.."

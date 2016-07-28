@@ -48,6 +48,11 @@
             <%= league.league_seasons.count %>
           </td>
           <td class="action center">
+            <%= link_to "", edit_admin_league_path(league),
+              class: "glyphicon glyphicon-edit", title: t(".edit") %>
+            <%= link_to "", admin_league_path(league), method: :delete,
+              class: "glyphicon glyphicon-trash", title: t(".delete"),
+              data: {confirm: t(".confirm")} %>
             <%= link_to "", new_admin_league_league_season_path(league),
               class: "glyphicon glyphicon-plus", data: {toggle: "title"},
               title: t(".new_league_season") %>
