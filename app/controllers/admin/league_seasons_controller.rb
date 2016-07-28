@@ -1,7 +1,7 @@
 class Admin::LeagueSeasonsController < Admin::BaseController
   load_and_authorize_resource :league, except: [:index, :destroy, :show]
   load_and_authorize_resource through: :league, except: [:index, :destroy, :show]
-  load_and_authorize_resource only: :index
+  load_and_authorize_resource only: [:index, :show]
   before_action :load_years, :load_teams, except: [:index, :destroy, :show]
 
   def index
@@ -19,7 +19,7 @@ class Admin::LeagueSeasonsController < Admin::BaseController
   def create
     if @league_season.save
       flash[:success] = t ".success"
-      redirect_to :back
+      redirect_to admin_league_seasons_url
     else
       render :new
     end
@@ -37,6 +37,10 @@ class Admin::LeagueSeasonsController < Admin::BaseController
     end
   end
 
+  def show
+    @matches = @league_season.get_schedule
+    @rank = @league_season.get_rank
+  end
   private
 
   def league_season_params

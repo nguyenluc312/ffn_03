@@ -35,15 +35,13 @@
 
     <div class="goals hidden">
       <div class="team1-goals">
-        <%= f.number_field :team1_goal, step: 1, min: 0,
-          value: @match.team1_goal || 0, class: "form-control",
-          placeholder: t(".team1") %>
+        <%= f.number_field :team1_goal, step: 1, min: 0, class: "form-control",
+          placeholder: "0" %>
       </div>
       <div id="space">-</div>
       <div class="team2-goals">
-        <%= f.number_field :team2_goal, step: 1, min: 0,
-          value: @match.team1_goal || 0, class: "form-control",
-          placeholder: t(".team1") %>
+        <%= f.number_field :team2_goal, step: 1, min: 0, class: "form-control",
+          placeholder: "0" %>
       </div>
     </div>
     <div class="clearfix"></div>

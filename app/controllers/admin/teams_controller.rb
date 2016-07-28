@@ -13,7 +13,7 @@ class Admin::TeamsController < Admin::BaseController
   def create
     if @team.save
       flash[:success] = t ".success"
-      redirect_to admin_team_url @team
+      redirect_to admin_teams_url
     else
       load_countries
       render :new
@@ -29,7 +29,7 @@ class Admin::TeamsController < Admin::BaseController
   def update
     if @team.update_attributes team_params
       flash[:success] = t ".success"
-      redirect_to admin_team_url @team
+      redirect_to admin_teams_url
     else
       load_countries
       render :edit

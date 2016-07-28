@@ -14,6 +14,7 @@ class Admin::PlayersController < Admin::BaseController
   def create
     if @player.save
       flash[:success] = t ".success"
+      redirect_to admin_players_url
     else
       load_countries
       load_positions
@@ -27,6 +28,7 @@ class Admin::PlayersController < Admin::BaseController
   def update
     if @player.update_attributes player_params
       flash[:success] = t ".success"
+      redirect_to admin_players_url
     else
       load_countries
       load_positions

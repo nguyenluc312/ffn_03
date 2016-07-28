@@ -9,9 +9,10 @@ class Match < ActiveRecord::Base
 
   validates :team1, :team2, :start_time, :status,
     :team1_odds, :team2_odds, :draw_odds, presence: true
-  validate :validate_team_not_same
-  validate :check_start_time
+  validate :check_start_time, :validate_team_not_same
   before_validation :validate_match, on: :create
+  before_validation :check_update_when_match_is_on,
+    :check_update_when_match_finished, on: :update
 
   scope :of_team_be_team1, ->(team_id, league_season_id) do
     where(team1_id: team_id).where(league_season_id: league_season_id)
@@ -102,6 +103,22 @@ class Match < ActiveRecord::Base
         job = Delayed::Job.enqueue StartMatchJob.new(self.id), 1, self.start_time
         self.update_column :delayed_job_id, job.id
       end
+    end
+  end
+
+  def check_update_when_match_is_on
+    if self.status_was == "is_on"
+      self.errors.add(:match, I18n.t("match.is_on.start_time_change")) if self.start_time_changed?
+      if self.team1_odds_changed? || self.team2_odds_changed?
+        self.errors.add :match, I18n.t("match.is_on.odds_change")
+      end
+      self.reload
+    end
+  end
+
+  def check_update_when_match_finished
+    if self.status_was == "finished"
+      self.errors.add(:match, I18n.t("match.finished")) if self.changed?
     end
   end
 

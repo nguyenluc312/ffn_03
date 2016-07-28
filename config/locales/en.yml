@@ -229,6 +229,10 @@ en:
         success: "Successfully"
       season_team_fields:
         select_team: "Select team"
+      show:
+        schedule: "Schedule"
+        update_match: "Update match"
+        rankings: "Ranking"
     matches:
       match_events:
         new_event: "New event.."
@@ -293,11 +297,16 @@ en:
       form:
         weight: "Weight (kg)"
         height: "Height (cm)"
+      create:
+        success: "Successfully"
+      update:
+        success: "Successfully"
     assign_players:
       new:
         search_name: "Search by name..."
         select_position: "All positions"
         select_country: "All countries"
+        success: "Successfully"
       show:
         search_name: "Search by name..."
         select_position: "All positions"
@@ -308,6 +317,7 @@ en:
         add_player: "Add this player to team"
         weight: "Weight"
         height: "Height"
+        add_player_to_this_team: "Add player to this team"
       new_form:
         squad_number: "Squad number"
         add_player: "Add player"
@@ -322,6 +332,9 @@ en:
         player_name: "Player"
         team_name: "Team"
         edit_this_player: "Edit this player in team"
+      destroy:
+        fail: "Failed"
+        success: "Deleted successfully"
   comments:
     comment:
       delete: "Delete"
@@ -362,7 +375,7 @@ en:
       start_at: "Start at"
       bet_odds: "Bet odds"
       match_events: "Match events"
-      win: "Win"
+      win: " win"
       draw: "Draw"
       not_started_yet: "Not started yet"
       is_on: "Is on"
@@ -423,6 +436,7 @@ en:
       search_name: "Search by name..."
       select_country: "All countries"
       select_position: "All position"
+    date_of_birth: "invalid"
   team_less_than_four: "must larger than 4"
   team_not_same: "can't be same"
   larger_now: "invalid/must larger than now"
@@ -434,6 +448,7 @@ en:
   match_invalid: "was existed in league_season"
   user_bet: "User bet a match"
   match_out_of_bet: "%{status}, can't bet"
+  match_finished: "Match has finished, can't update"
   mail:
     heading_email_when_user_make_a_bet: "Bet match %{team1} vs %{team2}"
     content_email_when_user_make_a_bet: "%{user_name} chosen %{chosen} with bet coin is %{coin}"
@@ -461,3 +476,15 @@ en:
       season_search: "Season.."
       league_search: "League.."
       country_search: "Country.."
+    rank:
+      rankings: "Ranking"
+      team_name: "Team name"
+      rank: "Rank"
+    matches:
+      schedule: "Schedule"
+      match_detail: "Match detail"
+  match:
+    is_on:
+      start_time_change: "is on, can't change start time"
+      odds_change: "is on, can't change odds"
+    finished: "finished, can't change anything"

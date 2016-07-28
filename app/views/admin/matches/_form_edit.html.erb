@@ -33,15 +33,15 @@
     <%= render "shared/error_messages", object: @match %>
     <div class="form-inline start-time">
       <%= f.label :start_time %>
-      <% if (@match.finished? || @match.is_on?) && @match.errors.blank? %>
-      <%= f.datetime_local_field :start_time, disabled: true,
+      <%  unless @match.not_started_yet? %>
+        <%= f.datetime_local_field :start_time, disabled: true,
           class: "form-control center" %>
       <% else %>
         <%= f.datetime_local_field :start_time, class: "form-control center" %>
       <% end %>
     </div>
 
-    <% if @match.finished? && @match.errors.blank? %>
+    <% if @match.finished? && @match.valid? %>
       <div class="goals">
         <div class="team1-goals">
           <%= f.number_field :team1_goal, step: 1, min: 0,
@@ -85,7 +85,7 @@
       </div>
     <% end %>
 
-    <% if @match.start_time < Time.zone.now && @match.user_bets.blank? %>
+    <% if @match.is_on? || @match.finished? || @match.user_bets.any? %>
       <div class="odds">
         <label><%= t ".odds" %></label>
         <table class="table table-bordered table-striped">
@@ -96,15 +96,12 @@
           </tr>
           <tr>
             <td>
-              <%= f.number_field :team1_odds, step: 0.1, min: 0, max:20, disabled: true,
-                class: "form-control odds", placeholder: t(".team1_odds") %>
+              <%= @match.team1_odds %>
             </td>
             <td>
-              <%= f.number_field :draw_odds, min: 0, step: 0.1, max:20, disabled: true,
-                class: "form-control odds draw-odds", placeholder: t(".draw_odds") %>
+              <%= @match.draw_odds %>
             </td>
-            <td><%= f.number_field :team2_odds, step: 0.1, min: 0, max:20, disabled: true,
-            class: "form-control odds", placeholder: t(".team2_odds") %></td>
+            <td><%= @match.team2_odds %></td>
           </tr>
         </table>
       </div>
@@ -132,8 +129,7 @@
         </table>
       </div>
     <% end %>
-
-    <% unless @match.finished? && @match.errors.blank? %>
+    <% unless @match.finished? && @match.valid? %>
       <div class="submit">
         <%= f.submit t(".save"), class: "btn btn-primary form-control" %>
       </div>
