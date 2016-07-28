@@ -391,8 +391,10 @@ en:
       make_a_bet: "Make a bet"
       draw: "Draw"
       coin: "Coin"
-      make: "Make"
+      ok: "OK"
+      close: "Close"
   user_bets:
+    draw: "Draw"
     max_coin: "larger than your coin, must less than %{coin}"
     create:
       success: "You make a bet success"
@@ -402,6 +404,7 @@ en:
       match: "Match"
       chosen: "Chosen"
       coin: "Coin"
+      odds: "%{team1_odds} - %{team2_odds}"
   shared:
     error_messages:
       form_contains: "This form contains"

@@ -21,6 +21,16 @@ class UserBet < ActiveRecord::Base
     self.chosen == self.match.result
   end
 
+  def chosen_name
+    if self.chosen
+      if self.draw?
+        I18n.t "user_bets.draw"
+      else
+        self.match.send(self.chosen).name
+      end
+    end
+  end
+
   private
   def send_email_to_admin
     SendMailAdminWorker.perform_async self.id
@@ -33,7 +43,7 @@ class UserBet < ActiveRecord::Base
   end
 
   def max_coin_of_user_bet
-    if self.coin > self.user.coin
+    if self.coin && self.coin > self.user.coin
       self.errors.add :coin, I18n.t("user_bets.max_coin", coin: self.user.coin)
     end
   end

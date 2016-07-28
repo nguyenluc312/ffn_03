@@ -2,19 +2,16 @@ class UserBetsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @user_bets = current_user.user_bets
+    @user_bets = current_user.user_bets.order(created_at: :desc)
+      .page(params[:page]).per Settings.user_bets.per_page
   end
 
   def create
     if @user_bet.save
-      respond_to do |format|
-        format.html{redirect_to :back}
-        format.js
-      end
-    else
-      respond_to do |format|
-        format.js
-      end
+      flash.now[:success] = t ".success"
+    end
+    respond_to do |format|
+      format.js
     end
   end
 

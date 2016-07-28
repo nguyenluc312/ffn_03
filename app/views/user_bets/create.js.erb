@@ -4,7 +4,6 @@
 <% else %>
   $('.user-bet-errors').empty()
   $('.bet-coin').val('')
-  $('#user-bet').addClass('hidden')
-  $('#bet-match').show()
-  $('.make-bet-success').html('<%= t(".success") %>')
+  $('#betModal').modal('hide')
+  $('#messagebox').attr('style', 'display: block;').append('<%= j render "layouts/flash" %>')
 <% end %>
