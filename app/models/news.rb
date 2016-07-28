@@ -8,6 +8,15 @@ class News < ActiveRecord::Base
   validates :brief_description, presence: true, length: {maximum: 1000}
   validates :content, presence: true, length: {maximum: 10000}
   validates :author, presence: true, length: {maximum: 100}
-
+  validates :represent_image, presence: true
+  validate :image_size
   delegate :name, to: :news_type, prefix: true
+
+  private
+  def image_size
+    if represent_image.size > Settings.image.max_capacity.megabytes
+      errors.add :represent_image,
+        I18n.t("error_capacity_image", maximum: Settings.image.max_capacity)
+    end
+  end
 end
