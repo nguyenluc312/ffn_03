@@ -1,0 +1,31 @@
+<h3>
+  <span class="glyphicon glyphicon-tower"></span>
+  <%= t ".leagues" %>
+</h3>
+<div class="panel-group" id="accordion">
+  <% @leagues.each do |league| %>
+    <div class="no-radius panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <%= link_to "#collapse-" + league.id.to_s, data: {toggle: "collapse", parent: "#accordion"},
+            role: "button" do %>
+            <%= image_tag league.country.flag.tiny.url, size: Settings.country.size_tiny %>
+            <%= league.name %>
+          <% end %>
+        </div>
+      </div>
+      <div id="collapse-<%= league.id %>" class="panel-collapse collapse">
+        <div class="panel-body">
+          <ul>
+            <% league.league_seasons.each do |league_season| %>
+              <li>
+                <%= link_to t(".season") + " " + league_season.year.to_s,
+                  controller: target, action: :show, league_season_id: league_season.id %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

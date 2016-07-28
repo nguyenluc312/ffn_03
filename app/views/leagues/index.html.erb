@@ -1,28 +1,8 @@
 <div class="row">
-  <div id="league-menu" class="col-sm-2">
-    <p id="league-header"><%= t ".league_header" %></p>
-    <ul class="nav nav-pills nav-stacked">
-      <% @leagues.each do |league| %>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <%= league.name %>
-            <span class="caret pull-right"></span>
-          </a>
-          <% if league.league_seasons.any? %>
-            <ul class="dropdown-menu pull-right">
-              <% league.league_seasons.each do |league_season| %>
-                <li>
-                  <%= link_to league_season.year, league_season, remote: true, data: {toggle: "pill"}%>
-                </li>
-              <% end %>
-              <li>
-            </ul>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+  <div id="league-menu" class="col col-md-3">
+    <%= render "league_accordion_menu" %>
   </div>
-  <div id="league-season-info" class="col-md-7">
+  <div id="league-season-info" class="col-md-9">
     <div id="schedule-container">
     </div>
     <div id="rank-container">

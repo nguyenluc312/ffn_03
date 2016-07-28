@@ -12,7 +12,8 @@ class LeagueSeason < ActiveRecord::Base
   delegate :country, to: :league
 
   def get_schedule
-    self.matches.includes(:team1, :team2).group_by{|match| match.start_time.to_date}
+    self.matches.order(:start_time).includes(:team1, :team2).
+      group_by{|match| match.start_time.to_date}
   end
 
   def get_rank

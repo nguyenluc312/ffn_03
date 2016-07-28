@@ -17,6 +17,7 @@ players:
 per_page: 4
 min_player_of_team: 2
 team:
+  logo_size_tiny: "30x30"
   logo_size_title: "70x70"
   logo_size_left: "50x50"
   preview_logo_size: "200x200"
@@ -47,4 +48,5 @@ leagues:
 banner_image_height: 150
 format:
   time: "%H:%M"
-  date_time: "%d/%m/%Y %I:%M %p"
+  date_time: "%d-%m-%Y %I:%M %p"
+  date: "%d-%m-%Y"
