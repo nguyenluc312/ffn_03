@@ -255,7 +255,7 @@ vertical-align: top;
 #comments{
   list-style: none;
   padding: 0;
-  li {
+  li.comment {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
@@ -1214,7 +1214,7 @@ table.table.table-bordered.text-center {
     width: 25%;
   }
   .header-players{
-    width: 5%;
+    width: 8%;
   }
 }
 #count-teams{
@@ -1397,19 +1397,19 @@ table.table.table-bordered.text-center {
 
 #transfer-team-players{
   .header-index{
-    width: 5%;
+    width: 4%;
   }
   .header-avatar{
-    width: 8%;
+    width: 7%;
   }
   .header-age{
     width: 5%;
   }
   .header-height{
-    width: 8%;
+    width: 9%;
   }
   .header-weight{
-    width: 8%;
+    width: 9%;
   }
   .header-flag{
     width: 10%;

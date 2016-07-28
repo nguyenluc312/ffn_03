@@ -4,7 +4,7 @@
     <% players.each do |player| %>
       <tr>
         <td class="avatar"><%= image_tag player.avatar.tiny.url %></td>
-        <td class="jersey-number"><%= player.jersey_number || "-" %></td>
+        <td class="jersey-number"><%= player.squad_number || "-" %></td>
         <td class="name"><%= link_to player.name, player %></td>
         <td class="country-flag">
           <%= image_tag player.country.flag.url, size: Settings.country.size_small %>

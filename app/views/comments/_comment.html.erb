@@ -1,10 +1,12 @@
-<li id="comment-<%= comment.id %>">
+<li id="comment-<%= comment.id %>" class="comment">
   <div class="avatar">
-    <%= image_tag comment.user_avatar.small.url %>
+    <%= link_to comment.user do %>
+      <%= image_tag comment.user_avatar.small.url %>
+    <% end %>
   </div>
   <div class="comment-body">
     <div class="user-name">
-      <%= comment.user_name %>
+      <%= link_to comment.user_name, comment.user %>
       <% if can? :destroy, comment %>
         <span class="dropdown pull-right">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -25,7 +27,7 @@
         </span>
       <% end %>
     </div>
-    <div class="content"><%= comment.content %></div>
+    <div class="content"><%= comment.content.gsub("\n", "<br>").html_safe %></div>
     <div class="timestamp">
       <%= time_ago_in_words comment.created_at %>
     </div>
