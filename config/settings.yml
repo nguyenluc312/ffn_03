@@ -43,3 +43,6 @@ league_seasons:
 leagues:
   per_page: 2
 banner_image_height: 150
+format:
+  time: "%H:%M"
+  date_time: "%d/%m/%Y %I:%M %p"

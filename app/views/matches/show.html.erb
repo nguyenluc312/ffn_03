@@ -1,4 +1,4 @@
-<% provide :title, @match.team1.name + " - " + @match.team2.name %>
+  <% provide :title, @match.team1.name + " - " + @match.team2.name %>
 <section id="match-section">
   <p id="league-name">
     <%= @match.league_season.name + " " + @match.league_season.year.to_s %>
@@ -27,7 +27,7 @@
     </div>
     <div id="start-time">
       <%= t(".start_at") + ": " %>
-      <%= @match.start_time.to_s %>
+      <%= @match.start_time.strftime Settings.format.date_time %>
     </div>
   </div>
 
