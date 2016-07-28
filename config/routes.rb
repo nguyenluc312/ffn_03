@@ -52,4 +52,5 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :countries, only: :index
   resources :league_seasons, only: [:index, :show]
+  resources :news_types, only: :show
 end

@@ -33,14 +33,13 @@
     <% @preview_news_types.each do |news_type, list_news| %>
       <li>
         <div class="news-type-name">
-          <%= link_to "#", class: "btn no-radius" do %>
+          <%= link_to news_type, class: "boxed-label" do %>
             <%= news_type.name %>
           <% end %>
         </div>
         <div>
           <% if list_news.any? %>
             <div class="newest-of-type">
-
               <%= link_to list_news.first do %>
                 <%= image_tag list_news.first.represent_image.url %>
               <% end %>

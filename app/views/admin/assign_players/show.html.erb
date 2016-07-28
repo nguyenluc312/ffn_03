@@ -13,7 +13,7 @@
     <table class="table table-striped table-bordered manager-team-players not-overflow">
       <thead>
         <th class="header-avatar"><%= t ".avatar" %></th>
-        <th class="header-squad-number">#<%= t ".squad" %></th>
+        <th class="header-squad-number"><%= t ".squad" %></th>
         <th class="header-name"><%= t ".name" %></th>
         <th class="header-age"><%= t ".age" %></th>
         <th class="header-flag"><%= t ".flag" %></th>
@@ -28,7 +28,7 @@
             <td class="center"><%= image_tag player.avatar.small.url %></td>
             <td class="center squad-number"><%= player.squad_number %></td>
             <td title="<%= player.name %>" data-toggle="tooltip"><%= player.name %></td>
-            <td class="center"><%= player.age %></td>
+            <td class="right"><%= player.age %></td>
             <td class="center">
               <%= image_tag player.country.flag.url, size: Settings.country.size_small %>
             </td>
