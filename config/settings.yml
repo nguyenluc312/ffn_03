@@ -9,6 +9,8 @@ news:
   per_page_user: 5
 image:
   max_capacity: 5 #MB
+  coin: "coin.png"
+  coin_size: "30x30"
 teams:
   per_page: 3
 players:

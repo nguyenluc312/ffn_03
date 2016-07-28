@@ -4,8 +4,8 @@ class Match < ActiveRecord::Base
   belongs_to :league_season
   belongs_to :team1, class_name: Team.name
   belongs_to :team2, class_name: Team.name
-  has_many :match_events
-  has_many :user_bets
+  has_many :match_events, dependent: :destroy
+  has_many :user_bets, dependent: :destroy
 
   validates :team1, :team2, :start_time, :status,
     :team1_odds, :team2_odds, :draw_odds, presence: true
@@ -58,7 +58,7 @@ class Match < ActiveRecord::Base
   end
 
   def start
-    self.update_attributes status: :is_on
+    self.update_attributes status: :is_on, team1_goal: 0, team2_goal: 0
     Delayed::Job.enqueue FinishMatchJob.new(self.id), 1, Settings.match.duration.minutes.from_now
   end
 
@@ -108,11 +108,14 @@ class Match < ActiveRecord::Base
 
   def check_update_when_match_is_on
     if self.status_was == "is_on"
-      self.errors.add(:match, I18n.t("match.is_on.start_time_change")) if self.start_time_changed?
+      if self.start_time_changed?
+        self.errors.add(:match, I18n.t("match.is_on.start_time_change"))
+        self.reload
+      end
       if self.team1_odds_changed? || self.team2_odds_changed?
         self.errors.add :match, I18n.t("match.is_on.odds_change")
+        self.reload
       end
-      self.reload
     end
   end
 

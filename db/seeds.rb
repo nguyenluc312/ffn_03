@@ -18,17 +18,3 @@ User.create name: "Admin",
     password_confirmation: "password",
     confirmed_at: Time.now
 end
-
-Country.create code: "VN"
-
-10.times do |n|
-  league = League.create(country_id: 1, name: "League #{n+1}")
-end
-
-20.times do |n|
-  Team.create name: "Team #{n+1}",
-    full_name: "Team #{n+1}",
-    introduction: "intro",
-    country_id: 1,
-    logo: "league-icon.png"
-end

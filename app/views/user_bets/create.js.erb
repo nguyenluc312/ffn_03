@@ -3,6 +3,8 @@
   $('.user-bet-errors').append('<%= j render "shared/error_messages", object: @user_bet %>')
 <% else %>
   $('.user-bet-errors').empty()
+  $('#user-coin').html('<%= current_user.coin - @user_bet.coin %>')
+  $('#messagebox').attr('style', 'display: none;').html('')
   $('.bet-coin').val('')
   $('#betModal').modal('hide')
   $('#messagebox').attr('style', 'display: block;').append('<%= j render "layouts/flash" %>')

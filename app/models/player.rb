@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
   enum position: [:goalkeeper, :defender, :midfielder, :striker]
   belongs_to :country
-  has_many :player_awards
+  has_many :player_awards, dependent: :destroy
   belongs_to :team
   mount_uploader :avatar, PlayerAvatarUploader
   validates :name, presence: true, length: {maximum: 50}

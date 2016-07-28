@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :news
   has_many :comments
-  has_many :user_bets
+  has_many :user_bets, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   mount_uploader :avatar, ImageUploader
