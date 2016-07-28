@@ -1229,8 +1229,14 @@ table.table.table-bordered.text-center {
   .avatar{
     width: 7%;
   }
+  .squad{
+    width: 5%;
+  }
+  .age{
+    width: 5%;
+  }
   .country-flag{
-    width: 10%;
+    width: 8%;
   }
   .country-name{
     width: 20%;
@@ -1242,7 +1248,10 @@ table.table.table-bordered.text-center {
     width: 20%;
   }
   .position{
-    width: 10%;
+    width: 8%;
+  }
+  .squad-number{
+    font-weight: bold;
   }
 }
 
@@ -1308,12 +1317,12 @@ table.table.table-bordered.text-center {
         width: 8%;
       }
       .name {
-        width: 22%;
+        width: 27%;
       }
       .email {
-        width: 32%
+        width: 27%
       }
-      .mode {
+      .assign {
         width: 10%
       }
       .role {
@@ -1657,13 +1666,8 @@ span.pull-left.transfer-players{
   list-style: none;
   padding-left: 0;
   .news-type-name{
-    margin-bottom: 20px;
-    border-bottom: 3px solid green;
-    a{
-      font-weight: bold;
-      background-color: green;
-      color: white;
-    }
+    margin: 30px 0;
+    border-bottom: 3px solid #27AE60;
   }
   .newest-of-type{
     display: inline-block;
@@ -1692,5 +1696,43 @@ span.pull-left.transfer-players{
 .show-league-season {
   a {
     margin: 2%;
+  }
+}
+
+.news-type-name-show{
+  margin-bottom: 30px;
+  border-bottom: 3px solid #27AE60;
+  width: 70%;
+}
+.list-news-in-type{
+  width: 70%;
+  list-style: none;
+  padding-left: 0;
+  .represent-image{
+    vertical-align: top;
+    display: inline-block;
+    width: 35%;
+    img{
+      width: 260px;
+      height: 150px;
+    }
+  }
+  .title-summary{
+    display: inline-block;
+    width: 60%;
+    .title{
+      font-size: 1.25em;
+    }
+  }
+}
+.boxed-label{
+  padding: 10px 20px;
+  font-size: 1.25em;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #27AE60;
+  color: black;
+  &:hover{
+    text-decoration: none;
   }
 }

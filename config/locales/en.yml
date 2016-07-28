@@ -317,6 +317,7 @@ en:
         remove_player: "Remove this player form team"
         confirm_remove_player: "Are you sure to remove player %{player}?"
         add_player: "Add this player to team"
+
         weight: "Weight"
         height: "Height"
         add_player_to_this_team: "Add player to this team"

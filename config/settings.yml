@@ -5,7 +5,8 @@ news:
   per_page: 10
   preview_represent_image_size: "700x400"
   preview_newest: 5
-  preview_newest_in_types: 5
+  preview_newest_in_types: 6
+  per_page_user: 5
 image:
   max_capacity: 5 #MB
 teams:
@@ -38,6 +39,7 @@ country:
   per_page: 4
   size_tiny: "40x20"
   size_small: "60x30"
+  preview_flag_size: "300x150"
 league_seasons:
   per_page: 3
 leagues:
