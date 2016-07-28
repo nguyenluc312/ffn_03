@@ -1,0 +1,30 @@
+<div class="news-type-name-show">
+  <div class="boxed-label"><%= @news_type.name %></div>
+</div>
+<% if @news.any? %>
+  <ul class="list-news-in-type">
+    <% @news.each do |news| %>
+      <li>
+        <div class="news-in-type">
+          <div class="represent-image">
+            <%= link_to news do %>
+              <%= image_tag news.represent_image.url %>
+            <% end %>
+          </div>
+          <div class="title-summary">
+            <div class="title">
+              <%= link_to news.title, news, class: "link-title" %>
+            </div>
+            <div class="summary">
+              <%= news.brief_description %>
+            </div>
+          </div>
+        </div>
+      </li>
+      <hr>
+    <% end %>
+  </ul>
+  <%= paginate @news %>
+<% else %>
+  <div class="no-result"><%= t ".no_news" %></div>
+<% end %>
