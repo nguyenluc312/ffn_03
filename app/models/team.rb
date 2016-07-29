@@ -2,8 +2,8 @@ class Team < ActiveRecord::Base
   ATTRIBUTES_IN_SEASON = :win_matches, :lose_matches, :goals, :lose_goals,
     :draw_matches, :rank
   belongs_to :country
-  has_many :matches
-  has_many :season_teams
+  has_many :matches, dependent: :destroy
+  has_many :season_teams, dependent: :destroy
   has_many :players
   mount_uploader :logo, LogoTeamUploader
 

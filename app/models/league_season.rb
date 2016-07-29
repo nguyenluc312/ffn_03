@@ -1,8 +1,8 @@
 class LeagueSeason < ActiveRecord::Base
   belongs_to :league
-  has_many :matches
-  has_many :player_awards
-  has_many :season_teams
+  has_many :matches, dependent: :destroy
+  has_many :player_awards, dependent: :destroy
+  has_many :season_teams, dependent: :destroy
 
   validates :year, presence: true, uniqueness: {scope: :league}
   validate :check_season_team

@@ -1,8 +1,9 @@
 class Admin::LeagueSeasonsController < Admin::BaseController
   load_and_authorize_resource :league, except: [:index, :destroy, :show]
   load_and_authorize_resource through: :league, except: [:index, :destroy, :show]
-  load_and_authorize_resource only: [:index, :show]
+  load_and_authorize_resource only: [:index, :show, :destroy]
   before_action :load_years, :load_teams, except: [:index, :destroy, :show]
+  before_action :load_countries, only: :index
 
   def index
     @search = LeagueSeason.includes(:league).order(created_at: :desc)
@@ -37,6 +38,15 @@ class Admin::LeagueSeasonsController < Admin::BaseController
     end
   end
 
+  def destroy
+    if @league_season.destroy
+      flash[:success] = t ".success"
+    else
+      flash[:danger] = t ".failed"
+    end
+    redirect_to :back
+  end
+
   def show
     @matches = @league_season.get_schedule
     @rank = @league_season.get_rank
@@ -55,5 +65,9 @@ class Admin::LeagueSeasonsController < Admin::BaseController
   def load_years
     @years = (Time.zone.now.year - Settings.number_of_year)..
       (Time.zone.now.year + Settings.number_of_year)
+  end
+
+  def load_countries
+    @countries = Country.pluck :name, :id
   end
 end

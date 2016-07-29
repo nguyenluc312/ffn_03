@@ -6,6 +6,7 @@ class LeagueSeasonsController < ApplicationController
       .search params[:q]
     @league_seasons = @search.result.page(params[:page]).
       per Settings.league_seasons.per_page
+    @countries = Country.pluck(:name, :id)
   end
 
   def show

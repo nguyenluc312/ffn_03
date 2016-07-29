@@ -42,7 +42,7 @@ en:
       google: "Sign in with Google"
   countries:
     index:
-      content: "Enter name or code.."
+      content: "Search by name or code..."
       select_country: "Select country"
   admin:
     verify_admin: "You are not authorized to access this page"
@@ -56,7 +56,7 @@ en:
         role: "Role"
         action: "Action"
         confirm: "Are you sure?"
-        content: "Enter name or email.."
+        content: "Search by name or email.."
         search: "Search"
         role: "Role"
         assign: "Assign"
@@ -123,7 +123,7 @@ en:
         confirm_delete: "Do you really want to delete this news type?"
     countries:
       index:
-        content: "Enter name or code.."
+        content: "Search by name or code.."
         delete: "Delete"
         action: "Action"
         add_new_country: "Add New Country"
@@ -150,7 +150,7 @@ en:
         league_manage: "League Manage"
         new_league: "New League"
         select_country: "All Country"
-        search_name: "Enter name.."
+        search_name: "Search by name.."
         new_league_season: "create new league season in this league"
         edit: "Edit this league"
         delete: "Delete this league"
@@ -165,6 +165,9 @@ en:
         success: "Successfully"
       edit:
         edit_league: "Edit League"
+      destroy:
+        success: "Successfully"
+        failed: "Failed"
     teams:
       form:
         name: "Name.."
@@ -221,10 +224,13 @@ en:
         no_league_season: "Have no league seasons"
         current_league: "Current League"
         league_season: "League season"
-        edit_league_season: "Edit"
-        season_search: "Season.."
-        league_search: "League.."
-        country_search: "Country.."
+        edit_league_season: "Edit this season"
+        league_search: "Search by league.."
+        delete: "Delete this season"
+        confirm: "Are you sure delete this season?"
+        new_match: "Create new match in season"
+        select_country: "All Country"
+        all_season: "Season"
       form:
         add_season_teams: "Add team"
         new: "New League Season"
@@ -238,6 +244,9 @@ en:
         edit: "Edit league season in "
       update:
         success: "Successfully"
+      destroy:
+        success: "Successfully"
+        failed: "Failed"
       season_team_fields:
         select_team: "Select team"
       show:
@@ -494,9 +503,7 @@ en:
   league_seasons:
     index:
       all_league_seasons: "All League Seasons"
-      season_search: "Season.."
-      league_search: "League.."
-      country_search: "Country.."
+      league_search: "Search by league..."
     rank:
       rankings: "Ranking"
       team_name: "Team name"

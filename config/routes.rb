@@ -13,12 +13,12 @@ Rails.application.routes.draw do
   get "contact" => "static_pages#contact"
 
   namespace :admin do
-    root "countries#new"
+    root "news#index"
     resources :countries, except: :show
     resources :leagues do
       resources :league_seasons, except: :destroy
     end
-    resources :league_seasons, except: :destroy do
+    resources :league_seasons do
       resources :matches, except: [:index, :destroy]
     end
     resources :news, except: :show

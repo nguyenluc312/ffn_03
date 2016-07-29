@@ -1,32 +1,36 @@
-<div class="preview-newest-news">
-  <div class="newest-news">
-    <%= link_to @news.first do %>
-      <%= image_tag @news.first.represent_image.url %>
-    <% end %>
-    <div class="title-summary">
-      <h3><%= link_to @news.first.title, @first_news, class: "link-title" %></h3>
-      <%= @news.first.brief_description %>
+<% if @news.blank? %>
+  <strong><%= t ".no_news" %></strong>
+<% else %>
+  <div class="preview-newest-news">
+    <div class="newest-news">
+      <%= link_to @news.first do %>
+        <%= image_tag @news.first.represent_image.url %>
+      <% end %>
+      <div class="title-summary">
+        <h3><%= link_to @news.first.title, @news.first, class: "link-title" %></h3>
+        <%= @news.first.brief_description %>
+      </div>
+    </div>
+    <div class="next-newest-news">
+      <ul class="list-thumb-news">
+        <% @news[1..Settings.news.preview_newest - 1].each do |news| %>
+          <li>
+            <div class="thumb-news">
+              <div class="image">
+                <%= link_to news do %>
+                  <%= image_tag news.represent_image.url %>
+                <% end %>
+              </div>
+              <div class="title">
+                <%= link_to news.title, news, title: news.title, class: "link-title" %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
-  <div class="next-newest-news">
-    <ul class="list-thumb-news">
-      <% @news[1..Settings.news.preview_newest - 1].each do |news| %>
-        <li>
-          <div class="thumb-news">
-            <div class="image">
-              <%= link_to news do %>
-                <%= image_tag news.represent_image.url %>
-              <% end %>
-            </div>
-            <div class="title">
-              <%= link_to news.title, news, title: news.title, class: "link-title" %>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<% end %>
 <hr>
 <div class="all-news-types">
   <ul class="list-news_types">

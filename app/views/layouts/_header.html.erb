@@ -15,6 +15,12 @@
     </ul>
     <ul class="nav navbar-nav pull-right">
       <% if user_signed_in? %>
+        <li>
+          <a href="">
+            <%= image_tag Settings.image.coin, size: Settings.image.coin_size %>
+            <span id="user-coin"><%= current_user.coin %></span>
+          </a>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <%= image_tag current_user.avatar.url, id: "avatar-on-nav" %>

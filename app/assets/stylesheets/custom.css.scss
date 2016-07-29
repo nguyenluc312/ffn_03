@@ -635,7 +635,6 @@ h2.center.match-title {
 
   #user-bet {
     padding: 36px;
-    text-align: center;
     .chosen {
       text-align: left;
       width: 50%;
@@ -1280,10 +1279,10 @@ table.table.table-bordered.text-center {
     width: 7%;
   }
   .team-name{
-    width: 20%;
+    width: 18%;
   }
   .position{
-    width: 8%;
+    width: 10%;
   }
   .squad-number{
     font-weight: bold;
@@ -1622,7 +1621,7 @@ span.pull-left.transfer-players{
 }
 
 .show-league-seasons {
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
   .search-form {
     .season {
@@ -1635,19 +1634,28 @@ span.pull-left.transfer-players{
     .table {
       thead {
         .index {
-          width: 10%;
+          width: 8%;
         }
         .name {
-          width: 25%;
+          width: 22%;
         }
         .league {
-          width: 30%;
+          width: 22%;
         }
         .country {
-          width: 20%;
-        }
-        .players {
           width: 15%;
+        }
+        .team {
+          width: 15%;
+        }
+        .action {
+          width: 18%;
+        }
+      }
+
+      tbody {
+        .glyphicon {
+          margin: 0 5px;
         }
       }
     }
@@ -1837,4 +1845,8 @@ span.pull-left.transfer-players{
   &:hover {
     color: red;
   }
+}
+
+#user-coin {
+  color: yellow;
 }
