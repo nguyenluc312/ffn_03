@@ -18,6 +18,27 @@ class Admin::CountriesController < Admin::BaseController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @country.update_attributes country_params
+      flash[:success] = t ".success"
+      redirect_to admin_countries_url
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @country.destroy
+      flash[:success] = t ".success"
+    else
+      flash[:danger] = t ".failed"
+    end
+    redirect_to :back
+  end
+
   private
   def country_params
     params.require(:country).permit :code, :flag

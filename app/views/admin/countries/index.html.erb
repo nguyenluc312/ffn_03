@@ -26,6 +26,7 @@
       <th class="league"><%= t ".league" %></th>
       <th class="league-season"><%= t "league_season" %></th>
       <th class="players"><%= t ".player" %></th>
+      <th class="action"><%= t ".action" %></th>
     </thead>
     <tbody>
       <% @countries.each_with_index do |country, index| %>
@@ -34,12 +35,19 @@
             <%= Settings.country.per_page * (@countries.current_page - 1) + index + 1 %>
           </td>
           <td class="center">
-            <%= image_tag country.flag.url, size: Settings.country.size_tiny %>
+            <%= image_tag country.flag.url, size: Settings.country.size_small %>
           </td>
           <td class="name"><%= country.name %></td>
-          <td class="center"><%= country.leagues.count %></td>
-          <td class="center"><%= country.league_seasons.count %></td>
-          <td class="center"><%= country.players.count %></td>
+          <td class="center right"><%= country.leagues.count %></td>
+          <td class="center right"><%= country.league_seasons.count %></td>
+          <td class="center right"><%= country.players.count %></td>
+          <td class="action center">
+            <%= link_to "", edit_admin_country_path(country),
+              class: "glyphicon glyphicon-edit", title: t(".edit") %>
+            <%= link_to "", admin_country_path(country), method: :delete,
+              class: "glyphicon glyphicon-trash", title: t(".delete"),
+              data: {confirm: t(".confirm")} %>
+          </td>
         </tr>
       <% end %>
     </tbody>

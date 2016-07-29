@@ -1,7 +1,7 @@
 class Admin::LeaguesController < Admin::BaseController
   load_and_authorize_resource
 
-  before_action :load_countries, only: [:new, :create, :index]
+  before_action :load_countries, except: [:show, :destroy]
 
   def index
     @search = League.includes(:country, :league_seasons).search params[:q]
@@ -18,6 +18,18 @@ class Admin::LeaguesController < Admin::BaseController
       redirect_to admin_leagues_url
     else
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @league.update_attributes league_params
+      flash[:success] = t ".success"
+      redirect_to admin_leagues_url
+    else
+      render :edit
     end
   end
 

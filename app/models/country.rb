@@ -1,7 +1,7 @@
 class Country < ActiveRecord::Base
-  has_many :leagues
-  has_many :players
-  has_many :teams
+  has_many :leagues, dependent: :destroy
+  has_many :players, dependent: :destroy
+  has_many :teams, dependent: :destroy
   has_many :league_seasons, through: :leagues
 
   validates :code, presence: true, uniqueness: true
