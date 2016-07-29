@@ -45,37 +45,33 @@
       <div class="goals">
         <div class="team1-goals">
           <%= f.number_field :team1_goal, step: 1, min: 0,
-            value: @match.team1_goal, disabled: true, class: "form-control" %>
+            disabled: true, class: "form-control" %>
         </div>
         <div id="space">-</div>
         <div class="team2-goals">
           <%= f.number_field :team2_goal, step: 1, min: 0,
-            value: @match.team1_goal, disabled: true, class: "form-control" %>
+            disabled: true, class: "form-control" %>
         </div>
       </div>
     <% elsif @match.is_on? %>
       <div class="goals">
         <div class="team1-goals">
-          <%= f.number_field :team1_goal, step: 1, min: 0,
-            value: @match.team1_goal, class: "form-control" %>
+          <%= f.number_field :team1_goal, step: 1, min: 0, class: "form-control" %>
         </div>
         <div id="space">-</div>
         <div class="team2-goals">
-          <%= f.number_field :team2_goal, step: 1, min: 0,
-            value: @match.team1_goal, class: "form-control" %>
+          <%= f.number_field :team2_goal, step: 1, min: 0, class: "form-control" %>
         </div>
       </div>
     <% else %>
       <div class="goals hidden">
         <div class="team1-goals">
           <%= f.number_field :team1_goal, step: 1, min: 0,
-            value: @match.team1_goal, class: "form-control",
-            placeholder: "-" %>
+            class: "form-control", placeholder: "-" %>
         </div>
         <div id="space">-</div>
         <div class="team2-goals">
-          <%= f.number_field :team2_goal, step: 1, min: 0,
-            value: @match.team1_goal, class: "form-control",
+          <%= f.number_field :team2_goal, step: 1, min: 0, class: "form-control",
             placeholder: "-" %>
         </div>
       </div>

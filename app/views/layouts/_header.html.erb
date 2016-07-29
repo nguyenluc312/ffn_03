@@ -8,11 +8,40 @@
           <span class="glyphicon glyphicon-home"></span>
         <% end %>
       </li>
-      <li><%= link_to "News", news_index_path %></li>
-      <li><%= link_to "League", "#" %></li>
-      <li><%= link_to "Teams", teams_path %></li>
-      <li><%= link_to "Players", players_path %></li>
-      <li><%= link_to "Admin", admin_root_path %></li>
+      <li><%= link_to t("layouts.news"), news_index_path %></li>
+      <li><%= link_to t("layouts.countries"), countries_path %></li>
+      <li class="dropdown dropdown-large">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t ".leagues" %><b class="caret"></b></a>
+
+        <ul class="dropdown-menu dropdown-menu-large row">
+          <% @countries_have_leagues.each_with_index do |country, index| %>
+            <% if index > 0 && index % 4 == 0 %>
+              <div class="clearfix"></div>
+              <hr>
+            <% end %>
+            <li class="col-sm-3">
+              <ul>
+                <li class="dropdown-header"><%= country.name %></li>
+                <% country.leagues.each do |league| %>
+                  <li>
+                    <%= link_to league.name, league %>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+      <li><%= link_to t("layouts.teams"), teams_path %></li>
+      <li><%= link_to t("layouts.players"), players_path %></li>
+      <% if user_signed_in? && (current_user.admin? || current_user.moderate?) %>
+        <li>
+          <%= link_to admin_root_path do %>
+            <i class="glyphicon glyphicon-user"></i>
+            <span><%= t ".manage" %></span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>

@@ -8,14 +8,30 @@
           <span class="glyphicon glyphicon-home"></span>
         <% end %>
       </li>
-      <li><%= link_to t(".users"), admin_users_path %></li>
-      <li><%= link_to t(".news_types"), admin_news_types_path %></li>
-      <li><%= link_to t(".news"), admin_news_index_path %></li>
-      <li><%= link_to t(".countries"), admin_countries_path %></li>
-      <li><%= link_to t(".leagues"), admin_leagues_path %></li>
-      <li><%= link_to t(".teams"), admin_teams_path %></li>
-      <li><%= link_to t(".players"), admin_players_path %></li>
-      <li><%= link_to t(".go_to_website"), root_path %></li>
+      <% if current_user.admin? %>
+        <li><%= link_to t(".users"), admin_users_path %></li>
+        <li><%= link_to t(".news"), admin_news_index_path %></li>
+        <li><%= link_to t(".news_types"), admin_news_types_path %></li>
+        <li><%= link_to t(".countries"), admin_countries_path %></li>
+        <li><%= link_to t(".leagues"), admin_leagues_path %></li>
+        <li><%= link_to t(".league_seasons"), admin_league_seasons_path %></li>
+        <li><%= link_to t(".teams"), admin_teams_path %></li>
+        <li><%= link_to t(".players"), admin_players_path %></li>
+        <li>
+          <%= link_to root_path do %>
+            <span><%= t ".go_to_website" %></span>
+            <i class="glyphicon glyphicon-share-alt"></i>
+          <% end %>
+        </li>
+      <% elsif current_user.moderate? %>
+        <li><%= link_to t(".news"), admin_news_index_path %></li>
+        <li>
+          <%= link_to root_path do %>
+            <span><%= t ".go_to_website" %></span>
+            <i class="glyphicon glyphicon-share-alt"></i>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
     <ul class="nav navbar-nav pull-right">
       <li class="dropdown">
