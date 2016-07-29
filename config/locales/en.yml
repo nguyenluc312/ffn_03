@@ -306,7 +306,7 @@ en:
         search_name: "Search by name..."
         select_position: "All positions"
         select_country: "All countries"
-        success: "Successfully=
+        success: "Successfully"
         weight: "Weight (kg)"
         height: "Height (cm)"
       show:
@@ -416,8 +416,7 @@ en:
     not_found: "Not Found"
   league_seasons:
     name: "%{league_name} %{start_year} - %{end_year}"
-    matches:
-      schedule: "Schedule"
+    schedule:
       match_detail: "View match detail"
     rank:
       rankings: "Rankings"

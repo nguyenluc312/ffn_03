@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   ATTRIBUTES_IN_SEASON = :win_matches, :lose_matches, :goals, :lose_goals,
-    :draw_matches, :total_matches, :rank
+    :draw_matches, :rank
   belongs_to :country
   has_many :matches
   has_many :season_teams
@@ -54,6 +54,10 @@ class Team < ActiveRecord::Base
     end
   end
 
+  def total_matches
+    win_matches + lose_matches + draw_matches
+  end
+
   def score
     win_matches * 3 + draw_matches
   end
@@ -76,7 +80,6 @@ class Team < ActiveRecord::Base
 
   def stats_from_match match
     if pos = in_match(match)
-      self.total_matches += 1
       if match.finished?
         self.goals = match.send(pos.to_s + "_goal")
         self.lose_goals = match.team1_goal + match.team2_goal - goals

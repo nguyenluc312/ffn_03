@@ -50,7 +50,9 @@ body {
 .hidden{
   display: none;
 }
-
+h1{
+  margin: 0px;
+}
 #image-view{
   border: 1px solid #e8e8e8;
   margin-bottom: 15px;
@@ -71,7 +73,13 @@ body {
 .no-result{
   font-weight: bold;
 }
-
+a{
+  color: black;
+  &:hover {
+    text-decoration: none;
+    color: red;
+  }
+}
 .manager-header{
 vertical-align: top;
   .pull-right{
@@ -108,6 +116,9 @@ vertical-align: top;
   }
 }
 
+.tiny-logo-with-team{
+  margin: 0 10px;
+}
 .table-leagues {
   thead {
     .league {
@@ -331,7 +342,7 @@ vertical-align: top;
 }
 
 .current-league {
-  color: green;
+  color: #27AE60;
 }
 
 /* manager news */
@@ -617,7 +628,7 @@ h2.center.match-title {
   }
 
   .make-bet-success {
-    color: green;
+    color: #27AE60;
   }
 
   #user-bet {
@@ -688,7 +699,7 @@ table.table.table-bordered.text-center {
 }
 
 #match-in-process {
-  color: green;
+  color: #27AE60;
 }
 
 #new-event {
@@ -759,24 +770,10 @@ table.table.table-bordered.text-center {
     }
   }
 }
-#league-menu{
-  border: 1px solid #e8e8e8;
-  padding: 0px;
-  #league-header{
-    margin-top: 10px;
-    font-size: 1.25em;
-  }
-  .dropdown{
-    border-top: 1px solid #e8e8e8;
-    font-weight: bold;
-    a{
-      color: black;
-    }
-  }
-}
 #league-season-info{
+  margin: 0 auto;
   padding: 0px;
-  margin-left: 20px;
+  padding-left: 30px;
   .season-info-container{
     border: 1px solid #e8e8e8;
     margin-bottom: 20px;
@@ -786,8 +783,7 @@ table.table.table-bordered.text-center {
 #table-matches tr{
   td.start-date{
     text-align: center;
-    background-color: green;
-    color: white;
+    background-color: #27AE60;
     font-weight: bold;
   }
   td.start-time{
@@ -816,10 +812,7 @@ table.table.table-bordered.text-center {
 }
 
 #rank-table{
-  thead{
-    background-color: green;
-    color: white;
-  }
+  margin-top: 20px;
   .stats{
     width: 6%;
     text-align: center;
@@ -836,6 +829,32 @@ table.table.table-bordered.text-center {
   margin-bottom: 5px;
 }
 
+#table-schedule{
+  margin-top: 20px;
+  .start-date{
+    padding-left: 20px;
+    font-weight: bold;
+    border-top: 2px solid #27AE60;
+  }
+  .start-time{
+    width: 10%;
+  }
+  .action{
+    width: 10%;
+  }
+  .team1{
+    width: 35%;
+  }
+  .team2{
+    width: 35%;
+  }
+  .result{
+    font-weight: bold;
+    .goals-team1{
+      margin-right: 4px;
+    }
+  }
+}
 .new-match {
   width: 55%;
   margin: 0 auto;
@@ -1027,7 +1046,7 @@ table.table.table-bordered.text-center {
 }
 
 .form-new-event {
-  border: 1px solid green;
+  border: 1px solid #27AE60;
   padding-left: 5%;
   width: 85%;
   padding-bottom: 28px;
@@ -1295,6 +1314,10 @@ table.table.table-bordered.text-center {
 }
 
 .table{
+  thead{
+    color: white;
+    background-color: #27AE60;
+  }
   tbody tr td{
     vertical-align: middle;
   }
@@ -1735,4 +1758,42 @@ span.pull-left.transfer-players{
   &:hover{
     text-decoration: none;
   }
+}
+
+.panel-group{
+  margin-top: 20px;
+  .panel{
+    border-radius: 0;
+    .panel-title{
+      a &:hover{
+        text-decoration: none;
+      }
+      img{
+        margin-right: 10px;
+      }
+      font-weight: bold;
+
+    }
+    .panel-body{
+      padding: 0;
+      ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li{
+          padding: 10px 20px;
+          border-bottom: 1px solid #e8e8e8;
+        }
+      }
+    }
+  }
+}
+#league-accordion-menu{
+  display: inline-block;
+  width: 25%;
+}
+#league-season-info{
+  display: inline-block;
+  width: 74%;
+  vertical-align: top;
 }

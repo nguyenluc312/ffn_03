@@ -1,0 +1,46 @@
+<h3>
+  <span class="glyphicon glyphicon-calendar"></span>
+  <%= t ".schedule" %>
+  <%= @league_season.league.name %> -
+  <%= t ".season" %>
+  <%= @league_season.year %>
+</h3>
+<table id="table-schedule" class="table table-striped table-bordered">
+  <% @schedule.each do |date, schedule| %>
+    <tr>
+      <td colspan="5" class="start-date">
+        <%= t ".date" %>
+        <%= date.strftime Settings.format.date %>
+      </td>
+    </tr>
+    <% schedule.each do |match| %>
+      <tr>
+        <td class="start-time center">
+          <%= match.start_time.strftime Settings.format.time %>
+        </td>
+        <td class="team1 right">
+          <%= link_to match.team1.name, match.team1 %>
+          <%= image_tag match.team1.logo.url, size: Settings.team.logo_size_tiny,
+            class: "tiny-logo-with-team" %>
+        </td>
+        <td class="result center">
+          <span class="goals-team1"><%= match.team1_goal || "-" %></span>:
+          <span class="goals-team2"><%= match.team2_goal || "-" %></span>
+          <br>
+        <td class="team2">
+          <%= image_tag match.team2.logo.url, size: Settings.team.logo_size_tiny,
+            class: "tiny-logo-with-team" %>
+          <%= link_to match.team2.name, match.team2 %>
+        </td>
+        <td class="action center">
+          <%= link_to match, title: "Match detail", data: {toggle: "tooltip"} do %>
+            <span class="glyphicon glyphicon-play-circle"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<% if @schedule.empty? %>
+  <div class="no-result"><%= t ".no_match" %></div>
+<% end %>
