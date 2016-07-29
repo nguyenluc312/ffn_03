@@ -8,6 +8,10 @@ class PlayersController < ApplicationController
   end
 
   def show
+    if @player.team && @player.team.players.any?
+      @players = (@player.team.players.order(:position).includes(:country) - [@player])
+        .group_by{|player| player.position}
+    end
   end
 
   private

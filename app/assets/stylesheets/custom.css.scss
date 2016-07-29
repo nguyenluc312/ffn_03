@@ -1826,6 +1826,9 @@ span.pull-left.transfer-players{
       }
     }
   }
+  .active{
+    background-color: pink;
+  }
 }
 #league-accordion-menu{
   display: inline-block;
@@ -1882,4 +1885,35 @@ span.pull-left.transfer-players{
 .news-type-container{
   display: inline-block;
   width: 70%;
+}
+
+#daily-schedule{
+  width: 70%;
+  margin-top: 20px;
+  .league-season{
+    padding-left: 20px;
+    font-weight: bold;
+    border-top: 2px solid #27AE60;
+    .glyphicon{
+      margin-right: 10px;
+    }
+  }
+  .start-time{
+    width: 10%;
+  }
+  .action{
+    width: 10%;
+  }
+  .team1{
+    width: 35%;
+  }
+  .team2{
+    width: 35%;
+  }
+  .result{
+    font-weight: bold;
+    .goals-team1{
+      margin-right: 4px;
+    }
+  }
 }

@@ -18,7 +18,7 @@
         <div class="panel-body">
           <ul>
             <% league.league_seasons.each do |league_season| %>
-              <li>
+              <li id="league-season-<%= league_season.id %>">
                 <%= link_to t(".season") + " " + league_season.year.to_s,
                   controller: target, action: :show, league_season_id: league_season.id %>
               </li>

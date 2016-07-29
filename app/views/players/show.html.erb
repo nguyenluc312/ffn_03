@@ -3,7 +3,7 @@
   <div id="player-info">
     <%= image_tag @player.avatar.medium.url %>
     <table class="table-info-template">
-      <% [:date_of_birth, :country_name, :team_name, :height, :weight, :position].each do |attribute| %>
+      <% [:DOB, :country_name, :team_name, :height, :weight, :position].each do |attribute| %>
         <tr>
           <td class="attribute"><%= t "." + attribute.to_s %></td>
           <td class="value" %>
@@ -23,7 +23,6 @@
       <li class="active">
         <a data-toggle="tab" href="#introduction"><%= t ".introduction" %></a>
       </li>
-      <li><a data-toggle="tab" href="#awards"><%= t ".awards" %></a></li>
       <li><a data-toggle="tab" href="#team-mates"><%= t ".team_mates" %></a></li>
     </ul>
 
@@ -35,9 +34,8 @@
           <div class="no-result"><%= t ".no_introduction" %></div>
         <% end %>
       </div>
-      <div id="awards" class="tab-pane fade">
-      </div>
       <div id="team-mates" class="tab-pane fade">
+        <%= render "players_with_group" %>
       </div>
     </div>
   </div>
