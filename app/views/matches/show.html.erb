@@ -56,37 +56,48 @@
           </tr>
       </table>
       <% if user_signed_in? && @match.start_time > Time.zone.now %>
-        <%= link_to t(".make_a_bet"), "#", class: "btn btn-primary",
-          id: "bet-match" %>
-        <div class="make-bet-success"></div>
-        <div class="hidden" id="user-bet">
-          <%= form_for @user_bet, remote: true do |f| %>
-            <div class="user-bet-errors"></div>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-            <%= f.hidden_field :match_id, value: @match.id %>
-            <div class="form-inline">
-              <div class="form-group team1">
-                <label><%= @match.team1.name %><%= t ".win" %></label>
-                <%= f.radio_button :chosen, :team1 %>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#betModal">
+          <%= t ".make_a_bet" %>
+        </button>
+        <div class="modal fade" id="betModal" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="center"><%= t ".make_your_bet" %></h3>
               </div>
-              <div class="form-group draw">
-                <label><%= t ".draw" %></label>
-                <%= f.radio_button :chosen, :draw %>
-              </div>
-              <div class="form-group team2">
-                <label><%= @match.team2.name %><%= t ".win" %></label>
-                <%= f.radio_button :chosen, :team2 %>
+              <div id="user-bet">
+                <%= form_for @user_bet, remote: true do |f| %>
+                  <div class="user-bet-errors"></div>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= f.hidden_field :match_id, value: @match.id %>
+                  <div class="chosen">
+                    <div class="form-group team1">
+                      <%= f.radio_button :chosen, :team1 %>
+                      <label><%= @match.team1.name %><%= t ".win" %></label>
+                    </div>
+                    <div class="form-group draw">
+                      <%= f.radio_button :chosen, :draw %>
+                      <label><%= t ".draw" %></label>
+                    </div>
+                    <div class="form-group team2">
+                      <%= f.radio_button :chosen, :team2 %>
+                      <label><%= @match.team2.name %><%= t ".win" %></label>
+                    </div>
+                  </div>
+                  <div class="form-group form-inline">
+                    <%= f.label :coin %>
+                    <%= f.number_field :coin, min: 0, class: "form-control bet-coin" %>
+                  </div>
+                  <div class="form-inline modal-footer center">
+                    <%= f.submit t(".ok"), class: "btn btn-primary form-control" %>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                      <%= t ".close" %>
+                    </button>
+                  </div>
+                <% end %>
               </div>
             </div>
-            <div class="form-group form-inline">
-              <label><%= t ".coin" %></label>
-              <%= f.number_field :coin, min: 0, class: "form-control bet-coin" %>
-            </div>
-
-            <div class="form-group">
-              <%= f.submit t(".make"), class: "btn btn-primary form-control" %>
-            </div>
-          <% end %>
+          </div>
         </div>
       <% end %>
     </div>

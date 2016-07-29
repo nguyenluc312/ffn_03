@@ -1,25 +1,47 @@
-<div class="show-bet-user center">
-  <div class="heading">
-    <h1><%= t ".your_bet" %></h1>
-  </div>
+<div class="show-bet-user">
+  <h1 class="center"><%= t ".your_bet_history" %></h1>
+  <hr>
   <div class="list-bet-user">
     <table class="table table-striped table-bordered">
       <thead>
-        <th class="index-user-bet center"><%= t ".index" %></th>
-        <th class="match-user-bet center"><%= t ".match" %></th>
-        <th class="chosen-user-bet center"><%= t ".chosen" %></th>
-        <th class="coin-user-bet center"><%= t ".coin" %></th>
+        <th class="index"><%= t ".index" %></th>
+        <th class="match-user-bet"><%= t ".match" %></th>
+        <th class="odds"><%= t ".bet_odds" %></th>
+        <th class="chosen"><%= t ".chosen" %></th>
+        <th class="coin"><%= t ".coin" %></th>
+        <th class="time"><%= t ".time" %></th>
       </thead>
       <tbody>
         <% @user_bets.each_with_index do |user_bet, index| %>
           <tr>
-            <td><%= index %></td>
-            <td><%= user_bet.match.team1.name %> vs <%= user_bet.match.team2.name %></td>
-            <td><%= user_bet.chosen %></td>
-            <td><%= user_bet.coin %></td>
+            <td class="center">
+              <%= Settings.user_bets.per_page * (@user_bets.current_page - 1) + 1 + index %>
+            </td>
+            <td>
+              <%= link_to user_bet.match do %>
+                <span>
+                  <%= user_bet.match.team1.name %> vs <%= user_bet.match.team2.name %>
+                </span>
+              <% end %>
+            </td>
+            <td class="odds center">
+              <%= t ".odds", team1_odds: user_bet.match.team1_odds,
+                team2_odds: user_bet.match.team2_odds %>
+            </td>
+            <td>
+              <%= user_bet.chosen_name %>
+            </td>
+            <td class="right"><%= user_bet.coin %></td>
+            <td class="center">
+              <%= user_bet.created_at.strftime Settings.format.date_time %>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
+    <%= paginate @user_bets %>
+    <% if @user_bets.blank? %>
+      <strong><% t ".no_bet" %></strong>
+    <% end %>
   </div>
 </div>

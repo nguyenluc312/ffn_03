@@ -50,7 +50,7 @@ class LogoTeamUploader < CarrierWave::Uploader::Base
   end
 
   version :large do
-    process resize_to_fill: [300, 300]
+    process resize_to_fill: [200, 200]
   end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

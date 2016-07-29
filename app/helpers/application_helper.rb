@@ -12,7 +12,7 @@ module ApplicationHelper
 
   def show_activity activity
     if activity.trackable_type == UserBet.name
-      (t("activity.bet", chosen: activity.trackable.chosen) +
+      (t("activity.bet", chosen: activity.trackable.chosen_name) +
         link_to(t("activity.match"), activity.recipient) + " " +
         link_to(image_tag(activity.recipient.team1.logo.url,
           size: Settings.activity.logo_team), activity.recipient.team1) +

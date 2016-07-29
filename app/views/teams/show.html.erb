@@ -1,7 +1,7 @@
 <h1><%= @team.name %></h1>
 <div id="team-profile">
   <div id="team-info">
-    <%= image_tag @team.logo.medium.url %>
+    <%= image_tag @team.logo.large.url %>
     <table class="table-info-template">
       <% [:full_name, :nickname, :short_name, :country_name, :coach].each do |attribute| %>
         <tr>

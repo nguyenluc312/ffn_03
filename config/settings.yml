@@ -50,3 +50,5 @@ format:
   time: "%H:%M"
   date_time: "%d-%m-%Y %I:%M %p"
   date: "%d-%m-%Y"
+user_bets:
+  per_page: 5
