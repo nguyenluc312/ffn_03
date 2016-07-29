@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726211924) do
+ActiveRecord::Schema.define(version: 20160729010402) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -137,9 +137,10 @@ ActiveRecord::Schema.define(version: 20160726211924) do
     t.text     "content"
     t.string   "author"
     t.integer  "news_type_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "represent_image"
+    t.integer  "comments_count",    default: 0
   end
 
   add_index "news", ["news_type_id"], name: "index_news_on_news_type_id"

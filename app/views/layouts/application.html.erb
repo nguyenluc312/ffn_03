@@ -8,7 +8,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <div class="container header">
     <% if "admin" == params[:controller].split("/").first %>
       <%= render "layouts/manager_header" %>

@@ -23,7 +23,7 @@ body {
 
 .affix {
   top: 0;
-  width: 70%;
+  width: 100%;
 }
 .center {
   text-align: center;
@@ -74,10 +74,9 @@ h1{
   font-weight: bold;
 }
 a{
-  color: black;
   &:hover {
     text-decoration: none;
-    color: red;
+    color: #D91E18;
   }
 }
 .manager-header{
@@ -109,9 +108,9 @@ vertical-align: top;
 }
 
 #error_explanation {
-  color: red;
+  color: #D91E18;
   ul {
-    color: red;
+    color: #D91E18;
     margin: 0 0 30px 0;
   }
 }
@@ -188,7 +187,7 @@ vertical-align: top;
 }
 
 .no-player-team {
-  color: red;
+  color: #D91E18;
 }
 
 .player-in-team {
@@ -198,8 +197,9 @@ vertical-align: top;
 /* view news */
 #news-section{
   width: 70%;
+  display: inline-block;
   .news-time{
-    color: #999999;
+    color: #666666;
   }
   .news-summary{
     font-weight: bold;
@@ -320,14 +320,14 @@ vertical-align: top;
 
   .action-delete {
     &:hover {
-      color: red;
+      color: #D91E18;
       text-decoration: none;
     }
   }
 }
 
 .no-team {
-  color: red;
+  color: #D91E18;
   padding: 0px 0px 10px 20px;
 }
 
@@ -337,7 +337,7 @@ vertical-align: top;
 }
 
 .remove_season_teams {
-  color: red;
+  color: #D91E18;
   text-decoration: none;
 }
 
@@ -691,7 +691,7 @@ h2.center.match-title {
   font-size: 40px;
 }
 
-table.table.table-bordered.text-center {
+table.table.table-borde#D91E18.text-center {
   width: 70%;
   margin: auto;
 }
@@ -701,7 +701,7 @@ table.table.table-bordered.text-center {
 }
 
 #finished-match {
-  color: red;
+  color: #D91E18;
 }
 
 #match-in-process {
@@ -811,7 +811,7 @@ table.table.table-bordered.text-center {
   td.result{
     width: 10%;
     text-align: center;
-    color: red;
+    color: #D91E18;
     .goals-team1{
       margin-right: 5px;
     }
@@ -1666,7 +1666,7 @@ span.pull-left.transfer-players{
   color: black;
   font-weight: bold;
   &:hover{
-    color: red;
+    color: #D91E18;
     text-decoration: none;
   }
 }
@@ -1724,6 +1724,7 @@ span.pull-left.transfer-players{
 
 .all-news-types{
   width: 700px;
+  display: inline-block;
 }
 .list-news_types{
   list-style: none;
@@ -1765,10 +1766,8 @@ span.pull-left.transfer-players{
 .news-type-name-show{
   margin-bottom: 30px;
   border-bottom: 3px solid #27AE60;
-  width: 70%;
 }
 .list-news-in-type{
-  width: 70%;
   list-style: none;
   padding-left: 0;
   .represent-image{
@@ -1843,10 +1842,44 @@ span.pull-left.transfer-players{
 
 .glyphicon-trash {
   &:hover {
-    color: red;
+    color: #D91E18;
+  }
+}
+#user-coin {
+  color: yellow;
+}
+.hot-news{
+  vertical-align: top;
+  display: inline-block;
+  margin-left: 30px;
+  width: 25%;
+  .news-type-name{
+    margin: 30px 0;
+    border-bottom: 3px solid #D91E18;
+    .red-box{
+      background-color: #D91E18;
+    }
+  }
+  .list-hot-news{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li{
+      padding: 5px 0;
+      border-bottom: 1px solid #e8e8e8;
+    }
   }
 }
 
-#user-coin {
-  color: yellow;
+.hot-news.type{
+  .news-type-name{
+    margin-top: 0px;
+  }
+}
+.hot-in-index{
+  width: 360px;
+}
+.news-type-container{
+  display: inline-block;
+  width: 70%;
 }

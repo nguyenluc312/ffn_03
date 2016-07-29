@@ -12,6 +12,14 @@ class News < ActiveRecord::Base
   validate :image_size
   delegate :name, to: :news_type, prefix: true
 
+  class << self
+    def hot_news
+      News.order(comments_count: :desc, created_at: :desc)
+        .where(":date <= created_at", date: Settings.news.hot_days_ago.days.ago.to_date)
+        .limit Settings.news.hot_news
+    end
+  end
+
   private
   def image_size
     if represent_image.size > Settings.image.max_capacity.megabytes

@@ -7,6 +7,8 @@ news:
   preview_newest: 5
   preview_newest_in_types: 6
   per_page_user: 5
+  hot_news: 10
+  hot_days_ago: 7
 image:
   max_capacity: 5 #MB
   coin: "coin.png"
@@ -52,5 +54,3 @@ format:
   time: "%H:%M"
   date_time: "%d-%m-%Y %I:%M %p"
   date: "%d-%m-%Y"
-user_bets:
-  per_page: 5
