@@ -1,0 +1,13 @@
+<div class="news-type-name">
+  <div class="boxed-label red-box">
+    <%= t ".hot_news" %>
+  </div>
+</div>
+<ul class="list-hot-news">
+  <% @hot_news.each do |news| %>
+    <li>
+      &#8227;
+      <%= link_to news.title, news, class: "link-title" %>
+    </li>
+  <% end %>
+</ul>
