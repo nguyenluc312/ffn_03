@@ -56,4 +56,5 @@ Rails.application.routes.draw do
   resources :countries, only: :index
   resources :league_seasons, only: [:index, :show]
   resources :news_types, only: :show
+  resource :daily_schedules, only: :show
 end

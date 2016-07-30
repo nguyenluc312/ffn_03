@@ -1,4 +1,6 @@
 <div>
+  <p hidden id="hidden-league-id"><%= @league_season.league.id %></p>
+  <p hidden id="hidden-league-season-id"><%= @league_season.id %></p>
   <div id="league-accordion-menu">
     <%= render "leagues/league_accordion_menu", target: :rankings %>
   </div>

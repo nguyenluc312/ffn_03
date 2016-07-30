@@ -34,7 +34,7 @@
             </td>
             <td><%= player.country_name %></td>
             <td><%= player.position %></td>
-            <td class="center"><%= player.joined_at %></td>
+            <td class="center"><%= player.joined_at.strftime Settings.format.date %></td>
             <td class="center">
               <%= render "edit_form", player: player %>
               <%= link_to admin_player_assign_players_url(player), title: t(".remove_player"),

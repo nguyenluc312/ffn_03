@@ -23,6 +23,10 @@ class Match < ActiveRecord::Base
 
   after_save :start_match_job
 
+  ransacker :start_time do
+    Arel.sql "date(start_time)"
+  end
+
   def label_for_status
     case
     when self.not_started_yet?

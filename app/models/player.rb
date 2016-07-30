@@ -22,6 +22,10 @@ class Player < ActiveRecord::Base
     Time.zone.now.year - date_of_birth.year
   end
 
+  def DOB
+    self.date_of_birth.strftime Settings.format.date
+  end
+
   private
   def image_size
     if avatar.size > Settings.image.max_capacity.megabytes
