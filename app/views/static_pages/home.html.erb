@@ -1,13 +1,73 @@
-<div class="panel panel-heading">
-  <center>
-    <h1><%= t "views.static_pages.home1" %></h1>
-  </center>
+<% if @news.blank? %>
+  <strong><%= t ".no_news" %></strong>
+<% else %>
+  <div class="preview-newest-news">
+    <div class="newest-news">
+      <%= link_to @news.first do %>
+        <%= image_tag @news.first.represent_image.url %>
+      <% end %>
+      <div class="title-summary">
+        <h3><%= link_to @news.first.title, @news.first, class: "link-title" %></h3>
+        <%= @news.first.brief_description %>
+      </div>
+    </div>
+    <div class="next-newest-news">
+      <ul class="list-thumb-news">
+        <% @news[1..-1].each do |news| %>
+          <li>
+            <div class="thumb-news">
+              <div class="image">
+                <%= link_to news do %>
+                  <%= image_tag news.represent_image.url %>
+                <% end %>
+              </div>
+              <div class="title">
+                <%= link_to news.title, news, title: news.title, class: "link-title" %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <div class="panel-body">
-  <center>
-    <h2><%= t "views.static_pages.home.name_team" %></h2>
-    <br/>
-    <%= link_to t("views.static_pages.home.signup"), new_user_registration_path,
-      class: "btn btn-lg btn-success" unless user_signed_in?%>
-  </center>
+<% end %>
+<hr>
+<div class="all-news-types">
+  <ul class="list-news_types">
+    <% @preview_news_types.each do |news_type, list_news| %>
+      <li>
+        <div class="news-type-name">
+          <%= link_to news_type, class: "boxed-label" do %>
+            <%= news_type.name %>
+          <% end %>
+        </div>
+        <div>
+          <% if list_news.any? %>
+            <div class="newest-of-type">
+              <%= link_to list_news.first do %>
+                <%= image_tag list_news.first.represent_image.url %>
+              <% end %>
+              <%= link_to list_news.first.title, list_news.first, class: "link-title" %>
+            </div>
+            <div class="next-newest-of-type">
+              <ul class="list-next-newest">
+                <% list_news[1..list_news.size].each do |news| %>
+                  <li>
+                    &#8227;
+                    <%= link_to news.title, news, class: "link-title" %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% else %>
+            <div class="no-result"><%= t ".no_news" %></div>
+          <% end %>
+        <div>
+      </li>
+      <hr>
+    <% end %>
+  </ul>
+</div>
+<div class="hot-news hot-in-index">
+  <%= render "news/hot_news" %>
 </div>

@@ -516,3 +516,9 @@ en:
       start_time_change: "is on, can't change start time"
       odds_change: "is on, can't change odds"
     finished: "finished, can't change anything"
+  layouts:
+    header:
+      search_news: "Search news..."
+  news_types:
+    show:
+      search_news: "Search news of this type"
