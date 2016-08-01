@@ -1,8 +1,8 @@
   <% provide :title, @match.team1.name + " - " + @match.team2.name %>
 <section id="match-section">
-  <p id="league-name">
+  <h1 class="center">
     <%= @match.league_season.name + " " + @match.league_season.year.to_s %>
-  </p>
+  </h1>
   <div id="match-info" class="well">
     <div class="team">
       <%= link_to @match.team1 do %>
@@ -55,7 +55,7 @@
             <td><%= @match.team2_odds %></td>
           </tr>
       </table>
-      <% if user_signed_in? && @match.start_time > Time.zone.now %>
+      <% if user_signed_in? && @match.not_started_yet? %>
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#betModal">
           <%= t ".make_a_bet" %>
         </button>
