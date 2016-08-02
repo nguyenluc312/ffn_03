@@ -1,7 +1,7 @@
 <div id="banner">
 
 </div>
-<nav class="navbar navbar-inverse no-radius" data-spy="affix" data-offset-top="150" id="nav-header">
+<nav class="navbar navbar-inverse no-radius" id="nav-header">
     <ul class="nav navbar-nav">
       <li>
         <%= link_to root_path do %>
@@ -12,15 +12,10 @@
       <li><%= link_to "League", "#" %></li>
       <li><%= link_to "Teams", teams_path %></li>
       <li><%= link_to "Players", players_path %></li>
+      <li><%= link_to "Admin", admin_root_path %></li>
     </ul>
-    <ul class="nav navbar-nav pull-right">
+    <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-        <li>
-          <a href="">
-            <%= image_tag Settings.image.coin, size: Settings.image.coin_size %>
-            <span id="user-coin"><%= current_user.coin %></span>
-          </a>
-        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <%= image_tag current_user.avatar.url, id: "avatar-on-nav" %>
@@ -47,5 +42,16 @@
         </li>
       <% end %>
     </ul>
+    <%= search_form_for News.search, as: :news_search, class: "navbar-form navbar-right" do |f| %>
+      <div class="input-group">
+        <%= f.search_field :title_or_content_or_brief_description_cont, class: "form-control",
+          placeholder: t(".search_news") %>
+        <span class="input-group-btn">
+          <%= f.button class: "btn btn-default no-radius" do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+        </span>
+      </div>
+    <% end %>
   </div>
 </nav>

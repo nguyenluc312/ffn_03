@@ -60,5 +60,7 @@
   </div>
   <ol id="comments">
     <%= render @comments %>
+    <%= link_to t(".show_more"), "#", id: "show-more" %>
+    <%= link_to t(".show_less"), "#", id: "show-less" %>
   </ol>
 </section>

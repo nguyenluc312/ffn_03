@@ -2,8 +2,8 @@ class NewsController < ApplicationController
   load_and_authorize_resource only: :show
 
   def index
-    @news = News.order(created_at: :desc).limit Settings.news.preview_newest
-    @preview_news_types = NewsType.preview_news_in_types
+    @search = News.search params[:news_search], search_key: :news_search
+    @news = @search.result.page(params[:page]).per Settings.news.per_page_user
     @hot_news = News.hot_news
   end
 

@@ -1,8 +1,8 @@
 <tr id="news-type-<%= news_type.id %>">
   <td><%= news_type.id %></td>
   <td class="not-overflow"><%= news_type.name %></td>
-  <td><%= news_type.created_at %></td>
-  <td><%= news_type.news.size %></td>
+  <td><%= news_type.created_at.strftime Settings.format.date_time %></td>
+  <td class="right"><%= news_type.news.size %></td>
   <td class="action">
     <%= link_to "", edit_admin_news_type_path(news_type),
       title: t(".edit_tip"), data: {toggle: "tooltip"}, remote: true,

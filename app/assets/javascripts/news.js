@@ -1,4 +1,34 @@
 $(document).ready(function(){
+
+  totalCmts = $('#comments .comment').size();
+  currentShownCmts = totalCmts < 5 ? totalCmts : 5;
+  minShownCmts = currentShownCmts;
+  $('#comments .comment').not(':lt(' + minShownCmts + ')').hide();
+  if (totalCmts <= currentShownCmts){
+    $("#show-more").hide();
+  }
+  $('#show-less').hide();
+
+  $(document).on('click', '#show-more', function(e){
+    e.preventDefault();
+    currentShownCmts = currentShownCmts + 5 < totalCmts ? currentShownCmts + 5 : totalCmts;
+    $('#comments .comment:lt(' + currentShownCmts + ')').show();
+    $('#show-less').show();
+    if (currentShownCmts >= totalCmts) {
+      $('#show-more').hide();
+    }
+  });
+
+  $(document).on('click', '#show-less', function(e){
+    e.preventDefault();
+    currentShownCmts = currentShownCmts - 5 < minShownCmts ? minShownCmts : currentShownCmts - 5;
+    $('#comments .comment').not(':lt(' + currentShownCmts + ')').hide();
+    $('#show-more').show();
+    if (currentShownCmts <= minShownCmts){
+      $('#show-less').hide();
+    }
+  });
+
   $(document).on('submit', '#new_comment', function(e){
     e.preventDefault();
     var url = $(this).attr('action');
@@ -14,6 +44,9 @@ $(document).ready(function(){
         $('#count-comments').html(result.count_comments);
         $('#comments').prepend(to_html(result));
         $('#comment_content').val('');
+        totalCmts++;
+        currentShownCmts++;
+        minShownCmts++;
       },
       error: function(xhr){
         var errors = $.parseJSON(xhr.responseText).errors;
@@ -38,6 +71,9 @@ $(document).ready(function(){
         $("#comment-" + id).remove();
         var countComments = $('#count-comments').text()-1;
         $('#count-comments').html(countComments);
+        totalCmts--;
+        currentShownCmts--;
+        minShownCmts--;
       }
     });
   });
