@@ -530,3 +530,11 @@ en:
   news_types:
     show:
       search_news: "Search news of this type"
+  user_mailer:
+    inform_matches_tomorrow:
+      subject: "Matches on %{date}"
+      greeting: "Hi %{user_name}!"
+      summary: "We want to inform to you the matches on %{date}"
+      more_matches: "Views full schedule, click"
+      link_more: "here"
+

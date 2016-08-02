@@ -1,0 +1,17 @@
+<%= t ".greeting", user_name: @user.name %>
+<br/>
+<%= t ".summary", date: 1.day.from_now.strftime(Settings.format.date) %>
+<br/>
+<ul>
+  <% @matches.each do |match| %>
+    <li>
+      <%= match.start_time.strftime Settings.format.time %>:
+      <%= link_to match do %>
+        <%= match.team1.name %> vs <%= match.team2.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<%= t ".more_matches" %>
+<%= link_to t(".link_more"),
+  daily_schedules_url(q: {start_time_date_equals: 1.day.from_now.to_date}) %>

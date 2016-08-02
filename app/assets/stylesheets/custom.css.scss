@@ -1089,9 +1089,10 @@ table.table.table-borde#D91E18.text-center {
     }
   }
   #player-content{
-    width: 74%;
+    width: 70%;
     display: inline-block;
     vertical-align: top;
+    margin-left: 4%;
   }
 }
 
@@ -1106,9 +1107,10 @@ table.table.table-borde#D91E18.text-center {
     }
   }
   #team-content{
-    width: 74%;
+    width: 70%;
     display: inline-block;
     vertical-align: top;
+    margin-left: 4%;
   }
 }
 .table-info-template{
@@ -1141,6 +1143,8 @@ table.table.table-borde#D91E18.text-center {
   }
   tbody tr td.position{
     font-weight: bold;
+    background-color: #27AE60;
+    color: white;
   }
   .avatar{
     width: 7%;
@@ -1205,7 +1209,7 @@ table.table.table-borde#D91E18.text-center {
     width: 8%;
   }
   .header-flag{
-    width: 10%;
+    width: 8%;
   }
   .header-country{
     width: 20%;
@@ -1232,7 +1236,7 @@ table.table.table-borde#D91E18.text-center {
     width: 8%;
   }
   .header-flag{
-    width: 10%;
+    width: 8%;
   }
   .header-country{
     width: 20%;
@@ -1417,7 +1421,7 @@ table.table.table-borde#D91E18.text-center {
     width: 5%;
   }
   .header-flag{
-    width: 10%;
+    width: 8%;
   }
   .header-country{
     width: 20%;
@@ -1453,7 +1457,7 @@ table.table.table-borde#D91E18.text-center {
     width: 9%;
   }
   .header-flag{
-    width: 10%;
+    width: 8%;
   }
   .header-country{
     width: 20%;
@@ -1879,9 +1883,10 @@ span.pull-left.transfer-players{
   display: inline-block;
   width: 70%;
 }
-
-#daily-schedule{
+#daily-schedules-container{
   width: 70%;
+}
+#daily-schedule{
   margin-top: 20px;
   .league-season{
     padding-left: 20px;
@@ -1910,7 +1915,6 @@ span.pull-left.transfer-players{
     }
   }
 }
-
 .header-news{
   margin-bottom: 20px;
 }
@@ -2050,4 +2054,11 @@ span.pull-left.transfer-players{
   .btn {
     height: 34px;
   }
+}
+
+#player-name{
+  margin: 20px 0;
+}
+#team-name{
+  margin: 20px 0;
 }

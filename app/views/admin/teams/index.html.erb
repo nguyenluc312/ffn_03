@@ -45,7 +45,7 @@
         </td>
         <td><%= team.country_name %></td>
         <td><%= team.coach || "-" %></td>
-        <td class="center"><%= team.players.size %></td>
+        <td class="right"><%= team.players.size %></td>
         <td class="center">
           <%= link_to admin_team_assign_players_url(team_id: team.id),
             title: t(".add_players") do %>

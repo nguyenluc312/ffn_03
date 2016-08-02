@@ -52,7 +52,7 @@ leagues:
   per_page: 2
 banner_image_height: 150
 format:
-  time: "%H:%M"
+  time: "%I:%M %p"
   date_time: "%d-%m-%Y %I:%M %p"
   date: "%d-%m-%Y"
 user_bets:

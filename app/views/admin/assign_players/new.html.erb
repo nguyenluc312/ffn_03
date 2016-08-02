@@ -49,8 +49,8 @@
         <td class="center"><%= image_tag player.avatar.small.url %></td>
         <td><%= link_to player.name, player, title: player.name %></td>
         <td class="center"><%= player.age %></td>
-        <td><%= player.height || "-" %></th>
-        <td><%= player.weight || "-" %></th>
+        <td class="right"><%= player.height || "-" %></th>
+        <td class="right"><%= player.weight || "-" %></th>
         <td class="center">
           <%= image_tag player.country.flag.url, size: Settings.country.size_small %>
         </td>

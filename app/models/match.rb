@@ -20,6 +20,7 @@ class Match < ActiveRecord::Base
   scope :of_team_be_team2, ->(team_id, league_season_id) do
     where(team2_id: team_id).where(league_season_id: league_season_id)
   end
+  scope :on_date, ->(date){where ":date = date(start_time)", date: date}
 
   after_save :start_match_job
   after_destroy :remove_user_bet
@@ -73,6 +74,12 @@ class Match < ActiveRecord::Base
       self.update_attributes status: :finished
       update_user_coin_when_match_end
       send_mail_bet_result
+    end
+  end
+
+  class << self
+    def inform_tomorrow_matches
+      SendMailTomorrowMatchesWorker.perform_async
     end
   end
 
