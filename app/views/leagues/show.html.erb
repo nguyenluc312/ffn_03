@@ -1,0 +1,16 @@
+<div id="league-season-container">
+  <div class="league-name">
+    <h3>
+      <%= image_tag @league.country.flag.url, size: Settings.country.size_tiny %>
+      <%= @league.country.name.upcase %> -
+      <%= @league.name %>
+    </h3>
+  </div>
+  <br>
+  <div class="no-result">
+    <%= t ".this_league_has_no_season" %>
+  </div>
+</div>
+<div id="list-leagues-container">
+  <%= render "leagues_list" %>
+</div>

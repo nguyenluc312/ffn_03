@@ -1,0 +1,56 @@
+<div id="league-season-container">
+  <div class="league-season-header">
+    <div class="league-name">
+      <h3>
+        <%= image_tag @league_season.league.country.flag.url, size: Settings.country.size_tiny %>
+        <%= @league_season.league.country.name.upcase %> -
+        <%= @league_season.league.name %>
+      </h3>
+    </div>
+    <div class="dropdown pull-right">
+      <button class="btn btn-default dropdown-toggle no-radius" type="button"
+        id="button-select-season" data-toggle="dropdown">
+        <%= t ".season" %>
+        <%= @league_season.year %>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <% @league_seasons.each do |league_season| %>
+          <li>
+            <%= link_to league_season do %>
+              <%= t ".season" %>
+              <%= league_season.year %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a data-toggle="tab" href="#schedule-tab">
+        <span class="glyphicon glyphicon-calendar"></span>
+        <%= t ".schedules" %>
+      </a>
+    </li>
+    <li>
+      <a data-toggle="tab" href="#ranking-tab">
+        <span class="glyphicon glyphicon-stats"></span>
+        <%= t ".ranking" %>
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="schedule-tab" class="tab-pane fade in active">
+      <%= render "schedule" %>
+    </div>
+
+    <div id="ranking-tab" class="tab-pane fade">
+      <%= render "ranking" %>
+    </div>
+  </div>
+</div>
+<div id="list-leagues-container">
+  <%= render "leagues/leagues_list" %>
+</div>

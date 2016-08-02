@@ -12,7 +12,7 @@
     </div>
   <% end %>
   <div class="news-type-name-show">
-    <div class="boxed-label"><%= @news_type.name %></div>
+    <div class="boxed-label"><%= @news_type.name.upcase %></div>
   </div>
   <% if @news.any? %>
     <ul class="list-news-in-type">

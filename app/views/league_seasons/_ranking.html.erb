@@ -1,10 +1,3 @@
-<h3>
-  <span class="glyphicon glyphicon-stats"></span>
-  <%= t ".ranking" %>
-  <%= @league_season.league.name %> -
-  <%= t ".season" %>
-  <%= @league_season.year %>
-</h3>
 <table id="rank-table" class="table table-striped table-bordered">
   <thead>
     <th class="stats"><%= t ".rank" %></th>
@@ -15,7 +8,7 @@
   <tbody>
     <% @rank.each_with_index do |team| %>
       <tr>
-        <td class="stats"><%= team.rank %></td>
+        <td class="rank stats"><%= team.rank %></td>
         <td>
           <%= image_tag team.logo.url, size: Settings.team.logo_size_tiny,
             class: "tiny-logo-with-team" %>

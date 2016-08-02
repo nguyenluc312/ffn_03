@@ -1,0 +1,11 @@
+<div class="title-list">
+  <%= t ".Leagues" %>
+</div>
+<div class="list-group no-radius">
+  <% @leagues.each do |league| %>
+    <%= link_to league, class: "list-group-item no-radius" do %>
+      <%= image_tag league.country.flag.url, size: Settings.country.size_tiny %>
+      <%= league.name %>
+    <% end %>
+  <% end %>
+</div>

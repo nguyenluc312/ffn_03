@@ -31,7 +31,7 @@ number_of_year: 10
 match:
   ball_size: "70x70"
   ball_img: "league-icon.png"
-  duration: 1
+  duration: 5
   minute_of_match: 120
 users:
   per_page: 5
@@ -55,5 +55,7 @@ format:
   time: "%I:%M %p"
   date_time: "%d-%m-%Y %I:%M %p"
   date: "%d-%m-%Y"
+  time24: "%H : %M"
+  date_input: "%Y-%m-%d"
 user_bets:
   per_page: 5

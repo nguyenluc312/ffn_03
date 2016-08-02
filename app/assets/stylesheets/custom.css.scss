@@ -822,6 +822,16 @@ table.table.table-borde#D91E18.text-center {
     width: 6%;
     text-align: center;
   }
+  .rank{
+    font-weight: bold;
+  }
+  .total_matches{
+    font-weight: bold;
+  }
+  .score{
+    font-weight: bold;
+    color: red;
+  }
 }
 
 #ranking-table-name{
@@ -835,17 +845,19 @@ table.table.table-borde#D91E18.text-center {
 }
 
 #table-schedule{
+  border: 1px solid #e8e8e8;
   margin-top: 20px;
   .start-date{
     padding-left: 20px;
     font-weight: bold;
     border-top: 2px solid #27AE60;
+    background-color:  #e8e8e8;
   }
   .start-time{
-    width: 10%;
+    width: 11%;
   }
   .action{
-    width: 10%;
+    width: 11%;
   }
   .team1{
     width: 35%;
@@ -861,6 +873,12 @@ table.table.table-borde#D91E18.text-center {
   }
   .is_on {
     background-color: #f0ad4e;
+  }
+  .link-to-match{
+    color: black;
+    &:hover{
+      color: red;
+    }
   }
 }
 .new-match {
@@ -1135,6 +1153,12 @@ table.table.table-borde#D91E18.text-center {
 
 .nav.nav-tabs{
   margin-bottom: 30px;
+  li.active a{
+    border-top: 2px solid #27AE60;
+  }
+  li a{
+    border-radius: 0;
+  }
 }
 
 .players-in-group{
@@ -1327,8 +1351,8 @@ table.table.table-borde#D91E18.text-center {
 
 .table{
   thead{
-    color: white;
-    background-color: #27AE60;
+    color: black;
+    background-color: #e8e8e8;
   }
   tbody tr td{
     vertical-align: middle;
@@ -1728,7 +1752,7 @@ span.pull-left.transfer-players{
   padding-left: 0;
   .news-type-name{
     margin: 30px 0;
-    border-bottom: 3px solid #27AE60;
+    border-bottom: 3px solid black;
   }
   .newest-of-type{
     display: inline-block;
@@ -1762,7 +1786,7 @@ span.pull-left.transfer-players{
 
 .news-type-name-show{
   margin-bottom: 30px;
-  border-bottom: 3px solid #27AE60;
+  border-bottom: 3px solid black;
 }
 .list-news-in-type{
   list-style: none;
@@ -1785,12 +1809,9 @@ span.pull-left.transfer-players{
   }
 }
 .boxed-label{
-  padding: 5px 20px;
   font-size: 1.25em;
   font-weight: bold;
-  color: white;
-  display: inline-block;
-  background-color: #27AE60;
+  color: black;
   &:hover{
     text-decoration: none;
   }
@@ -1854,11 +1875,8 @@ span.pull-left.transfer-players{
   margin-left: 30px;
   width: 25%;
   .news-type-name{
-    margin: 30px 0;
-    border-bottom: 3px solid #D91E18;
-    .red-box{
-      background-color: #D91E18;
-    }
+    margin-bottom: 20px;
+    border-bottom: 3px solid black;
   }
   .list-hot-news{
     list-style: none;
@@ -1878,6 +1896,7 @@ span.pull-left.transfer-players{
 }
 .hot-in-index{
   width: 360px;
+  padding-top: 30px;
 }
 .news-type-container{
   display: inline-block;
@@ -1885,6 +1904,24 @@ span.pull-left.transfer-players{
 }
 #daily-schedules-container{
   width: 70%;
+  display: inline-block;
+  vertical-align: top;
+  #daily-schedules-header{
+    margin: 30px 0;
+    #title{
+      display: inline-block;
+      h3{
+        margin: 0;
+      }
+    }
+    #search-matches-form{
+      display: inline-block;
+      #q_start_time_date_equals{
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+    }
+  }
 }
 #daily-schedule{
   margin-top: 20px;
@@ -1892,6 +1929,7 @@ span.pull-left.transfer-players{
     padding-left: 20px;
     font-weight: bold;
     border-top: 2px solid #27AE60;
+    background-color: #e8e8e8;
     .glyphicon{
       margin-right: 10px;
     }
@@ -1912,6 +1950,12 @@ span.pull-left.transfer-players{
     font-weight: bold;
     .goals-team1{
       margin-right: 4px;
+    }
+  }
+  .link-to-match{
+    color: black;
+    &:hover{
+      color: red;
     }
   }
 }
@@ -2061,4 +2105,56 @@ span.pull-left.transfer-players{
 }
 #team-name{
   margin: 20px 0;
+}
+
+#league-season-container{
+  width: 70%;
+  display: inline-block;
+  vertical-align: top;
+  .league-season-header{
+    margin-top: 20px;
+    vertical-align: middle;
+    .league-name{
+      margin-bottom: 30px;
+      display: inline-block;
+      h3{
+        margin-top: 0px;
+      }
+    }
+    .dropdown{
+      display: inline-block;
+      vertical-align: middle;
+      #button-select-season{
+        width: 160px;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+#list-leagues-container{
+  width: 25%;
+  display: inline-block;
+  margin-left: 4%;
+  margin-top: 20px;
+  .title-list{
+    border: 1px solid #e8e8e8;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px 15px;
+    background-color: #e8e8e8;
+  }
+  .list-group{
+    .list-group-item{
+      img{
+        margin-right: 10px;
+      }
+    }
+    .list-group-item:first-child{
+      border-radius: 0;
+    }
+    .list-group-item:last-child{
+      border-radius: 0;
+    }
+  }
 }

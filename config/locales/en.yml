@@ -10,15 +10,15 @@ en:
     manage:
       all: "Not authorized to %{action} this %{subject}."
   rank:
-    total_matches: "TM"
-    win_matches: "WM"
-    draw_matches: "DM"
-    lose_matches: "LM"
+    total_matches: "P"
+    win_matches: "W"
+    draw_matches: "D"
+    lose_matches: "L"
     goals: "G"
     lose_goals: "LG"
     offset: "OS"
     score: "S"
-    full_total_matches: "Total matches"
+    full_total_matches: "Played matches"
     full_win_matches: "Win matches"
     full_draw_matches: "Draw matches"
     full_lose_matches: "Lose matches"
@@ -451,6 +451,8 @@ en:
     name: "%{league_name} %{start_year} - %{end_year}"
     schedule:
       match_detail: "View match detail"
+      ft: "FT"
+      is_on: "Is on"
     rank:
       rankings: "Rankings"
   leagues:
@@ -537,4 +539,7 @@ en:
       summary: "We want to inform to you the matches on %{date}"
       more_matches: "Views full schedule, click"
       link_more: "here"
-
+  daily_schedules:
+    show:
+      ft: "FT"
+      is_on: "Is on"

@@ -19,7 +19,7 @@
               <div class="clearfix"></div>
               <hr>
             <% end %>
-            <li class="col-sm-3">
+            <li class="col-sm-6">
               <ul>
                 <li class="dropdown-header"><%= country.name %></li>
                 <% country.leagues.each do |league| %>
@@ -32,6 +32,7 @@
           <% end %>
         </ul>
       </li>
+      <li><%= link_to t(".schedule"), daily_schedules_path %></li>
       <li><%= link_to t("layouts.teams"), teams_path %></li>
       <li><%= link_to t("layouts.players"), players_path %></li>
       <% if user_signed_in? && (current_user.admin? || current_user.moderate?) %>

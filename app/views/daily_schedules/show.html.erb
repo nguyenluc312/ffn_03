@@ -1,26 +1,28 @@
 <div id="daily-schedules-container">
-  <%= search_form_for @search, url: daily_schedules_path,
-    class: "form-inline search-form" do |f| %>
-    <div class="form-group">
-      <%= f.date_field :start_time_date_equals, class: "form-control", required: true %>
+  <div id="daily-schedules-header">
+    <div id="title">
+      <h3>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <%= t ".schedule" %>
+      </h3>
     </div>
-    <div class="form-group">
-      <%= f.button class: "btn btn-primary no-radius" do %>
-        <span class="glyphicon glyphicon-search"></span>
+    <div id="search-matches-form" class="pull-right">
+      <%= search_form_for @search, url: daily_schedules_path,
+        class: "form-inline" do |f| %>
+        <div class="form-group">
+          <%= f.date_field :start_time_date_equals, class: "form-control", required: true,
+            value: @search.start_time_date_equals.to_date.strftime(Settings.format.date_input) %>
+        </div>
+        <div class="form-group">
+          <%= f.button class: "btn btn-primary no-radius" do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% end %>
-  <h3>
-    <% if @search.start_time_date_equals %>
-      <span class="glyphicon glyphicon-calendar"></span>
-      <%= t ".schedule_on" %>
-      <%= @search.start_time_date_equals.to_date.strftime Settings.format.date %>
-    <% else %>
-      <%= t ".select_a_day_to_view_schedule" %>
-    <% end %>
-  </h3>
+  </div>
   <% if @matches && @matches.any? %>
-    <table id="daily-schedule" class="table table-striped table-bordered" %>
+    <table id="daily-schedule" class="table" %>
       <% @matches.each do |league_season, matches| %>
         <tr>
           <td colspan="5" class="league-season">
@@ -31,7 +33,11 @@
         <% matches.each do |match| %>
           <tr>
             <td class="start-time center">
-              <%= match.start_time.strftime Settings.format.time %>
+              <% if match.finished? %>
+                <%= t ".ft" %>
+              <% elsif match.is_on? %>
+                <%= t ".is_on" %>
+              <% end %>
             </td>
             <td class="team1 right">
               <%= link_to match.team1.name, match.team1 %>
@@ -39,18 +45,20 @@
                 class: "tiny-logo-with-team" %>
             </td>
             <td class="result center">
-              <span class="goals-team1"><%= match.team1_goal || "-" %></span>:
-              <span class="goals-team2"><%= match.team2_goal || "-" %></span>
-              <br>
+              <%= link_to match, class: "link-to-match" do %>
+                <% if match.not_started_yet? %>
+                  <%= match.start_time.strftime Settings.format.time24 %>
+                <% else %>
+                  <span class="goals-team1"><%= match.team1_goal %></span>-
+                  <span class="goals-team2"><%= match.team2_goal %></span>
+                <% end %>
+              <% end %>
             <td class="team2">
               <%= image_tag match.team2.logo.url, size: Settings.team.logo_size_tiny,
                 class: "tiny-logo-with-team" %>
               <%= link_to match.team2.name, match.team2 %>
             </td>
             <td class="action center">
-              <%= link_to match, title: "Match detail", data: {toggle: "tooltip"} do %>
-                <span class="glyphicon glyphicon-play-circle"></span>
-              <% end %>
             </td>
           </tr>
         <% end %>
@@ -59,4 +67,7 @@
   <% else %>
     <div class="no-result"><%= t ".no_match" %></div>
   <% end %>
+</div>
+<div id="list-leagues-container">
+  <%= render "leagues/leagues_list" %>
 </div>

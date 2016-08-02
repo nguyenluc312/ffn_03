@@ -1,11 +1,4 @@
-<h3>
-  <span class="glyphicon glyphicon-calendar"></span>
-  <%= t ".schedule" %>
-  <%= @league_season.league.name %> -
-  <%= t ".season" %>
-  <%= @league_season.year %>
-</h3>
-<table id="table-schedule" class="table table-striped table-bordered">
+<table id="table-schedule" class="table">
   <% @schedule.each do |date, schedule| %>
     <tr>
       <td colspan="5" class="start-date">
@@ -16,7 +9,11 @@
     <% schedule.each do |match| %>
       <tr>
         <td class="start-time center">
-          <%= match.start_time.strftime Settings.format.time %>
+          <% if match.finished? %>
+            <%= t ".ft" %>
+          <% elsif match.is_on? %>
+            <%= t ".is_on" %>
+          <% end %>
         </td>
         <td class="team1 right">
           <%= link_to match.team1.name, match.team1 %>
@@ -24,18 +21,20 @@
             class: "tiny-logo-with-team" %>
         </td>
         <td class="result center">
-          <span class="goals-team1"><%= match.team1_goal || "-" %></span>:
-          <span class="goals-team2"><%= match.team2_goal || "-" %></span>
-          <br>
+          <%= link_to match, class: "link-to-match" do %>
+            <% if match.not_started_yet? %>
+              <%= match.start_time.strftime Settings.format.time24 %>
+            <% else %>
+              <span class="goals-team1"><%= match.team1_goal %></span>-
+              <span class="goals-team2"><%= match.team2_goal %></span>
+            <% end %>
+          <% end %>
         <td class="team2">
           <%= image_tag match.team2.logo.url, size: Settings.team.logo_size_tiny,
             class: "tiny-logo-with-team" %>
           <%= link_to match.team2.name, match.team2 %>
         </td>
         <td class="action center">
-          <%= link_to match, title: "Match detail", data: {toggle: "tooltip"} do %>
-            <span class="glyphicon glyphicon-play-circle"></span>
-          <% end %>
         </td>
       </tr>
     <% end %>
