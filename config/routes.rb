@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   resources :teams, only: [:index, :show]
   resources :comments, except: [:index, :show]
   resources :user_bets, only: [:create, :index]
-  resources :leagues, only: :index
+  resources :leagues, only: [:index, :show]
   resources :league_seasons, only: :show do
     resource :rankings, only: :show
     resource :schedules, only: :show

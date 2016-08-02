@@ -5,11 +5,11 @@ class Match < ActiveRecord::Base
   belongs_to :team1, class_name: Team.name
   belongs_to :team2, class_name: Team.name
   has_many :match_events, dependent: :destroy
-  has_many :user_bets, dependent: :destroy
+  has_many :user_bets
 
   validates :team1, :team2, :start_time, :status,
     :team1_odds, :team2_odds, :draw_odds, presence: true
-  validate :check_start_time, :validate_team_not_same
+  validate :check_start_time, :validate_team_not_same, :check_time_is_on
   before_validation :validate_match, on: :create
   before_validation :check_update_when_match_is_on,
     :check_update_when_match_finished, on: :update
@@ -22,6 +22,8 @@ class Match < ActiveRecord::Base
   end
 
   after_save :start_match_job
+  after_destroy :remove_user_bet
+  before_save :set_goal_in_match
 
   ransacker :start_time do
     Arel.sql "date(start_time)"
@@ -99,6 +101,13 @@ class Match < ActiveRecord::Base
     end
   end
 
+  def check_time_is_on
+    if self.start_time  && self.start_time < Time.zone.now - (Settings.match.minute_of_match).minutes
+      self.errors.add :start_time, I18n.t(".start_time_must_in_minutes_ago",
+        number: Settings.match.minute_of_match)
+    end
+  end
+
   def start_match_job
     if self.valid? && self.not_started_yet?
       if self.delayed_job_id
@@ -141,6 +150,19 @@ class Match < ActiveRecord::Base
   def send_mail_bet_result
     if self.finished?
       SendMailBetResultWorker.perform_async self.id
+    end
+  end
+
+  def remove_user_bet
+    if self.finished? || self.user_bets.blank?
+      self.user_bets.destroy_all
+    end
+  end
+
+  def set_goal_in_match
+    if self.is_on? || self.finished?
+      self.team1_goal ||= 0
+      self.team2_goal ||= 0
     end
   end
 end

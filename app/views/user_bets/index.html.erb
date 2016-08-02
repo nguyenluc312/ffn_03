@@ -26,7 +26,7 @@
             </td>
             <td class="odds center">
               <%= t ".odds", team1_odds: user_bet.match.team1_odds,
-                team2_odds: user_bet.match.team2_odds %>
+                draw_odds: user_bet.match.draw_odds, team2_odds: user_bet.match.team2_odds %>
             </td>
             <td>
               <%= user_bet.chosen_name %>
@@ -41,7 +41,7 @@
     </table>
     <%= paginate @user_bets %>
     <% if @user_bets.blank? %>
-      <strong><% t ".no_bet" %></strong>
+      <strong><%= t ".no_bet" %></strong>
     <% end %>
   </div>
 </div>

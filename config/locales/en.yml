@@ -1,4 +1,10 @@
 en:
+  layouts:
+    news: "News"
+    countries: "Countries"
+    footer: "Copyright © Do Gia Dat, Nguyen Van Luc, Hoang Trong Hieu"
+    header:
+      search_news: "Search news..."
   unauthorized:
     default: "You are not authorized to access this page"
     manage:
@@ -322,6 +328,8 @@ en:
       update:
         success: "Successfully"
     assign_players:
+      create:
+        success: "Added player successfully"
       new:
         search_name: "Search by name..."
         select_position: "All positions"
@@ -424,7 +432,9 @@ en:
       match: "Match"
       chosen: "Chosen"
       coin: "Coin"
-      odds: "%{team1_odds} - %{team2_odds}"
+      odds: "%{team1_odds} - %{draw_odds} - %{team2_odds}"
+      time: "Time"
+      bet_odds: "Bet odds"
   shared:
     error_messages:
       form_contains: "This form contains"
@@ -475,6 +485,7 @@ en:
   end_time_larger_than_start: "not larger than start time"
   start_time_must_larger_than_now: "not started yet, start time must larger than now"
   start_time_must_less_than_now: "%{status}, start time must less than now"
+  start_time_must_in_minutes_ago: "must in %{number} minutes ago"
   match_invalid: "was existed in league_season"
   user_bet: "User bet a match"
   match_out_of_bet: "%{status}, can't bet"
@@ -516,9 +527,6 @@ en:
       start_time_change: "is on, can't change start time"
       odds_change: "is on, can't change odds"
     finished: "finished, can't change anything"
-  layouts:
-    header:
-      search_news: "Search news..."
   news_types:
     show:
       search_news: "Search news of this type"

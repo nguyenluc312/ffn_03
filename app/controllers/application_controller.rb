@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :load_countries_have_leagues
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:danger] = exception.message
@@ -29,5 +30,9 @@ class ApplicationController < ActionController::Base
       user_params.permit :name, :email, :password, :password_confirmation,
         :avatar, :current_password
     end
+  end
+
+  def load_countries_have_leagues
+    @countries_have_leagues = Country.have_leagues.includes(:leagues)
   end
 end

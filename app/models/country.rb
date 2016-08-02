@@ -12,6 +12,8 @@ class Country < ActiveRecord::Base
 
   mount_uploader :flag, CountryFlagUploader
 
+  scope :have_leagues, ->{joins(:leagues)}
+
   private
   def set_name
     country = ISO3166::Country[self.code]
